@@ -2,6 +2,7 @@ Shuttleshare::Application.routes.draw do
   resources :rides do
     collection do
       get 'join'
+      get 'leave'
       get 'ontario'
       get 'lax'
     end
@@ -9,6 +10,7 @@ Shuttleshare::Application.routes.draw do
   
   get "sessions/create"
   get "sessions/destroy"
+  get "sessions/login"
   
   root :to => "Rides#index"
   

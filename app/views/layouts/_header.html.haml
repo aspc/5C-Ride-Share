@@ -3,5 +3,5 @@
   -if signed_in?
     %p= link_to "Sign out", :controller => "sessions", :action => "destroy"
   -else
-    %p= link_to "Sign in", '/auth/facebook'
-  
+    %p= link_to "Sign in", :controller => "sessions", :action => "login"
+  %p= link_to "Home", root_url

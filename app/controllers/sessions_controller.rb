@@ -1,4 +1,9 @@
 class SessionsController < ApplicationController
+  def login
+    session[:redirect_to] = :back
+    redirect_to '/auth/facebook'
+  end
+  
   def create
     auth = request.env['omniauth.auth']
       unless @user = User.find_from_hash(auth)
@@ -8,11 +13,11 @@ class SessionsController < ApplicationController
       end
       # Log the authorizing user in.
       self.current_user = @user
-      redirect_to root_url
+      redirect_to session[:redirect_to]
   end
   
   def destroy
     session[:user_id] = nil
-    redirect_to root_url
+    redirect_to :back
   end
 end

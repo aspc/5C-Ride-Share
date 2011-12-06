@@ -1,10 +1,17 @@
 -if @rides
   -@rides.each do |ride| 
     %tr
-      %td= ride.airport
-      %td= ride.date
-      %td= ride.time
-      %td= link_to 'Show', ride
-      %td= link_to 'Join', :controller => "rides", :action => "join", :id => ride
-      %td= link_to 'Edit', edit_ride_path(ride)
-      %td= link_to 'Destroy', ride, :confirm => 'Are you sure?', :method => :delete
+      %p
+        %td= ride.date.strftime("%A %B %d at")
+        %td= ride.time.strftime("%I:%M %p")
+        %td= link_to 'Show', ride
+        -if @current_user
+          -unless ride.users.find_by_id(@current_user.id)
+            %td= link_to 'Join',{ :controller => "rides", :action => "join", :id => ride }, :confirm => "Are you sure you want to join this ride?"
+            -if @current_user.rides.find_by_id(ride.id)
+              %td= link_to 'Edit', edit_ride_path(ride)
+          -else  
+            %td= link_to 'Leave', { :controller => "rides", :action => "leave", :id => ride }, :confirm => "Are you sure you want to leave this ride?"
+        -else
+          %td= link_to 'Join',{ :controller => "rides", :action => "join", :id => ride }, :confirm => "You must sign in before you can join a ride. Would you like to sign in now?"
+        
