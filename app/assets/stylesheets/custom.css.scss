@@ -1,0 +1,49 @@
+*
+{
+	margin: 0px;
+	padding: 0px;
+}
+
+html,body
+{
+	background: #E9E9E9;
+}
+
+#alert
+{
+	color: red;
+}
+//Header
+
+#header-container
+{
+	height: 78px;
+	h1
+	{
+		line-height: 78px;
+		float: left;
+		margin-left: 20px;
+	}
+	p
+	{
+		line-height: 78px;
+		float: right;
+		margin-right: 60px;
+	}
+}
+
+//Main
+#main-container
+{
+	width: 900px;
+	margin: auto;
+	h1
+	{
+		text-align: center;
+	}
+	p#new-ride
+	{
+		text-align: center;
+		margin-top: 100px;
+	}
+}

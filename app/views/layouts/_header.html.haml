@@ -1,0 +1,7 @@
+#header-container
+  %h1 Pomona Shuttle Share
+  -if signed_in?
+    %p= link_to "Sign out", :controller => "sessions", :action => "destroy"
+  -else
+    %p= link_to "Sign in", '/auth/facebook'
+  

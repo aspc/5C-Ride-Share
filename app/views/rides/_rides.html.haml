@@ -1,0 +1,10 @@
+-if @rides
+  -@rides.each do |ride| 
+    %tr
+      %td= ride.airport
+      %td= ride.date
+      %td= ride.time
+      %td= link_to 'Show', ride
+      %td= link_to 'Join', :controller => "rides", :action => "join", :id => ride
+      %td= link_to 'Edit', edit_ride_path(ride)
+      %td= link_to 'Destroy', ride, :confirm => 'Are you sure?', :method => :delete

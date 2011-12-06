@@ -1,0 +1,29 @@
+<%= form_for(@ride) do |f| %>
+  <% if @ride.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ride.errors.count, "error") %> prohibited this ride from being saved:</h2>
+
+      <ul>
+      <% @ride.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :airport %><br />
+    <%= f.select :airport, "<option>LAX</option><option>Ontario</option>" %>
+  </div>
+  <div class="field">
+    <%= f.label "What day is your flight?" %><br />
+    <%= f.date_select :date, :start_year => 2011, :end_year => 2012 %>
+  </div>
+  <div class="field">
+    <%= f.label "What time is your flight?" %><br />
+    <%= f.time_select :time, {:minute_step => 15} %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
