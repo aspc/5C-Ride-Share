@@ -130,7 +130,8 @@ class RidesController < ApplicationController
   end
   
   def toontario
-    @airport = "to Ontario"
+    @airport = "To Ontario"
+    @ftype = "Departure"
     @rides = Ride.find_all_by_airport("To Ontario")
     sort_rides(@rides)
     respond_to do |format|
@@ -140,7 +141,8 @@ class RidesController < ApplicationController
   end
   
   def tolax
-    @airport = "to LAX"
+    @airport = "To LAX"
+    @ftype = "Departure"
     @rides = Ride.find_all_by_airport("To LAX")
     sort_rides(@rides)
     respond_to do |format|
@@ -150,7 +152,8 @@ class RidesController < ApplicationController
   end
   
   def fromontario
-    @airport = "from Ontario"
+    @airport = "From Ontario"
+    @ftype = "Arrival"
     @rides = Ride.find_all_by_airport("From Ontario")
     sort_rides(@rides)
     respond_to do |format|
@@ -160,7 +163,8 @@ class RidesController < ApplicationController
   end
   
   def fromlax
-    @airport = "from LAX"
+    @airport = "From LAX"
+    @ftype = "Arrival"
     @rides = Ride.find_all_by_airport("From LAX")
     sort_rides(@rides)
     respond_to do |format|

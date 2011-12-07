@@ -1,24 +1,27 @@
-%tr
-  %h2
-    %td Flight Time
-    %td Airport
+%h2#flight-header
+  %p Flight Date
+  %p= "#{@ftype} Time"
+  .clear
+  
 
 -if @rides
   -@rides.each do |ride| 
-    %tr
-      %p
-        %td= ride.flighttime.strftime("Ride for flights departing around %I:%M %p on %A %B %d %Y from #{ride.airport}")
-        %td= link_to 'Show', ride
+    .ride
+      .ride-info
+        %p.flight-date= ride.flighttime.strftime("%A %B %d %Y")
+        %p.flight-time= ride.flighttime.strftime("%I:%M %p")
+      .ride-opt
+        %p= link_to 'View', ride
         -if @current_user
           -unless ride.users.find_by_id(@current_user.id)
-            %td= link_to 'Join',{ :controller => "rides", :action => "join", :id => ride }, :confirm => "Are you sure you want to join this ride?"
+            %p= link_to 'Join',{ :controller => "rides", :action => "join", :id => ride }, :confirm => "Are you sure you want to join this ride?"
             -if @current_user.rides.find_by_id(ride.id)
-              %td= link_to 'Edit', edit_ride_path(ride)
-          -else  
-            %td= link_to 'Leave', { :controller => "rides", :action => "leave", :id => ride }, :confirm => "Are you sure you want to leave this ride?"
-        -else
-          %td= link_to 'Join',{ :controller => "rides", :action => "join", :id => ride }, :confirm => "You must sign in before you can join a ride. Would you like to sign in now?"
-        
+              %p= link_to 'Edit', edit_ride_path(ride)
+            -else  
+              %p= link_to 'Leave', { :controller => "rides", :action => "leave", :id => ride }, :confirm => "Are you sure you want to leave this ride?"
+          -else
+            %p= link_to 'Join',{ :controller => "rides", :action => "join", :id => ride }, :confirm => "You must sign in before you can join a ride. Would you like to sign in now?"
+      .clear
 
 -if @current_user
   %p#new-ride= link_to 'Create a new ride!', new_ride_path
