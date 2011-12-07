@@ -20,3 +20,34 @@ form
 		font-size: 1.3em;
 	}
 }
+
+//Show
+
+#show-container
+{
+	width: 500px;
+	margin: auto;
+	p
+	{
+		margin: 5px 0 5px 0;
+		font-size: 1.3em;
+		b
+		{
+			font-size: 1.1em;
+		}
+	}
+	.riders
+	{
+		margin: 20px 0 50px 0;
+	}
+	.rider
+	{
+		float: left;
+		display: block;
+		width: 50px;
+	}
+	#backedit
+	{
+		float: right;
+	}
+}

@@ -1,5 +1,6 @@
 #header-container
-  %h1 Pomona Shuttle Share
+  %h1 
+    %a{:href => root_url} Pomona Shuttle Share
   -if signed_in?
     %p= link_to "Sign out", :controller => "sessions", :action => "destroy"
   -else

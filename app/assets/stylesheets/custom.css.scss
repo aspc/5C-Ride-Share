@@ -30,6 +30,10 @@ html,body
 		line-height: 78px;
 		float: left;
 		margin-left: 20px;
+		a
+		{
+			text-decoration: none;
+		}
 	}
 	p
 	{
@@ -38,9 +42,24 @@ html,body
 		margin-right: 60px;
 	}
 }
-
+//Airport Select Page
+#index
+{
+	width: 820px;
+	margin: auto;
+}
+.ontario
+{
+	float: left;
+	width: 400px;
+}
+.lax
+{
+	width: 400px;
+	float:left;
+}
 //Main
-#main-container
+.main-container
 {
 	width: 900px;
 	margin: auto;

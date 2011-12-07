@@ -6,6 +6,6 @@ class User < ActiveRecord::Base
   end
   
   def self.create_from_hash!(hash)
-    user = create :name => hash[:info][:name], :fb_id => hash[:uid]
+    user = create :name => hash[:info][:name], :fb_id => hash[:uid], :fbimage => hash[:info][:image], :fblink => hash[:info][:urls][:Facebook]
   end
 end

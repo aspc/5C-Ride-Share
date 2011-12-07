@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111206070757) do
+ActiveRecord::Schema.define(:version => 20111207062705) do
 
   create_table "rides", :force => true do |t|
     t.string   "airport"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(:version => 20111206070757) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "fbimage"
+    t.string   "fblink"
   end
 
 end
