@@ -11,7 +11,7 @@ gem 'json'
 gem 'haml'
 gem 'omniauth'
 gem 'omniauth-facebook'
-gem 'pg'
+gem 'pg', :group => :production
 
 # Gems used only for assets and not required
 # in production environments by default.
