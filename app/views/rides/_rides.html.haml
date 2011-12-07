@@ -1,9 +1,13 @@
+%tr
+  %h2
+    %td Flight Time
+    %td Airport
+
 -if @rides
   -@rides.each do |ride| 
     %tr
       %p
-        %td= ride.date.strftime("%A %B %d at")
-        %td= ride.time.strftime("%I:%M %p")
+        %td= ride.flighttime.strftime("Ride for flights departing around %I:%M %p on %A %B %d %Y from #{ride.airport}")
         %td= link_to 'Show', ride
         -if @current_user
           -unless ride.users.find_by_id(@current_user.id)
@@ -15,3 +19,8 @@
         -else
           %td= link_to 'Join',{ :controller => "rides", :action => "join", :id => ride }, :confirm => "You must sign in before you can join a ride. Would you like to sign in now?"
         
+
+-if @current_user
+  %p#new-ride= link_to 'Create a new ride!', new_ride_path
+-else
+  %p#new-ride= link_to 'Create a new ride!', new_ride_path, :confirm => "You must sign in before you can create a new ride. Would you like to sign in now?"

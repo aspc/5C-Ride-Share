@@ -1,5 +1,8 @@
 class RidesController < ApplicationController
   before_filter :current_user
+  before_filter :checker, :only => [:edit, :update, :destroy, :leave]
+  before_filter :login_helper, :only => [:new, :join]
+  
   # GET /rides
   # GET /rides.json
   def index
@@ -36,6 +39,7 @@ class RidesController < ApplicationController
 
   # GET /rides/1/edit
   def edit
+    :checker
     @ride = Ride.find(params[:id])
     unless @current_user.rides.find_by_id(@ride.id)
       redirect_to root_url
@@ -45,6 +49,7 @@ class RidesController < ApplicationController
   # POST /rides
   # POST /rides.json
   def create
+    :checker
     @ride = @current_user.rides.new(params[:ride])
     @ride.users << @current_user
 
@@ -62,6 +67,7 @@ class RidesController < ApplicationController
   # PUT /rides/1
   # PUT /rides/1.json
   def update
+    :checker
     @ride = Ride.find(params[:id])
     
     respond_to do |format|
@@ -78,6 +84,7 @@ class RidesController < ApplicationController
   # DELETE /rides/1
   # DELETE /rides/1.json
   def destroy
+    :checker
     @ride = Ride.find(params[:id])
     if @current_user.rides.find_by_id(@ride.id)
       @ride.destroy
@@ -92,27 +99,23 @@ class RidesController < ApplicationController
   end
   
   def join
-    if @current_user
-      @ride = Ride.find(params[:id])
-      unless @ride.users.find_by_id(@current_user.id)
-        @ride.users << @current_user
-        respond_to do |format|
-          format.html { redirect_to @ride, :notice => 'You successfully joined this ride.' }
-          format.json { head :ok }
-        end
-      else
-        respond_to do |format|
-          format.html { redirect_to @ride, :alert => 'You already joined that ride!' }
-          format.json { head :ok }
-        end
+    @ride = Ride.find(params[:id])
+    unless @ride.users.find_by_id(@current_user.id)
+      @ride.users << @current_user
+      respond_to do |format|
+        format.html { redirect_to @ride, :notice => 'You successfully joined this ride.' }
+        format.json { head :ok }
       end
     else
-      session[:redirect_to] = :back
-      redirect_to '/auth/facebook'
+      respond_to do |format|
+        format.html { redirect_to @ride, :alert => 'You already joined that ride!' }
+        format.json { head :ok }
+      end
     end
   end
   
   def leave
+    :checker
     @ride = Ride.find(params[:id])
     if @ride.users.find_by_id(@current_user.id)
       @ride.users.delete(@current_user)
@@ -126,8 +129,9 @@ class RidesController < ApplicationController
     end
   end
   
-  def ontario
-    @rides = Ride.find_all_by_airport("Ontario")
+  def toontario
+    @airport = "to Ontario"
+    @rides = Ride.find_all_by_airport("To Ontario")
     sort_rides(@rides)
     respond_to do |format|
       format.html # show.html.erb
@@ -135,8 +139,29 @@ class RidesController < ApplicationController
     end
   end
   
-  def lax
-    @rides = Ride.find_all_by_airport("LAX")
+  def tolax
+    @airport = "to LAX"
+    @rides = Ride.find_all_by_airport("To LAX")
+    sort_rides(@rides)
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render :json => @rides }
+    end
+  end
+  
+  def fromontario
+    @airport = "from Ontario"
+    @rides = Ride.find_all_by_airport("From Ontario")
+    sort_rides(@rides)
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render :json => @rides }
+    end
+  end
+  
+  def fromlax
+    @airport = "from LAX"
+    @rides = Ride.find_all_by_airport("From LAX")
     sort_rides(@rides)
     respond_to do |format|
       format.html # show.html.erb
@@ -145,6 +170,6 @@ class RidesController < ApplicationController
   end
   
   def sort_rides(rides)
-    rides.sort! {|a,b| a.date <=> b.date}
+    rides.sort! {|a,b| a.flighttime <=> b.flighttime}
   end
 end

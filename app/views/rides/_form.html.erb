@@ -12,16 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :airport %><br />
-    <%= f.select :airport, "<option>LAX</option><option>Ontario</option>", :selected => "2" %>
+    <%= f.label "Type of ride" %><br />
+    <%= f.select :airport, "<option>To LAX</option><option>To Ontario</option><option>From LAX</option><option>From Ontario</option>", :selected => "2" %>
   </div>
   <div class="field">
-    <%= f.label "What day is your flight?" %><br />
-    <%= f.date_select :date, :start_year => 2011, :end_year => 2012 %>
-  </div>
-  <div class="field">
-    <%= f.label "What time is your flight?" %><br />
-    <%= f.time_select :time, {:minute_step => 15} %>
+    <%= f.label "When is your flight?" %><br />
+    <%= f.datetime_select :flighttime, :order => [:day, :month, :year], :prompt => {:day => 'Day', :month => "Month", :year => "Year", :hour => "Hour", :minute => "Minute"}, :minute_step => 15, :start_year => 2011, :end_year => 2012%>
   </div>
   <div class="actions">
     <%= f.submit %>

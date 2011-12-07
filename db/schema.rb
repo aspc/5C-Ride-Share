@@ -14,8 +14,7 @@ ActiveRecord::Schema.define(:version => 20111206070757) do
 
   create_table "rides", :force => true do |t|
     t.string   "airport"
-    t.date     "date"
-    t.time     "time"
+    t.datetime "flighttime"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

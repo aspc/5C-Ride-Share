@@ -7,13 +7,8 @@
 </p>
 
 <p>
-  <b>Date:</b>
-  <%= @ride.date %>
-</p>
-
-<p>
-  <b>Time:</b>
-  <%= @ride.time %>
+  <b>Flight Time:</b>
+  <%= @ride.flighttime %>
 </p>
 
 <p>
@@ -24,4 +19,4 @@
 
 
 <%= link_to 'Edit', edit_ride_path(@ride) %> |
-<%= link_to 'Back', rides_path %>
+<%= link_to 'Back', :back %>
