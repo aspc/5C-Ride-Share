@@ -17,8 +17,8 @@
             %p= link_to 'Join',{ :controller => "rides", :action => "join", :id => ride }, :confirm => "Are you sure you want to join this ride?"
           -else  
             %p= link_to 'Leave', { :controller => "rides", :action => "leave", :id => ride }, :confirm => "Are you sure you want to leave this ride?"
-            -if @current_user.rides.find_by_id(ride.id)
-              %p= link_to 'Edit', edit_ride_path(ride)
+          -if @current_user.rides.find_by_id(ride.id)
+            %p= link_to 'Edit', edit_ride_path(ride)
         -else
           %p= link_to 'Join',{ :controller => "rides", :action => "join", :id => ride }, :confirm => "You must sign in before you can join a ride. Would you like to sign in now?"
       .clear
