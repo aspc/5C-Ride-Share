@@ -1,3 +1,22 @@
 // Place all the styles related to the Rides controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+//Form
+
+div#new-ride
+{
+	margin: 50px 0 0 50px;
+}
+form
+{
+	margin: 50px 0 30px 0;
+	.field
+	{
+		margin-bottom: 50px;
+	}
+	label
+	{
+		font-size: 1.3em;
+	}
+}

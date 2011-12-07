@@ -39,17 +39,15 @@ class RidesController < ApplicationController
 
   # GET /rides/1/edit
   def edit
-    :checker
     @ride = Ride.find(params[:id])
     unless @current_user.rides.find_by_id(@ride.id)
-      redirect_to root_url
+      redirect_to :back, :alert => "You did not create that ride, therefore you cannot edit it."
     end
   end
 
   # POST /rides
   # POST /rides.json
   def create
-    :checker
     @ride = @current_user.rides.new(params[:ride])
     @ride.users << @current_user
 
@@ -67,7 +65,6 @@ class RidesController < ApplicationController
   # PUT /rides/1
   # PUT /rides/1.json
   def update
-    :checker
     @ride = Ride.find(params[:id])
     
     respond_to do |format|
@@ -84,7 +81,6 @@ class RidesController < ApplicationController
   # DELETE /rides/1
   # DELETE /rides/1.json
   def destroy
-    :checker
     @ride = Ride.find(params[:id])
     if @current_user.rides.find_by_id(@ride.id)
       @ride.destroy
@@ -115,11 +111,10 @@ class RidesController < ApplicationController
   end
   
   def leave
-    :checker
     @ride = Ride.find(params[:id])
     if @ride.users.find_by_id(@current_user.id)
       @ride.users.delete(@current_user)
-      if @current_user.rides.find_by_id(@ride)
+      if @current_user.rides.find_by_id(@ride.id)
         @current_user.rides.delete(@ride)
       end
     end
