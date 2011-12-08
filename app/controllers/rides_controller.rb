@@ -51,7 +51,6 @@ class RidesController < ApplicationController
     @ride = Ride.new(params[:ride])
     @ride.owner_id = @current_user.id
     @ride.users << @current_user
-    @current_user.rides << @ride
 
     respond_to do |format|
       if @ride.save
