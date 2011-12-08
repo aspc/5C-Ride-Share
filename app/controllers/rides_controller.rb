@@ -29,7 +29,7 @@ class RidesController < ApplicationController
   # GET /rides/new
   # GET /rides/new.json
   def new
-    @ride = @current_user.rides.new
+    @ride = Ride.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -48,9 +48,10 @@ class RidesController < ApplicationController
   # POST /rides
   # POST /rides.json
   def create
-    @ride = @current_user.rides.new(params[:ride])
+    @ride = Ride.new(params[:ride])
     @ride.owner_id = @current_user.id
     @ride.users << @current_user
+    @current_users.rides << @ride
 
     respond_to do |format|
       if @ride.save
