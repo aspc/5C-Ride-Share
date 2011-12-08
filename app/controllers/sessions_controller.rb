@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def login
-    session[:redirect_to] = :back
+    session[:redirect_to] = request.env["HTTP_REFERER"]
     redirect_to '/auth/facebook'
   end
   
