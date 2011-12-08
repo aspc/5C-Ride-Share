@@ -45,8 +45,5 @@ module Shuttleshare
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
     config.time_zone = 'Pacific Time (US & Canada)'
-    
-    #fix www.etc not working
-    config.autoload_paths += %W( #{ config.root }/lib/middleware )
   end
 end
