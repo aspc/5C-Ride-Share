@@ -141,7 +141,7 @@ class RidesController < ApplicationController
     @airport = "To LAX"
     @ftype = "Departure"
     @rides = Ride.find_all_by_airport("To LAX")
-    sort_rides(@rides)
+    @rides = sort_rides(@rides)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @rides }
@@ -172,5 +172,6 @@ class RidesController < ApplicationController
   
   def sort_rides(rides)
     rides.sort! {|a,b| a.flighttime <=> b.flighttime}
+    rides = rides.find_all{|ride| ride.flighttime > Time.now}
   end
 end
