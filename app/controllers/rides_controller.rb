@@ -40,7 +40,7 @@ class RidesController < ApplicationController
   # GET /rides/1/edit
   def edit
     @ride = Ride.find(params[:id])
-    unless @current_user.rides.find_by_id(@ride.id)
+    unless @ride.owner_id == @current_user.id
       redirect_to :back, :alert => "You did not create that ride, therefore you cannot edit it."
     end
   end
@@ -49,6 +49,7 @@ class RidesController < ApplicationController
   # POST /rides.json
   def create
     @ride = @current_user.rides.new(params[:ride])
+    @ride.owner_id = @current_user.id
     @ride.users << @current_user
 
     respond_to do |format|
@@ -82,7 +83,7 @@ class RidesController < ApplicationController
   # DELETE /rides/1.json
   def destroy
     @ride = Ride.find(params[:id])
-    if @current_user.rides.find_by_id(@ride.id)
+    if @ride.owner_id == @current_user.id
       @ride.destroy
 
       respond_to do |format|
@@ -114,8 +115,9 @@ class RidesController < ApplicationController
     @ride = Ride.find(params[:id])
     if @ride.users.find_by_id(@current_user.id)
       @ride.users.delete(@current_user)
-      if @current_user.rides.find_by_id(@ride.id)
-        @current_user.rides.delete(@ride)
+      if @ride.owner_id == @current_user.id
+        @ride.owner_id = nil
+        @ride.save
       end
     end
     respond_to do |format|

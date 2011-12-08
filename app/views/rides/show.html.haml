@@ -2,9 +2,16 @@
   %p.notice= notice
   %p.alert= alert
 
-  #backedit      
-    -if @current_user.rides.find_by_id(@ride.id)    
-      = link_to 'Edit', edit_ride_path(@ride)
+  #backedit 
+    -if @current_user
+      -unless @ride.users.find_by_id(@current_user.id)
+        =link_to 'Join Ride',{ :controller => "rides", :action => "join", :id => @ride }, :confirm => "Are you sure you want to join this ride?"
+      -else  
+        =link_to 'Leave Ride', { :controller => "rides", :action => "leave", :id => @ride }, :confirm => "Are you sure you want to leave this ride?"
+      -if @ride.owner_id == @current_user.id
+        =link_to 'Edit', edit_ride_path(@ride)
+    -else
+      =link_to 'Join Ride',{ :controller => "rides", :action => "join", :id => @ride }, :confirm => "You must sign in before you can join a ride. Would you like to sign in now?"
     = link_to 'Back', :back
   
   %p

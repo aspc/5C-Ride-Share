@@ -77,8 +77,13 @@ html,body
 		{
 			float: left;
 			font-size: 1.3em;
-			width: 400px;
+			width: 300px;
 			text-decoration: underline;
+		}
+		p.numpass
+		{
+			width: auto;
+			margin-left: -45px;
 		}
 	}
 	p#new-ride
@@ -100,11 +105,15 @@ html,body
 			}
 			p.flight-date
 			{
-				width: 400px;
+				width: 300px;
 			}
 			p.flight-time
 			{
-				width: 250px;
+				width: 300px;
+			}
+			p.ride-count
+			{
+				margin-right: 100px;
 			}
 		}
 		div.ride-opt
