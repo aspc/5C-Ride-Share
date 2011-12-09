@@ -1,10 +1,15 @@
+-if @current_user
+  %p#new-ride= link_to 'Create a new ride!', new_ride_path
+-else
+  %p#new-ride= link_to 'Create a new ride!', new_ride_path, :confirm => "You must sign in with Facebook before you can create a new ride. Would you like to sign in with facebook now?", :notice => 'You successfully signed in.'
+
 %h2#flight-header
   %p Flight Date
   %p.htime= "Flight #{@ftype} Time"
   %p.numpass= "# of PAX"
   .clear
-  
 
+  
 -if @rides
   -@rides.each do |ride| 
     .ride
@@ -24,8 +29,3 @@
         -else
           %p= link_to 'Join Ride',{ :controller => "rides", :action => "join", :id => ride }, :confirm => "You must sign in with Facebook before you can join a ride. Would you like to do this now now?", :notice => 'You successfully signed in.'
       .clear
-
--if @current_user
-  %p#new-ride= link_to 'Create a new ride!', new_ride_path
--else
-  %p#new-ride= link_to 'Create a new ride!', new_ride_path, :confirm => "You must sign in with Facebook before you can create a new ride. Would you like to sign in with facebook now?", :notice => 'You successfully signed in.'
