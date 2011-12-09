@@ -97,10 +97,14 @@ html,body
 			width: 300px;
 			text-decoration: underline;
 		}
+		.htime
+		{
+			margin-left: -100px;
+		}
 		p.numpass
 		{
 			width: auto;
-			margin-left: -45px;
+			margin-left: 45px;
 		}
 	}
 	p#new-ride
