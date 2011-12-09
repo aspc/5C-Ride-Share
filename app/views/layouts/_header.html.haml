@@ -2,6 +2,7 @@
   %h1 
     %a{:href => root_url} 5C Ride Share
   -if signed_in?
+    <div class="fb-like" data-href="http://5crideshare.jessepollak.me" data-send="false" data-width="450" data-show-faces="true"></div>
     %p= link_to "Sign out", :controller => "sessions", :action => "destroy"
   -else
     %p=link_to "Log in with Facebook", :controller => "sessions", :action => "login"

@@ -28,6 +28,11 @@ html,body
 {
 	height: 78px;
 	background: #B0B0B0;
+	.fb-like
+	{
+		float: left;
+		margin: 8px 0 0 100px;
+	}
 	h1
 	{
 		line-height: 78px;
@@ -76,11 +81,6 @@ html,body
 	margin: auto;
 	margin-top: 50px;
 	min-height: 500px;
-	.fb-like
-	{
-		margin: 50px 0 0 225px;
-		
-	}
 	h1
 	{
 		font-size: 3em;
