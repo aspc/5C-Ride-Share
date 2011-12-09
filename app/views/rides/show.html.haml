@@ -12,7 +12,10 @@
         =link_to 'Edit', edit_ride_path(@ride)
     -else
       =link_to 'Join Ride',{ :controller => "rides", :action => "join", :id => @ride }, :confirm => "You must sign in before you can join a ride. Would you like to sign in now?"
-    = if :back = '/rides/new' link_to root_ul else link_to 'Back', :back
+    -if :back = '/rides/new' 
+      =link_to root_ul 
+    -else 
+      =link_to 'Back', :back
   
   %p
     %b Type of Ride:
