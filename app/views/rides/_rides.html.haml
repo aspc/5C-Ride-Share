@@ -22,10 +22,10 @@
           -if ride.owner_id == @current_user.id
             %p= link_to 'Edit', edit_ride_path(ride)
         -else
-          %p= link_to 'Join Ride',{ :controller => "rides", :action => "join", :id => ride }, :confirm => "You must sign in before you can join a ride. Would you like to sign in now?"
+          %p= link_to 'Join Ride',{ :controller => "rides", :action => "join", :id => ride }, :confirm => "You must sign in with Facebook before you can join a ride. Would you like to do this now now?", :notice => 'You successfully signed in.'
       .clear
 
 -if @current_user
   %p#new-ride= link_to 'Create a new ride!', new_ride_path
 -else
-  %p#new-ride= link_to 'Create a new ride!', new_ride_path, :confirm => "You must sign in before you can create a new ride. Would you like to sign in now?"
+  %p#new-ride= link_to 'Create a new ride!', new_ride_path, :confirm => "You must sign in with Facebook before you can create a new ride. Would you like to sign in now?", :notice => 'You successfully signed in.'

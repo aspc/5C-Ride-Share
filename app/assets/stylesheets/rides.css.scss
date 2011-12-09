@@ -44,7 +44,12 @@ form
 	{
 		float: left;
 		display: block;
-		width: 50px;
+		width: auto;
+		margin: 0 7px 10px 0;
+		.rider-name
+		{
+			clear: left;
+		}
 	}
 	#backedit
 	{
