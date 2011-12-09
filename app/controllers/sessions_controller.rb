@@ -4,7 +4,6 @@ class SessionsController < ApplicationController
       session[:redirect_to] = request.env["HTTP_REFERER"]
     else
       session[:redirect_to] = root_url
-    end
     redirect_to '/auth/facebook'
   end
   
