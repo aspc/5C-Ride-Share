@@ -13,7 +13,11 @@ class SessionsController < ApplicationController
       end
       # Log the authorizing user in.
       self.current_user = @user
-      redirect_to session[:redirect_to], :notice => "Congratulations! You successfully signed in!"
+      if session[:redirect_to]
+        redirect_to session[:redirect_to], :notice => "Congratulations! You successfully signed in!"
+      else
+        redirect_to root_url
+      end
   end
   
   def destroy
