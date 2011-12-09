@@ -28,4 +28,4 @@
 -if @current_user
   %p#new-ride= link_to 'Create a new ride!', new_ride_path
 -else
-  %p#new-ride= link_to 'Create a new ride!', new_ride_path, :confirm => "You must sign in with Facebook before you can create a new ride. Would you like to sign in now?", :notice => 'You successfully signed in.'
+  %p#new-ride= link_to 'Create a new ride!', new_ride_path, :confirm => "You must sign in with Facebook before you can create a new ride. Would you like to sign in with facebook now?", :notice => 'You successfully signed in.'
