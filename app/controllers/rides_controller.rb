@@ -54,7 +54,7 @@ class RidesController < ApplicationController
 
     respond_to do |format|
       if @ride.save
-        format.html { redirect_to @ride, :notice => 'Ride was successfully created.' }
+        format.html { redirect_to @ride, :notice => 'You successfully created a ride! Start the conversation below, so that when others comment you get a Facebook notification. Safe travels!' }
         format.json { render :json => @ride, :status => :created, :location => @ride }
       else
         format.html { render :action => "new" }
@@ -100,7 +100,7 @@ class RidesController < ApplicationController
     unless @ride.users.find_by_id(@current_user.id)
       @ride.users << @current_user
       respond_to do |format|
-        format.html { redirect_to @ride, :notice => 'You successfully joined this ride.' }
+        format.html { redirect_to @ride, :notice => 'You successfully joined this ride. You should comment below, so when other riders comment, you get a Facebook notification. Safe Travels!' }
         format.json { head :ok }
       end
     else

@@ -16,9 +16,24 @@ html,body
 {
 	clear: both;
 }
-#alert
+
+.alert, .notice
 {
-	color: red;
+	border: 1px solid;
+	padding: 10px 0 10px 0;
+	margin: 0 200px 20px 200px;
+}
+.alert
+{
+color: #D8000C;
+background-color: #FFBABA;
+}
+.notice
+{
+	text-align: center;
+	font-size: 1.2em;
+	color: #4F8A10;
+	background-color: #DFF2BF;
 }
 
 
