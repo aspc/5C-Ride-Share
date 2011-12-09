@@ -12,6 +12,7 @@ gem 'haml'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'pg', :group => :production
+gem 'rdiscount'
 
 # Gems used only for assets and not required
 # in production environments by default.
