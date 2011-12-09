@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111207231221) do
+ActiveRecord::Schema.define(:version => 20111209031021) do
 
   create_table "rides", :force => true do |t|
     t.string   "airport"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(:version => 20111207231221) do
   end
 
   create_table "users", :force => true do |t|
-    t.integer  "fb_id"
+    t.string   "fb_id"
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
