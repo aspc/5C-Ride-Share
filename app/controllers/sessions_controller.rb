@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def login
-    unless request.env["HTTP_REFERER"]
+    unless request.env["HTTP_REFERER"].blank?
       session[:redirect_to] = request.env["HTTP_REFERER"]
     else
       session[:redirect_to] = root_url
@@ -18,7 +18,11 @@ class SessionsController < ApplicationController
       # Log the authorizing user in.
       self.current_user = @user
       if session[:redirect_to]
-        redirect_to session[:redirect_to], :notice => "Congratulations! You successfully signed in!"
+        begin
+          redirect_to session[:redirect_to], :notice => "Congratulations! You successfully signed in!"
+        rescue ActionController::RedirectBackError
+          redirect_to root_url
+        end
       else
         redirect_to root_url
       end
