@@ -27,4 +27,7 @@ Shuttleshare::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  
+  #fix cache messages
+  config.action_dispatch.rack_cache = {:metastore => "rails:/", :entitystore => "rails:/", :verbose => false} 
 end
