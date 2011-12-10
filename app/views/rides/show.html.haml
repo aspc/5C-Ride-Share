@@ -39,4 +39,4 @@
 
 
 
-  .fb-comments{:data => {:href => request.url, :width => 500, :num => {:posts => 2}}}
+  .fb-comments{:data => {:href => request.url.split("?")[0], :width => 500, :num => {:posts => 2}}}
