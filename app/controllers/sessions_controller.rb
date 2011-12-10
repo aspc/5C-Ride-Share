@@ -2,8 +2,6 @@ class SessionsController < ApplicationController
   def login
     unless request.env["HTTP_REFERER"].blank?
       session[:redirect_to] = request.env["HTTP_REFERER"]
-    else
-      session[:redirect_to] = root_url
     end
     redirect_to '/auth/facebook'
   end
@@ -17,14 +15,14 @@ class SessionsController < ApplicationController
       end
       # Log the authorizing user in.
       self.current_user = @user
-      if session[:redirect_to]
+      unless session[:redirect_to].blank?
         begin
           redirect_to session[:redirect_to], :notice => "Congratulations! You successfully signed in!"
         rescue ActionController::RedirectBackError
-          redirect_to root_url
+          redirect_to root_url, :notice => "Congratulations! You successfully signed in!"
         end
       else
-        redirect_to root_url
+        redirect_to root_url, :notice => "Congratulations! You successfully signed in!"
       end
   end
   
