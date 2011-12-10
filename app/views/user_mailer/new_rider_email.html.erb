@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Hi <%=@user.name%>, <%=link_to @rider.name, @rider.fblink%> just joined your 5C ride!</h1>
+    <p>
+      Visit <%= link_to "the ride", @url%> to discuss how you two can coordinate your ride to the airport!
+    </p>
+    <p>
+      Safe travels and have a great day!
+    </p>
+    <p>
+      Sincerely,</br>
+      </br>
+      5C Ride Share
+    </p>
+  </body>
+</html>

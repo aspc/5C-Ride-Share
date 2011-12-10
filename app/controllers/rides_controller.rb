@@ -98,7 +98,15 @@ class RidesController < ApplicationController
   def join
     @ride = Ride.find(params[:id])
     unless @ride.users.find_by_id(@current_user.id)
+      if @ride.users
+        @ride.users.each do |user|
+          if user.email
+            UserMailer.new_rider_email(user, @current_user, url_for(@ride)).deliver
+          end
+        end
+      end
       @ride.users << @current_user
+      
       respond_to do |format|
         format.html { redirect_to @ride, :notice => 'You successfully joined this ride. You should comment below, so when other riders comment, you get a Facebook notification. Safe Travels!' }
         format.json { head :ok }
