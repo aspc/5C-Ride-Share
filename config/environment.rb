@@ -10,7 +10,7 @@ ActionMailer::Base.smtp_settings = {
   :port => 587,
   :domain => "gmail.com",
   :user_name => "5crideshare@gmail.com",
-  :password => "olney03pumas",
+  :password => YAML.load_file("#{Rails.root}/config/email.credentials.yml")['password'],
   :authentication => 'plain',
   :enable_starttls_auto => true
 }
