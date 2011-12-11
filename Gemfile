@@ -13,12 +13,19 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'pg', :group => :production
 gem 'rdiscount'
-gem 'ZenTest'
-gem 'autotest-rails'
+
 
 group :test, :development do
   gem 'rspec-rails'
   gem 'cucumber-rails'
+  gem 'ZenTest'
+  gem 'spork'
+  gem 'autotest'
+  gem 'autotest-growl'
+  gem 'autotest-fsevent'
+  gem 'test_notifier'
+  gem 'webrat'
+  gem 'database_cleaner'
 end
 
 # Gems used only for assets and not required
