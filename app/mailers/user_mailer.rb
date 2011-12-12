@@ -7,4 +7,11 @@ class UserMailer < ActionMailer::Base
     @url = rideurl
     mail(:to => user.email, :subject => "#{rider.name} joined your 5C ride!")
   end
+  
+  def new_comment_email(user, commenter, rideurl)
+    @user = user
+    @commenter = commenter
+    @url = url
+    mail(:to user.email, :subject => "#{commenter.name} commented on your 5C ride!")
+  end
 end

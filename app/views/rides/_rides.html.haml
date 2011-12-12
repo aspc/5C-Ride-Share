@@ -3,21 +3,39 @@
 -else
   %p#new-ride= link_to 'Create a new ride!', new_ride_path, :confirm => "You must sign in with Facebook before you can create a new ride. Would you like to sign in with facebook now?", :notice => 'You successfully signed in.'
 
-%h2#flight-header
-  %p Flight Date
-  %p.htime= "Flight #{@ftype} Time"
-  %p.numpass= "# of PAX"
-  .clear
+-if @ftype == "Arrival"
+  %h2#aflight-header
+    %p Date
+    %p.aftime= "Flight #{@ftype} Time"
+    %p.numpass= "# of PAX"
+    .clear
+-else
+  %h2#dflight-header
+    %p Date
+    %p.dftime= "Flight Time"
+    %p.drtime Preferred Ride Time
+    %p.dnumpass= "PAX"
+    .clear
 
   
 -if @rides
   -@rides.each do |ride| 
     -unless ride.users.count == 0
       .ride
-        .ride-info
-          %p.flight-date= ride.flighttime.strftime("%B %d %Y")
-          %p.flight-time= ride.flighttime.strftime("%I:%M %p")
-          %p.ride-count= ride.users.size
+        -if @ftype == "Arrival"
+          .aride-info
+            %p.flight-date= ride.flighttime.strftime("%B %d %Y")
+            %p.flight-time= ride.flighttime.strftime("%I:%M %p")
+            %p.ride-count= ride.users.size
+        -else
+          .dride-info
+            %p.flight-date= ride.flighttime.strftime("%B %d %Y")
+            %p.flight-time= ride.flighttime.strftime("%I:%M %p")
+            -if ride.ridetime
+              %p.ride-time= ride.ridetime.strftime("%I:%M %p")
+            -else
+              %p.ride-time Currently Unspecified 
+            %p.ride-count= ride.users.size
         .ride-opt
           %p= link_to 'View', ride
           -if @current_user
