@@ -5,6 +5,6 @@ class UserMailer < ActionMailer::Base
     @user = user
     @rider = rider
     @url = rideurl
-    mail(:to => user.email, :subject => "#{rider.name} joined your 5C ride!")
+    mail(:to => user.email, :subject => "#{rider.name.split(" ")[0]} joined your 5C ride!")
   end
 end
