@@ -13,7 +13,7 @@
   .field
     = f.label "When is your flight:"
     = f.datetime_select :flighttime, :order => [:day, :month, :year], :prompt => {:day => 'Day', :month => "Month", :year => "Year", :hour => "Hour", :minute => "Minute", }, :ampm => true, :minute_step => 15, :start_year => 2011, :end_year => 2012
-  .field
+  .field.time-div
     = f.label "When would you like your ride to leave?"
     = f.time_select :ridetime, :ampm => true
   .actions
