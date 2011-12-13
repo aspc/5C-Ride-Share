@@ -13,10 +13,10 @@ $(document).ready(function() {
 	if(menu != undefined) {
 		menu.onchange = function() {
 			if(menu.value === "From LAX" || menu.value === "From Ontario") {
-				ridetime.toggle(500);
+				ridetime.hide(500);
 			}
 			if(menu.value === "To LAX" || menu.value === "To Ontario") {
-				ridetime.toggle(500);
+				ridetime.show(500);
 			}
 		}
 	}
@@ -42,6 +42,9 @@ function currentPage(title) {
 			break
 		case "Rides from Ontario":
 			nav.eq(1).addClass('current-page')
+			break
+		case "5C ride share :: new":
+			$("#create-new-ride a").addClass('current-page')
 			break
 	}
 }

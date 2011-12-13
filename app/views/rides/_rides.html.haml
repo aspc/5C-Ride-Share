@@ -1,14 +1,9 @@
 #rides
-  -if @current_user
-    #create-new-ride= link_to 'Create a new ride!', new_ride_path
-  -else
-    #create-new-ride= link_to 'Create a new ride!', new_ride_path, :confirm => "You must sign in with Facebook before you can create a new ride. Would you like to sign in with facebook now?", :notice => 'You successfully signed in.'
-
   -if @ftype == "Arrival"
     #aflight-header
       %h2 Date
       %h2.aftime= "Flight #{@ftype} Time"
-      %h2.numpass= "# of PAX"
+      %h2.anumpass= "PAX"
       .clear
   -else
     #dflight-header

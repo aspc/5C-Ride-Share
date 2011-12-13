@@ -16,23 +16,23 @@
       =link_to 'Back', :back
   
   %p
-    %b Type of Ride:
+    %b type of ride:
     = @ride.airport
 
   %p
-    %b Flight Date:
+    %b flight date:
     = @ride.flighttime.strftime("%B %d %Y")
     
   %p
-    %b Flight Time:
+    %b flight time:
     = @ride.flighttime.strftime("%I:%M %p")
   -if @ride.airport.split(" ")[0] == "To" && @ride.ridetime
     %p
-      %b Preferred Ride Time:
+      %b preferred ride time:
       = @ride.ridetime.strftime("%I:%M %p")
 
   %p
-    %b Current Riders:
+    %b current riders:
     </br>
   .riders
     -@users.each do |user|
@@ -42,5 +42,5 @@
     .clear
 
 
-
-  .fb-comments{:data => {:href => request.url.split("?")[0], :width => 500, :num => {:posts => 2}}}
+  #facebook
+    .fb-comments{:data => {:href => request.url.split("?")[0], :width => 500, :num => {:posts => 2}}}

@@ -64,7 +64,7 @@ background-color: #FFBABA;
 		.fb-like
 		{
 			float: left;
-			margin: 8px 0 0 60px;
+			margin: 8px 0 0 0px;
 		}
 		h1
 		{
@@ -131,6 +131,31 @@ background-color: #FFBABA;
 			color: $basep2;
 		}
 	}
+	#create-new-ride
+	{
+		a
+		{
+			display: block;
+			text-align: center;
+			margin: auto;
+			width: 292px;
+			font-size: 2.5em;
+			border: 4px $basep1 solid;
+			border-top: none;
+			background: $basep2;
+			color: $basem1;
+		}
+		a:hover
+		{
+			background: $basem1;
+			color: $basep2;
+		}
+		.current-page
+		{
+			background: $basem1;
+			color: $basep2;
+		}
+	}
 }
 
 //Footer
@@ -143,6 +168,7 @@ background-color: #FFBABA;
 #index
 {
 	margin: auto;
+	margin-top: 75px;
 	div
 	{
 		margin-left: 100px;
@@ -176,7 +202,7 @@ background-color: #FFBABA;
 {
 	width: 900px;
 	margin: auto;
-	margin-top: 20px;
+	margin-top: 50px;
 	min-height: 500px;
 	#rides
 	{	
@@ -187,22 +213,24 @@ background-color: #FFBABA;
 		}
 		#aflight-header
 		{
-			padding-left: 5px;
-			margin-bottom: 40px;
+			width: 550px;
+			margin: auto;
 			h2
 			{
 				float: left;
-				width: 325px;
 				text-decoration: underline;
+				font-weight: bold;
+				font-size: 1.8em;
+				width: 190px;
+				color: $basep2;
 			}
 			.aftime
 			{
-				margin-left: -100px;
 			}
 			.anumpass
 			{
 				width: auto;
-				margin-left: 45px;
+				margin-left: 130px
 			}
 		}
 		#dflight-header
@@ -213,9 +241,10 @@ background-color: #FFBABA;
 			{
 				float: left;
 				text-decoration: underline;
+				font-weight: bold;
 				font-size: 1.8em;
 				width:200px;
-				color: $basem2;
+				color: $basep2;
 			}
 			.dnumpass
 			{
@@ -224,21 +253,7 @@ background-color: #FFBABA;
 			}
 		}
 		
-		
-		#create-new-ride a
-		{
-			display: block;
-			text-align: center;
-			padding: 20px 20px 20px 20px;
-			margin: 0 250px 30px 250px;
-			font-size: 3em;
-			border: 5px $basep2 solid;
-		}
-		#create-new-ride a:hover
-		{
-			background: $basem1;
-		}
-		
+	
 		/////RIDE HOVERS START
 		.dark
 		{
@@ -276,24 +291,20 @@ background-color: #FFBABA;
 
 			div.aride-info
 			{
-				width: 800px;
+				width: 550px;
+				height: 30px;
 				margin: auto;
-				float: left;
 				p
 				{
 					float:left;
-				}
-				p.flight-date
-				{
-					width: 300px;
-				}
-				p.flight-time
-				{
-					width: 300px;
+					width: 250px;
+					font-size: 1.3em;
+					line-height: 30px;
 				}
 				p.ride-count
 				{
-					margin-right: 100px;
+					width: auto;
+					margin-left: 28px;
 				}
 			}
 			div.dride-info
@@ -322,15 +333,6 @@ background-color: #FFBABA;
 					display: block;
 					width: 900px;
 					height: 40px;
-				}
-
-			}
-			div.ride-opt
-			{
-				float: left;
-				p
-				{
-					display: inline;
 				}
 			}
 		}

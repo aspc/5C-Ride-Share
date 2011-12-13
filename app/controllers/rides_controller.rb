@@ -11,7 +11,7 @@ class RidesController < ApplicationController
   end
   
   def index
-    @title = "5C ride share :: Home"
+    @title = "5C ride share :: home"
     @rides = Ride.all
 
     respond_to do |format|
@@ -35,6 +35,7 @@ class RidesController < ApplicationController
   # GET /rides/new
   # GET /rides/new.json
   def new
+    @title = "5C ride share :: new"
     @ride = Ride.new
 
     respond_to do |format|
