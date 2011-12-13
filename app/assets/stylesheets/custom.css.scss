@@ -1,15 +1,28 @@
+$basem2: rgb(32,43,48);
+$basem1: rgb(78,113,120);
+$baseblue: rgb(79,169,184);
+$basep1: rgb(116,192,207);
+$basep2: rgb(241,247,226);
+
 *
 {
 	margin: 0px;
 	padding: 0px;
+	color: $basep2;
 }
 
 html,body
 {
-	background: #E9E9E9;
-	font-family: 'Verdana';
+
+	font-family: 'Calibri','Helvetica','Verdana';
 	font-size: 12px;
 	min-width: 960px;
+	background: $baseblue;
+	letter-spacing: 1px;
+	a
+	{
+		text-decoration: none;
+	}
 }
 
 .clear
@@ -28,6 +41,7 @@ html,body
 color: #D8000C;
 background-color: #FFBABA;
 }
+
 .notice
 {
 	text-align: center;
@@ -42,28 +56,48 @@ background-color: #FFBABA;
 #header-container
 {
 	height: 78px;
-	background: #B0B0B0;
+	background: $baseblue;
+	border-bottom: 1px solid $basep1;
+	margin: 0 50px 0 50px;
 	.fb-like
 	{
 		float: left;
-		margin: 8px 0 0 100px;
+		margin: 8px 0 0 60px;
 	}
 	h1
 	{
-		line-height: 78px;
 		float: left;
 		margin-left: 20px;
+		font-size: 2em;
 		a
 		{
 			text-decoration: none;
+			background: none;
+			color: $basep2;
+			font-weight: bold;
 		}
 		
 	}
-	p
+	a
 	{
-		line-height: 78px;
+		margin: 24px 0 0 0;
+		height: 30px;
+		padding: 0 10px 0 10px;
 		float: right;
 		margin-right: 60px;
+		line-height: 30px;
+		text-align: center;
+		font-size: 1.2em;
+		color: $basem1;
+		background: $basep2;
+		text-decoration: none;
+		font-weight: bold;
+		border: 2px $basep1 solid;
+	}
+	a:hover
+	{
+		background: $basem1;
+		color: $basep2;
 	}
 }
 
@@ -76,19 +110,34 @@ background-color: #FFBABA;
 //Airport Select Page
 #index
 {
-	width: 820px;
 	margin: auto;
-	text-align:center;
-}
-.ontario
-{
-	float: left;
-	width: 400px;
-}
-.lax
-{
-	width: 400px;
-	float:left;
+	div
+	{
+		margin-left: 100px;
+		width: 800px;
+		margin: auto;
+	}
+	h1
+	{
+		float: left;
+		background: $basep1;
+		text-align: center;
+		margin: 0 0 30px 66px;
+		a
+		{
+			display: block;
+			width: 290px;
+			height: 200px;
+			line-height: 200px;
+			color: $basep2;
+			border: 5px $basep2 solid;
+			box-shadow: 2px 2px 2px $basem1;
+		}
+		a:hover
+		{
+			border: 5px $basem1 solid;
+		}
+	}
 }
 //Main
 .main-container
@@ -97,103 +146,106 @@ background-color: #FFBABA;
 	margin: auto;
 	margin-top: 50px;
 	min-height: 500px;
-	h1
-	{
-		font-size: 3em;
-		margin: 0 0 20px 5px;
-	}
-	h2#aflight-header
-	{
-		padding-left: 5px;
-		margin-bottom: 40px;
-		p
+	#rides
+	{	
+		h1
 		{
-			float: left;
-			font-size: 1.3em;
-			width: 325px;
-			text-decoration: underline;
+			font-size: 3em;
+			margin: 0 0 20px 5px;
 		}
-		.aftime
+		h2#aflight-header
 		{
-			margin-left: -100px;
-		}
-		p.anumpass
-		{
-			width: auto;
-			margin-left: 45px;
-		}
-	}
-	h2#dflight-header
-	{
-		padding-left: 5px;
-		margin-bottom: 40px;
-		p
-		{
-			float: left;
-			font-size: 1.1em;
-			text-decoration: underline;
-		}
-		.dftime
-		{
-			margin: 0 60px 0 125px;
-		}
-		p.dnumpass
-		{
-			width: auto;
-			margin-left: 45px;
-		}
-	}
-	p#new-ride
-	{
-		text-align: center;
-		margin: 0 0 30px 0px;
-		font-size: 3em;
-	}
-	div.ride
-	{
-		border: black 1px solid;
-		padding: 5px 0px 5px 10px;
-		margin: 10px 0 10px 0;
-		div.aride-info
-		{
-			float: left;
+			padding-left: 5px;
+			margin-bottom: 40px;
 			p
 			{
-				float:left;
+				float: left;
+				font-size: 1.3em;
+				width: 325px;
+				text-decoration: underline;
 			}
-			p.flight-date
+			.aftime
 			{
-				width: 300px;
+				margin-left: -100px;
 			}
-			p.flight-time
-			{
-				width: 300px;
-			}
-			p.ride-count
-			{
-				margin-right: 100px;
-			}
-		}
-		div.dride-info
-		{
-			float: left;
-			p
-			{
-				float:left;
-				width: 200px;
-			}
-			p.ride-count
+			p.anumpass
 			{
 				width: auto;
-				margin: 0 100px 0 45px;
+				margin-left: 45px;
 			}
 		}
-		div.ride-opt
+		h2#dflight-header
 		{
-			float: left;
+			padding-left: 5px;
+			margin-bottom: 40px;
 			p
 			{
-				display: inline;
+				float: left;
+				font-size: 1.1em;
+				text-decoration: underline;
+			}
+			.dftime
+			{
+				margin: 0 60px 0 125px;
+			}
+			p.dnumpass
+			{
+				width: auto;
+				margin-left: 45px;
+			}
+		}
+		p#new-ride
+		{
+			text-align: center;
+			margin: 0 0 30px 0px;
+			font-size: 3em;
+		}
+		div.ride
+		{
+			border: black 1px solid;
+			padding: 5px 0px 5px 10px;
+			margin: 10px 0 10px 0;
+			div.aride-info
+			{
+				float: left;
+				p
+				{
+					float:left;
+				}
+				p.flight-date
+				{
+					width: 300px;
+				}
+				p.flight-time
+				{
+					width: 300px;
+				}
+				p.ride-count
+				{
+					margin-right: 100px;
+				}
+			}
+			div.dride-info
+			{
+				float: left;
+				p
+				{
+					float:left;
+					width: 200px;
+				}
+				p.ride-count
+				{
+					width: auto;
+					margin: 0 100px 0 45px;
+				}
+			}
+			div.ride-opt
+			{
+				float: left;
+				p
+				{
+					display: inline;
+				}
 			}
 		}
 	}
