@@ -55,49 +55,82 @@ background-color: #FFBABA;
 
 #header-container
 {
-	height: 78px;
-	background: $baseblue;
-	border-bottom: 1px solid $basep1;
-	margin: 0 50px 0 50px;
-	.fb-like
+	#top-header
 	{
-		float: left;
-		margin: 8px 0 0 60px;
-	}
-	h1
-	{
-		float: left;
-		margin-left: 20px;
-		font-size: 2em;
+		height: 78px;
+		background: $baseblue;
+		border-bottom: 1px solid $basep1;
+		margin: 0 50px 0 50px;
+		.fb-like
+		{
+			float: left;
+			margin: 8px 0 0 60px;
+		}
+		h1
+		{
+			float: left;
+			margin-left: 20px;
+			font-size: 2em;
+			a
+			{
+				text-decoration: none;
+				background: none;
+				color: $basep2;
+				font-weight: bold;
+			}
+		
+		}
 		a
 		{
+			margin: 24px 0 0 0;
+			height: 30px;
+			padding: 0 10px 0 10px;
+			float: right;
+			margin-right: 60px;
+			line-height: 30px;
+			text-align: center;
+			font-size: 1.2em;
+			color: $basem1;
+			background: $basep2;
 			text-decoration: none;
-			background: none;
-			color: $basep2;
 			font-weight: bold;
+			border: 2px $basep1 solid;
 		}
-		
+		a:hover
+		{
+			background: $basem1;
+			color: $basep2;
+		}
 	}
-	a
+	#nav
 	{
-		margin: 24px 0 0 0;
-		height: 30px;
-		padding: 0 10px 0 10px;
-		float: right;
-		margin-right: 60px;
-		line-height: 30px;
-		text-align: center;
-		font-size: 1.2em;
-		color: $basem1;
-		background: $basep2;
-		text-decoration: none;
-		font-weight: bold;
-		border: 2px $basep1 solid;
-	}
-	a:hover
-	{
-		background: $basem1;
-		color: $basep2;
+		width: 600px;
+		margin: auto;
+		margin-top: 0;
+		a
+		{
+			float: left;
+			display: block;
+			width: 142px;
+			height: 50px;
+			line-height: 50px;
+			text-align: center;
+			border: 4px solid $basep1;
+			background: $basep2;
+			color: $basem1;
+			font-weight: bold;
+			font-size: 1.3em;
+		}
+		a:hover
+		{
+			background: $basem1;
+			color: $basep2;
+		}
+		.current-page
+		{
+			background: $basem1;
+			color: $basep2;
+		}
 	}
 }
 

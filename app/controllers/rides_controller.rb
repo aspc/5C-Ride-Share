@@ -5,7 +5,13 @@ class RidesController < ApplicationController
   
   # GET /rides
   # GET /rides.json
+  
+  before_filter do
+    @title = "5C ride share"
+  end
+  
   def index
+    @title = "5C ride share :: Home"
     @rides = Ride.all
 
     respond_to do |format|
@@ -135,6 +141,7 @@ class RidesController < ApplicationController
   end
   
   def toontario
+    @title = "Rides to Ontario"
     @airport = "To Ontario"
     @ftype = "Departure"
     @rides = Ride.find_all_by_airport("To Ontario")
@@ -146,6 +153,7 @@ class RidesController < ApplicationController
   end
   
   def tolax
+    @title = "Rides to LAX"
     @airport = "To LAX"
     @ftype = "Departure"
     @rides = Ride.find_all_by_airport("To LAX")
@@ -157,6 +165,7 @@ class RidesController < ApplicationController
   end
   
   def fromontario
+    @title = "Rides from Ontario"
     @airport = "From Ontario"
     @ftype = "Arrival"
     @rides = Ride.find_all_by_airport("From Ontario")
@@ -168,6 +177,7 @@ class RidesController < ApplicationController
   end
   
   def fromlax
+    @title = "Rides from LAX"
     @airport = "From LAX"
     @ftype = "Arrival"
     @rides = Ride.find_all_by_airport("From LAX")

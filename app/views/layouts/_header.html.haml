@@ -1,12 +1,19 @@
 #header-container
-  %h1 
-    %a{:href => root_url} 5C ride share
+  #top-header
+    %h1 
+      %a{:href => root_url} 5C ride share
     
-  <div class="fb-like" data-href="http://5crideshare.jessepollak.me" data-send="false" data-width="450" data-show-faces="true"></div>
-  -if signed_in?
-    = link_to "Sign out", :controller => "sessions", :action => "destroy"
-  -else
-    =link_to "Log in with Facebook", :controller => "sessions", :action => "login"
-  = link_to "Home", root_url
+    <div class="fb-like" data-href="http://5crideshare.jessepollak.me" data-send="false" data-width="450" data-show-faces="true"></div>
+    -if signed_in?
+      = link_to "Sign out", :controller => "sessions", :action => "destroy"
+    -else
+      =link_to "Log in with Facebook", :controller => "sessions", :action => "login"
+    = link_to "Home", root_url
+  #nav
+    =link_to "To Ontario", :controller => "rides", :action => "toontario"
+    =link_to "From Ontario", :controller => "rides", :action => "fromontario"
+    =link_to "To LAX", :controller => "rides", :action => "tolax"
+    =link_to "From LAX", :controller => "rides", :action => "fromlax"
+    .clear
 
   
