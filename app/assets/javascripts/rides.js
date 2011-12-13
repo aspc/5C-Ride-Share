@@ -7,7 +7,9 @@ $(document).ready(function() {
 	if (title === "5C ride share :: Home") {
 		$('#nav').hide()
 	} 
+	
 	currentPage(title)
+	
 	if(menu != undefined) {
 		menu.onchange = function() {
 			if(menu.value === "From LAX" || menu.value === "From Ontario") {
@@ -17,6 +19,10 @@ $(document).ready(function() {
 				ridetime.toggle(500);
 			}
 		}
+	}
+	
+	if ($("#rides") != undefined) {
+		alternateBackgrounds()
 	}
 });
 
@@ -38,4 +44,9 @@ function currentPage(title) {
 			nav.eq(1).addClass('current-page')
 			break
 	}
+}
+
+function alternateBackgrounds() {
+	$(".ride-container:odd").addClass("dark")
+	$(".ride-container:even").addClass("light")
 }

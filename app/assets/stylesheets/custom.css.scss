@@ -106,7 +106,6 @@ background-color: #FFBABA;
 	{
 		width: 600px;
 		margin: auto;
-		margin-top: 0;
 		a
 		{
 			float: left;
@@ -177,7 +176,7 @@ background-color: #FFBABA;
 {
 	width: 900px;
 	margin: auto;
-	margin-top: 50px;
+	margin-top: 20px;
 	min-height: 500px;
 	#rides
 	{	
@@ -186,14 +185,13 @@ background-color: #FFBABA;
 			font-size: 3em;
 			margin: 0 0 20px 5px;
 		}
-		h2#aflight-header
+		#aflight-header
 		{
 			padding-left: 5px;
 			margin-bottom: 40px;
-			p
+			h2
 			{
 				float: left;
-				font-size: 1.3em;
 				width: 325px;
 				text-decoration: underline;
 			}
@@ -201,45 +199,85 @@ background-color: #FFBABA;
 			{
 				margin-left: -100px;
 			}
-			p.anumpass
+			.anumpass
 			{
 				width: auto;
 				margin-left: 45px;
 			}
 		}
-		h2#dflight-header
+		#dflight-header
 		{
-			padding-left: 5px;
-			margin-bottom: 40px;
-			p
+			width: 700px;
+			margin: auto;
+			h2
 			{
 				float: left;
-				font-size: 1.1em;
 				text-decoration: underline;
+				font-size: 1.8em;
+				width:200px;
+				color: $basem2;
 			}
-			.dftime
-			{
-				margin: 0 60px 0 125px;
-			}
-			p.dnumpass
+			.dnumpass
 			{
 				width: auto;
-				margin-left: 45px;
+				margin-left: 60px;
 			}
 		}
-		p#new-ride
+		
+		
+		#create-new-ride a
 		{
+			display: block;
 			text-align: center;
-			margin: 0 0 30px 0px;
+			padding: 20px 20px 20px 20px;
+			margin: 0 250px 30px 250px;
 			font-size: 3em;
+			border: 5px $basep2 solid;
 		}
-		div.ride
+		#create-new-ride a:hover
 		{
-			border: black 1px solid;
-			padding: 5px 0px 5px 10px;
+			background: $basem1;
+		}
+		
+		/////RIDE HOVERS START
+		.dark
+		{
+			background: $basem1;
+			p
+			{
+				color: $basep2;
+			}
+		}
+		
+		.light
+		{
+			background: $basep2;
+			p
+			{
+				color: $basem1;
+			}
+		}
+		
+		.dark:hover, .light:hover
+		{
+			background: $basep1;
+			p
+			{
+				color: $basem2;
+			}
+		}
+		//////RIDE HOVERS END
+		
+		div.ride-container
+		{
+			border: $basep1 2px solid;
+			padding: 5px 0px 5px 0px;
 			margin: 10px 0 10px 0;
+
 			div.aride-info
 			{
+				width: 800px;
+				margin: auto;
 				float: left;
 				p
 				{
@@ -260,17 +298,32 @@ background-color: #FFBABA;
 			}
 			div.dride-info
 			{
-				float: left;
+				width: 700px;
+				height: 30px;
+				margin: auto;
 				p
 				{
 					float:left;
 					width: 200px;
+					font-size: 1.3em;
+					line-height: 30px;
 				}
 				p.ride-count
 				{
 					width: auto;
-					margin: 0 100px 0 45px;
+					margin-left: 77px;
 				}
+				a
+				{
+					position: relative;
+					left: -105px;
+					top: -5px;
+					z-index: 100;
+					display: block;
+					width: 900px;
+					height: 40px;
+				}
+
 			}
 			div.ride-opt
 			{

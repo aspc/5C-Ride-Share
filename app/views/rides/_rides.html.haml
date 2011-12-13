@@ -1,28 +1,28 @@
 #rides
   -if @current_user
-    %p#new-ride= link_to 'Create a new ride!', new_ride_path
+    #create-new-ride= link_to 'Create a new ride!', new_ride_path
   -else
-    %p#new-ride= link_to 'Create a new ride!', new_ride_path, :confirm => "You must sign in with Facebook before you can create a new ride. Would you like to sign in with facebook now?", :notice => 'You successfully signed in.'
+    #create-new-ride= link_to 'Create a new ride!', new_ride_path, :confirm => "You must sign in with Facebook before you can create a new ride. Would you like to sign in with facebook now?", :notice => 'You successfully signed in.'
 
   -if @ftype == "Arrival"
-    %h2#aflight-header
-      %p Date
-      %p.aftime= "Flight #{@ftype} Time"
-      %p.numpass= "# of PAX"
+    #aflight-header
+      %h2 Date
+      %h2.aftime= "Flight #{@ftype} Time"
+      %h2.numpass= "# of PAX"
       .clear
   -else
-    %h2#dflight-header
-      %p Date
-      %p.dftime= "Flight Time"
-      %p.drtime Preferred Ride Time
-      %p.dnumpass= "PAX"
+    #dflight-header
+      %h2 Date
+      %h2.dftime= "Flight Time"
+      %h2.drtime Ride Time
+      %h2.dnumpass= "PAX"
       .clear
 
   
   -if @rides
     -@rides.each do |ride| 
       -unless ride.users.count == 0
-        .ride
+        .ride-container
           -if @ftype == "Arrival"
             .aride-info
               %p.flight-date= ride.flighttime.strftime("%B %d %Y")
@@ -37,15 +37,5 @@
               -else
                 %p.ride-time Currently Unspecified 
               %p.ride-count= ride.users.size
-          .ride-opt
-            %p= link_to 'View', ride
-            -if @current_user
-              -unless ride.users.find_by_id(@current_user.id)
-                %p= link_to 'Join Ride',{ :controller => "rides", :action => "join", :id => ride }, :confirm => "Are you sure you want to join this ride?"
-              -else  
-                %p= link_to 'Leave Ride', { :controller => "rides", :action => "leave", :id => ride }, :confirm => "Are you sure you want to leave this ride?"
-              -if ride.owner_id == @current_user.id
-                %p= link_to 'Edit', edit_ride_path(ride)
-            -else
-              %p= link_to 'Join Ride',{ :controller => "rides", :action => "join", :id => ride }, :confirm => "You must sign in with Facebook before you can join a ride. Would you like to do this now now?", :notice => 'You successfully signed in.'
-          .clear
+              = link_to '', ride
+              .clear
