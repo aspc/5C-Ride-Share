@@ -15,9 +15,13 @@
     =link_to "to LAX", :controller => "rides", :action => "tolax"
     =link_to "from LAX", :controller => "rides", :action => "fromlax"
     .clear
-  -if @current_user
-    #create-new-ride= link_to 'new ride', new_ride_path
+  -if signed_in?
+    #create-new-ride
+      = link_to "settings", edit_user_path(@current_user)
+      = link_to 'new ride', new_ride_path
+      = link_to "your rides", user_path(@current_user)
   -else
-    #create-new-ride= link_to 'new ride', new_ride_path, :confirm => "You must sign in with Facebook before you can create a new ride. Would you like to sign in with facebook now?", :notice => 'You successfully signed in.'
+    #create-new-ride
+      = link_to 'new ride', new_ride_path, :confirm => "You must sign in with Facebook before you can create a new ride. Would you like to sign in with facebook now?", :notice => 'You successfully signed in.'
 
   

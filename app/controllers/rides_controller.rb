@@ -1,10 +1,6 @@
 class RidesController < ApplicationController
-  before_filter :current_user
   before_filter :checker, :only => [:edit, :update, :destroy, :leave]
   before_filter :login_helper, :only => [:new, :join]
-  
-  # GET /rides
-  # GET /rides.json
   
   before_filter do
     @title = "5C ride share"
@@ -20,8 +16,6 @@ class RidesController < ApplicationController
     end
   end
 
-  # GET /rides/1
-  # GET /rides/1.json
   def show
     @ride = Ride.find(params[:id])
     @users = @ride.users
@@ -32,8 +26,6 @@ class RidesController < ApplicationController
     end
   end
 
-  # GET /rides/new
-  # GET /rides/new.json
   def new
     @title = "5C ride share :: new"
     @ride = Ride.new
@@ -44,7 +36,6 @@ class RidesController < ApplicationController
     end
   end
 
-  # GET /rides/1/edit
   def edit
     @ride = Ride.find(params[:id])
     unless @ride.owner_id == @current_user.id
@@ -52,8 +43,6 @@ class RidesController < ApplicationController
     end
   end
 
-  # POST /rides
-  # POST /rides.json
   def create
     @ride = Ride.new(params[:ride])
     @ride.owner_id = @current_user.id
@@ -70,8 +59,6 @@ class RidesController < ApplicationController
     end
   end
 
-  # PUT /rides/1
-  # PUT /rides/1.json
   def update
     @ride = Ride.find(params[:id])
     
@@ -86,8 +73,6 @@ class RidesController < ApplicationController
     end
   end
 
-  # DELETE /rides/1
-  # DELETE /rides/1.json
   def destroy
     @ride = Ride.find(params[:id])
     if @ride.owner_id == @current_user.id

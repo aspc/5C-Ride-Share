@@ -44,7 +44,13 @@ function currentPage(title) {
 			nav.eq(1).addClass('current-page')
 			break
 		case "5C ride share :: new":
-			$("#create-new-ride a").addClass('current-page')
+			$("#create-new-ride").children().eq(1).addClass('current-page')
+			break
+		case "5C ride share :: settings":
+			$("#create-new-ride").children().eq(0).addClass('current-page')
+			break
+		case "5C ride share :: your rides":
+			$("#create-new-ride").children().eq(2).addClass('current-page')
 			break
 	}
 }

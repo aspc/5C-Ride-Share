@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111212193506) do
+ActiveRecord::Schema.define(:version => 20111219183229) do
 
   create_table "rides", :force => true do |t|
     t.string   "airport"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20111212193506) do
     t.string   "fbimage"
     t.string   "fblink"
     t.string   "email"
+    t.boolean  "email_pref"
   end
 
 end

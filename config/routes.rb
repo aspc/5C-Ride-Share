@@ -10,6 +10,11 @@ Shuttleshare::Application.routes.draw do
     end
   end
   
+  resources :users
+  
+  get "user/edit"
+  get "user/rides"
+  
   get "sessions/create"
   get "sessions/destroy"
   get "sessions/login"

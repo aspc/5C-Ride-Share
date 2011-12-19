@@ -5,3 +5,9 @@
  *= require_self
  *= require_tree . 
 */
+
+$basem2: rgb(32,43,48);
+$basem1: rgb(78,113,120);
+$baseblue: rgb(79,169,184);
+$basep1: rgb(116,192,207);
+$basep2: rgb(241,247,226);
