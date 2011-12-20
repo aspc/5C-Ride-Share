@@ -56,16 +56,16 @@ $(document).ready(function() {
 function currentPage(title) {
 	var nav = $('#nav').children()
 	switch(title) {
-		case "Rides to LAX":
+		case "5C ride share :: to LAX":
 			nav.eq(2).addClass('current-page')
 			break
-		case "Rides from LAX":
+		case "5C ride share :: from LAX":
 			nav.eq(3).addClass('current-page')
 			break
-		case "Rides to Ontario":
+		case "5C ride share :: to ontario":
 			nav.first().addClass('current-page')
 			break
-		case "Rides from Ontario":
+		case "5C ride share :: from ontario":
 			nav.eq(1).addClass('current-page')
 			break
 		case "5C ride share :: new":
@@ -92,7 +92,7 @@ function centerNewRide(current_user_id) {
 				"float": "none",
 				"width": "auto"
 			});
-		$(".main-container").css("margin-top", "0")
+		$(".main-container").css("margin-top", "20px")
 	}
 }
 

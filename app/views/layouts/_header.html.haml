@@ -10,10 +10,10 @@
       =link_to "log in with facebook", :controller => "sessions", :action => "login"
     = link_to "home", root_url
   #nav
-    =link_to "to ontario", :controller => "rides", :action => "toontario"
-    =link_to "from ontario", :controller => "rides", :action => "fromontario"
-    =link_to "to LAX", :controller => "rides", :action => "tolax"
-    =link_to "from LAX", :controller => "rides", :action => "fromlax"
+    =link_to "to ontario", :controller => "rides", :action => "airport", :id => "1"
+    =link_to "from ontario", :controller => "rides", :action => "airport", :id => "2"
+    =link_to "to LAX", :controller => "rides", :action => "airport", :id => "3"
+    =link_to "from LAX", :controller => "rides", :action => "airport", :id => "4"
     .clear
   -if signed_in?
     #create-new-ride

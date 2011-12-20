@@ -126,52 +126,63 @@ class RidesController < ApplicationController
     end
   end
   
-  def toontario
-    @title = "Rides to Ontario"
-    @airport = "To Ontario"
-    @ftype = "Departure"
-    @rides = Ride.find_all_by_airport("To Ontario")
+  def airport
+    info = airport_helper(params[:id])
+    @title = info[:title]
+    @airport = info[:airport]
+    @ftype = info[:ftype]
+    @rides = info[:rides]
+    check = info[:check]
     sort_rides(@rides)
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render :json => @rides }
+    @urides = @current_user.rides.to_set if @current_user
+    if check
+      respond_to do |format|
+        format.html
+        format.json {render :json => @rides}
+      end
+    else
+      redirect_to root_url
     end
   end
   
-  def tolax
-    @title = "Rides to LAX"
-    @airport = "To LAX"
-    @ftype = "Departure"
-    @rides = Ride.find_all_by_airport("To LAX")
-    @rides = sort_rides(@rides)
-    @urides = @current_user.rides.to_set
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render :json => @rides }
-    end
-  end
-  
-  def fromontario
-    @title = "Rides from Ontario"
-    @airport = "From Ontario"
-    @ftype = "Arrival"
-    @rides = Ride.find_all_by_airport("From Ontario")
-    sort_rides(@rides)
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render :json => @rides }
-    end
-  end
-  
-  def fromlax
-    @title = "Rides from LAX"
-    @airport = "From LAX"
-    @ftype = "Arrival"
-    @rides = Ride.find_all_by_airport("From LAX")
-    sort_rides(@rides)
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render :json => @rides }
+  def airport_helper(type)
+    case type
+    when "1"
+      {
+      :title => "5C ride share :: to ontario",
+      :airport => "To Ontario",
+      :ftype => "Departure",
+      :rides => Ride.find_all_by_airport("To Ontario"),
+      :check => true
+      }
+    when "2"
+      {
+      :title => "5C ride share :: from ontario",
+      :airport => "From Ontario",
+      :ftype => "Arrival",
+      :rides => Ride.find_all_by_airport("From Ontario"),
+      :check => true
+      }
+    when "3"
+      {
+      :title => "5C ride share :: to LAX",
+      :airport => "To LAX",
+      :ftype => "Departure",
+      :rides => Ride.find_all_by_airport("To LAX"),
+      :check => true
+      }
+    when "4"
+      {
+      :title => "5C ride share :: from LAX",
+      :airport => "From LAX",
+      :ftype => "Arrival",
+      :rides => Ride.find_all_by_airport("From LAX"),
+      :check => true
+      }
+    else
+      {
+        :check => false
+      }
     end
   end
   

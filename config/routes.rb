@@ -3,10 +3,7 @@ Shuttleshare::Application.routes.draw do
     collection do
       get 'join'
       get 'leave'
-      get 'toontario'
-      get 'tolax'
-      get 'fromontario'
-      get 'fromlax'
+      get 'airport'
     end
   end
   
