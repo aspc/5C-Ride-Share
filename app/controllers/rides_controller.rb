@@ -92,7 +92,7 @@ class RidesController < ApplicationController
     unless @ride.users.find_by_id(@current_user.id)
       if @ride.users
         @ride.users.each do |user|
-          if user.email
+          if user.email && user.email_pref
             UserMailer.new_rider_email(user, @current_user, url_for(@ride)).deliver
           end
         end
@@ -144,6 +144,7 @@ class RidesController < ApplicationController
     @ftype = "Departure"
     @rides = Ride.find_all_by_airport("To LAX")
     @rides = sort_rides(@rides)
+    @urides = @current_user.rides.to_set
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @rides }
@@ -178,4 +179,5 @@ class RidesController < ApplicationController
     rides.sort! {|a,b| a.flighttime <=> b.flighttime}
     rides = rides.find_all{|ride| ride.flighttime > Time.now}
   end
+  
 end

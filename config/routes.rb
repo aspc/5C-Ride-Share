@@ -19,6 +19,8 @@ Shuttleshare::Application.routes.draw do
   get "sessions/destroy"
   get "sessions/login"
   
+  post "mailer/comment"
+  
   root :to => "Rides#index"
   
   match '/auth/:provider/callback', :to => 'sessions#create'

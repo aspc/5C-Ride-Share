@@ -1,4 +1,26 @@
+window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '300857556614018', // App ID
+    channelUrl : '//localhost:3000/channel.html', // Channel File
+    status     : true, // check login status
+    cookie     : true, // enable cookies to allow the server to access the session
+    xfbml      : true  // parse XFBML
+  });
 
+  // Additional initialization code here
+	
+	FB.Event.subscribe('comment.create', function (response) {
+		commentMailer(response, current_user_id)
+	})
+};
+
+// Load the SDK Asynchronously
+(function(d){
+   var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+   js = d.createElement('script'); js.id = id; js.async = true;
+   js.src = "//connect.facebook.net/en_US/all.js";
+   d.getElementsByTagName('head')[0].appendChild(js);
+ }(document));
 
 $(document).ready(function() {
 	var menu = $("#ride_airport")[0]
@@ -10,6 +32,7 @@ $(document).ready(function() {
 	
 	currentPage(title)
 	centerNewRide(current_user_id)
+	userRides()
 	
 	if(menu != undefined) {
 		menu.onchange = function() {
@@ -25,6 +48,7 @@ $(document).ready(function() {
 	if ($("#rides") != undefined) {
 		alternateBackgrounds()
 	}
+	
 });
 
 
@@ -69,6 +93,40 @@ function centerNewRide(current_user_id) {
 				"width": "auto"
 			});
 		$(".main-container").css("margin-top", "0")
+	}
+}
+
+function commentMailer(response, current_user_id) {
+	$.post(
+		'/mailer/comment',
+		{
+			'c_id': current_user_id,
+			'url': response.href
+		}
+	);
+}
+
+function userRides() {
+	var rides = $(".member")
+	for(i = 0; i < rides.size(); i++) {
+		var ride = rides.eq(i)
+		var offset = ride.offset()
+		var left = offset.left
+		var top = offset.top
+		ride.prepend("<div></div>")
+		var divv = ride.children().first()
+		ride.css({
+			'border': '5px solid rgb(236, 185, 19)'
+		})
+		divv.css(
+			{
+				'position': 'absolute',
+				'width': '100px',
+				'height': '50px',
+				'top': (top),
+				'left': (left+900),
+				'background': 'black'
+			})
 	}
 }
 

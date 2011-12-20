@@ -17,7 +17,7 @@
   -if @rides
     -@rides.each do |ride| 
       -unless ride.users.count == 0
-        .ride-container
+        .ride-container{:class => ("member" if (@urides.member? ride))}
           -if @ftype == "Arrival"
             .aride-info
               %p.flight-date= ride.flighttime.strftime("%B %d %Y")
