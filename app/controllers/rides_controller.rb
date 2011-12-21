@@ -131,7 +131,7 @@ class RidesController < ApplicationController
     @ftype = info[:ftype]
     @rides = info[:rides]
     check = info[:check]
-    sort_rides(@rides)
+    @rides = sort_rides(@rides)
     @urides = @current_user.rides.to_set if @current_user
     if check
       respond_to do |format|
@@ -184,9 +184,6 @@ class RidesController < ApplicationController
     end
   end
   
-  def sort_rides(rides)
-    rides.sort! {|a,b| a.flighttime <=> b.flighttime}
-    rides = rides.find_all{|ride| ride.flighttime > Time.now}
-  end
+
   
 end
