@@ -17,7 +17,21 @@ class UsersController < ApplicationController
     @title = "5C ride share :: your rides"
     @rides = @current_user.rides
   end
-  def rides
+  
+  def unsubscribe
+    email = params[:id]
+    if email
+      user = User.find_by_email(email)
+      if user
+        user.email_pref = false
+        user.save
+        redirect_to root_url, :notice => "Successfully unsubscribed from email notifications"
+      else
+        redirect_to root_url
+      end
+    else
+      redirect_to root_url
+    end
   end
   
   protected

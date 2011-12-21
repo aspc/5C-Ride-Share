@@ -164,8 +164,12 @@ background-color: #FFBABA;
 //Footer
 #footer-container
 {
-	margin: 30px 0 20px 0;
+	margin: 50px 0 20px 0;
 	text-align: center;
+	a
+	{
+		text-decoration: underline;
+	}
 }
 //Airport Select Page
 #index
@@ -207,7 +211,7 @@ background-color: #FFBABA;
 	margin: auto;
 	margin-top: 100px;
 	min-height: 500px;
-	#rides
+	.rides
 	{	
 		h1
 		{
@@ -229,11 +233,12 @@ background-color: #FFBABA;
 			}
 			.aftime
 			{
+				margin-left: 5px;
 			}
 			.anumpass
 			{
 				width: auto;
-				margin-left: 130px
+				margin-left: 125px
 			}
 		}
 		#dflight-header
@@ -331,7 +336,7 @@ background-color: #FFBABA;
 				a
 				{
 					position: relative;
-					left: -105px;
+					left: -175px;
 					top: -5px;
 					z-index: 100;
 					display: block;
@@ -359,7 +364,7 @@ background-color: #FFBABA;
 				a
 				{
 					position: relative;
-					left: -105px;
+					left: -100px;
 					top: -5px;
 					z-index: 100;
 					display: block;

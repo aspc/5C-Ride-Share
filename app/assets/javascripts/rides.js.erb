@@ -97,13 +97,15 @@ function centerNewRide(current_user_id) {
 }
 
 function commentMailer(response, current_user_id) {
-	$.post(
-		'/mailer/comment',
-		{
-			'c_id': current_user_id,
-			'url': response.href
-		}
-	);
+	if (current_user_id !== -1) {
+		$.post(
+			'/mailer/comment',
+			{
+				'c_id': current_user_id,
+				'url': response.href
+			}
+		);
+	}
 }
 
 function userRides() {

@@ -7,10 +7,11 @@ Shuttleshare::Application.routes.draw do
     end
   end
   
-  resources :users
-  
-  get "user/edit"
-  get "user/rides"
+  resources :users do
+    collection do
+      get 'unsubscribe'
+    end
+  end
   
   get "sessions/create"
   get "sessions/destroy"

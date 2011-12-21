@@ -16,5 +16,9 @@
       </br>
       5C Ride Share
     </p>
+    </br>
+    <p>
+        <%= link_to "Unsubscribe", :controller => 'users', :action => 'unsubscribe', :id => @email, :host => @host, :only_path => false %>
+    </p>
   </body>
 </html>
