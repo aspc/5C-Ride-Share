@@ -7,7 +7,7 @@ class MailerController < ApplicationController
     users = ride.users.collect {|user| user if user.id != commenter.id}
     users.each do |user|
       if user
-        if user.email  && user.email_pref
+        if user.email && user.email_pref
           UserMailer.new_comment_email(commenter, user, url).deliver
         end
       end

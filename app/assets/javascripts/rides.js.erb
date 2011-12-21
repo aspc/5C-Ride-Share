@@ -108,25 +108,27 @@ function commentMailer(response, current_user_id) {
 
 function userRides() {
 	var rides = $(".member")
+	var ride_links = $(".member a")
 	for(i = 0; i < rides.size(); i++) {
-		var ride = rides.eq(i)
-		var offset = ride.offset()
+		var ride_container = rides.eq(i)
+		var ride_id =  ride_links.eq(i).attr('href').split("/")[2]
+		var leave_link = "<a class = 'leave' href = '/rides/leave/?id=" + ride_id + "'>leave ride</a>"
+		var offset = ride_container.offset()
 		var left = offset.left
 		var top = offset.top
-		ride.prepend("<div></div>")
-		var divv = ride.children().first()
-		ride.css({
-			'border': '5px solid rgb(236, 185, 19)'
-		})
+		ride_container.prepend("<div></div>")
+		var divv = ride_container.children().first()
 		divv.css(
 			{
 				'position': 'absolute',
 				'width': '100px',
-				'height': '50px',
+				'height': '40px',
 				'top': (top),
 				'left': (left+900),
-				'background': 'black'
+				'z-index': '10'
 			})
+		divv.prepend(leave_link)
 	}
 }
+
 

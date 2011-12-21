@@ -23,6 +23,7 @@
               %p.flight-date= ride.flighttime.strftime("%B %d %Y")
               %p.flight-time= ride.flighttime.strftime("%I:%M %p")
               %p.ride-count= ride.users.size
+              = link_to '', ride
           -else
             .dride-info
               %p.flight-date= ride.flighttime.strftime("%B %d %Y")

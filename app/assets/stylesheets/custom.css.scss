@@ -292,7 +292,25 @@ background-color: #FFBABA;
 			border: $basep1 2px solid;
 			padding: 5px 0px 5px 0px;
 			margin: 10px 0 10px 0;
-
+			.leave
+			{
+				position: relative;
+				text-align: center;
+				margin-left: 20px;
+				font-size: 1.3em;
+				height: 26px;
+				line-height: 26px;
+				margin: 7px 0 7px 10px;
+				border: 1px solid $basep1;
+				display: block;
+				background: $basep2;
+				color: $basem1;
+			}
+			.leave:hover
+			{
+				color: $basep2;
+				background: $basem1;
+			}
 			div.aride-info
 			{
 				width: 550px;
@@ -309,6 +327,16 @@ background-color: #FFBABA;
 				{
 					width: auto;
 					margin-left: 28px;
+				}
+				a
+				{
+					position: relative;
+					left: -105px;
+					top: -5px;
+					z-index: 100;
+					display: block;
+					width: 900px;
+					height: 40px;
 				}
 			}
 			div.dride-info
