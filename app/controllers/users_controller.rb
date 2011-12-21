@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   
   def show
     @title = "5C ride share :: your rides"
-    @rides = @current_user.rides
+    @rides = sort_rides(@current_user.rides)
   end
   
   def unsubscribe

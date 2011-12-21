@@ -184,9 +184,6 @@ class RidesController < ApplicationController
     end
   end
   
-  def sort_rides(rides)
-    rides.sort! {|a,b| a.flighttime <=> b.flighttime}
-    rides = rides.find_all{|ride| ride.flighttime > Time.now}
-  end
+
   
 end

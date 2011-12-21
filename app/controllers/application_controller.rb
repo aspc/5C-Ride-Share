@@ -2,6 +2,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :current_user
   
+  def sort_rides(rides)
+    rides.sort! {|a,b| a.flighttime <=> b.flighttime}
+    rides = rides.find_all{|ride| ride.flighttime > Time.now}
+  end
   protected
 
     def current_user
