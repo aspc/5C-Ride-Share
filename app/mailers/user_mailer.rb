@@ -6,7 +6,7 @@ class UserMailer < ActionMailer::Base
     @rider = rider
     @url = rideurl
     @email = user.email
-    @host = "localhost:3000"
+    @host = "5crideshare.jessepollak.me"
     mail(:to => @email, :subject => "#{rider.name.split(" ")[0]} joined your 5C ride!")
   end
   
@@ -15,7 +15,7 @@ class UserMailer < ActionMailer::Base
     @url = url
     @user = user
     @email = user.email
-    @host = "localhost:3000"
+    @host = "5crideshare.jessepollak.me"
     mail(:to => @email, :subject => "#{user.name.split(" ")[0]} commented on your 5C ride!")
   end
 end
