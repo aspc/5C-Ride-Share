@@ -8,13 +8,13 @@
         %li= msg
 
   .field
-    = f.label "Type of ride:"
+    = f.label "type of ride?"
     = f.select :airport, "<option>To LAX</option><option>To Ontario</option><option>From LAX</option><option>From Ontario</option>", :selected => "2"
   .field
-    = f.label "When is your flight:"
-    = f.datetime_select :flighttime, :order => [:day, :month, :year], :prompt => {:day => 'Day', :month => "Month", :year => "Year", :hour => "Hour", :minute => "Minute", }, :ampm => true, :minute_step => 15, :start_year => 2011, :end_year => 2012
+    = f.label "when is your flight?"
+    = f.datetime_select :flighttime, :order => [:day, :month, :year], :prompt => {:day => 'day', :month => "month", :year => "year", :hour => "hour", :minute => "minute", }, :ampm => true, :minute_step => 15, :start_year => 2011, :end_year => 2012
   .field.time-div
-    = f.label "When would you like your ride to leave?"
+    = f.label "when would you like your ride to leave?"
     = f.time_select :ridetime, :ampm => true
   .actions
     = f.submit

@@ -1,21 +1,19 @@
 class RidesController < ApplicationController
-  before_filter :current_user
   before_filter :checker, :only => [:edit, :update, :destroy, :leave]
   before_filter :login_helper, :only => [:new, :join]
   
-  # GET /rides
-  # GET /rides.json
+  before_filter do
+    @title = "5C ride share"
+  end
+  
   def index
-    @rides = Ride.all
-
+    @title = "5C ride share :: home"
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @rides }
     end
   end
 
-  # GET /rides/1
-  # GET /rides/1.json
   def show
     @ride = Ride.find(params[:id])
     @users = @ride.users
@@ -26,9 +24,8 @@ class RidesController < ApplicationController
     end
   end
 
-  # GET /rides/new
-  # GET /rides/new.json
   def new
+    @title = "5C ride share :: new"
     @ride = Ride.new
 
     respond_to do |format|
@@ -37,7 +34,6 @@ class RidesController < ApplicationController
     end
   end
 
-  # GET /rides/1/edit
   def edit
     @ride = Ride.find(params[:id])
     unless @ride.owner_id == @current_user.id
@@ -45,8 +41,6 @@ class RidesController < ApplicationController
     end
   end
 
-  # POST /rides
-  # POST /rides.json
   def create
     @ride = Ride.new(params[:ride])
     @ride.owner_id = @current_user.id
@@ -63,8 +57,6 @@ class RidesController < ApplicationController
     end
   end
 
-  # PUT /rides/1
-  # PUT /rides/1.json
   def update
     @ride = Ride.find(params[:id])
     
@@ -79,8 +71,6 @@ class RidesController < ApplicationController
     end
   end
 
-  # DELETE /rides/1
-  # DELETE /rides/1.json
   def destroy
     @ride = Ride.find(params[:id])
     if @ride.owner_id == @current_user.id
@@ -100,7 +90,7 @@ class RidesController < ApplicationController
     unless @ride.users.find_by_id(@current_user.id)
       if @ride.users
         @ride.users.each do |user|
-          if user.email
+          if user.email && user.email_pref
             UserMailer.new_rider_email(user, @current_user, url_for(@ride)).deliver
           end
         end
@@ -134,47 +124,63 @@ class RidesController < ApplicationController
     end
   end
   
-  def toontario
-    @airport = "To Ontario"
-    @ftype = "Departure"
-    @rides = Ride.find_all_by_airport("To Ontario")
-    @rides = sort_rides(@rides)
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render :json => @rides }
-    end
-  end
-  
-  def tolax
-    @airport = "To LAX"
-    @ftype = "Departure"
-    @rides = Ride.find_all_by_airport("To LAX")
-    @rides = sort_rides(@rides)
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render :json => @rides }
-    end
-  end
-  
-  def fromontario
-    @airport = "From Ontario"
-    @ftype = "Arrival"
-    @rides = Ride.find_all_by_airport("From Ontario")
+  def airport
+    info = airport_helper(params[:id])
+    @title = info[:title]
+    @airport = info[:airport]
+    @ftype = info[:ftype]
+    @rides = info[:rides]
+    check = info[:check]
     sort_rides(@rides)
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render :json => @rides }
+    @urides = @current_user.rides.to_set if @current_user
+    if check
+      respond_to do |format|
+        format.html
+        format.json {render :json => @rides}
+      end
+    else
+      redirect_to root_url
     end
   end
   
-  def fromlax
-    @airport = "From LAX"
-    @ftype = "Arrival"
-    @rides = Ride.find_all_by_airport("From LAX")
-    sort_rides(@rides)
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render :json => @rides }
+  def airport_helper(type)
+    case type
+    when "1"
+      {
+      :title => "5C ride share :: to ontario",
+      :airport => "To Ontario",
+      :ftype => "Departure",
+      :rides => Ride.find_all_by_airport("To Ontario"),
+      :check => true
+      }
+    when "2"
+      {
+      :title => "5C ride share :: from ontario",
+      :airport => "From Ontario",
+      :ftype => "Arrival",
+      :rides => Ride.find_all_by_airport("From Ontario"),
+      :check => true
+      }
+    when "3"
+      {
+      :title => "5C ride share :: to LAX",
+      :airport => "To LAX",
+      :ftype => "Departure",
+      :rides => Ride.find_all_by_airport("To LAX"),
+      :check => true
+      }
+    when "4"
+      {
+      :title => "5C ride share :: from LAX",
+      :airport => "From LAX",
+      :ftype => "Arrival",
+      :rides => Ride.find_all_by_airport("From LAX"),
+      :check => true
+      }
+    else
+      {
+        :check => false
+      }
     end
   end
   
@@ -182,4 +188,5 @@ class RidesController < ApplicationController
     rides.sort! {|a,b| a.flighttime <=> b.flighttime}
     rides = rides.find_all{|ride| ride.flighttime > Time.now}
   end
+  
 end

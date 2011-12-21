@@ -1,7 +1,10 @@
 #index
-  %h1.ontario= link_to "Rides to Ontario", :controller => "rides", :action => "toontario"
-  %h1.ontario= link_to "Rides from Ontario", :controller => "rides", :action => "fromontario"
-  </br>
-  %h1.lax= link_to "Rides to LAX", :controller => "rides", :action => "tolax"
-  %h1.lax= link_to "Rides from LAX", :controller => "rides", :action => "fromlax"
+  .ontario
+    %h1= link_to "Rides to Ontario", :controller => "rides", :action => "airport", :id => "1"
+    %h1= link_to "Rides from Ontario", :controller => "rides", :action => "airport", :id => "2"
+    .clear
+  .lax
+    %h1= link_to "Rides to LAX", :controller => "rides", :action => "airport", :id => "3"
+    %h1= link_to "Rides from LAX", :controller => "rides", :action => "airport", :id => "4"
+    .clear
   .clear

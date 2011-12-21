@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_and_belongs_to_many :rides
+  validates :name, :presence => true
   
   def self.find_from_hash(hash)
     user = find_by_fb_id(hash['uid'])

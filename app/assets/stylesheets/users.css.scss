@@ -1,0 +1,23 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#edit-user
+{
+	width: 600px;
+	margin:auto;
+}
+
+//Ride format is in custom.css
+
+#user-rides
+{
+	h1
+	{
+		text-align: center;
+	}
+	#departures
+	{
+		margin: 60px 0 30px 0;
+	}
+}

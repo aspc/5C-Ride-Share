@@ -1,4 +1,4 @@
-#rides
+.rides
   -if @ftype == "Arrival"
     #aflight-header
       %h2 Date
@@ -17,12 +17,13 @@
   -if @rides
     -@rides.each do |ride| 
       -unless ride.users.count == 0
-        .ride-container{:class => ("member" if (@urides.member? ride))}
+        .ride-container{:class => ("member" if (@current_user && (@urides.member? ride)))}
           -if @ftype == "Arrival"
             .aride-info
               %p.flight-date= ride.flighttime.strftime("%B %d %Y")
               %p.flight-time= ride.flighttime.strftime("%I:%M %p")
               %p.ride-count= ride.users.size
+              = link_to '', ride
           -else
             .dride-info
               %p.flight-date= ride.flighttime.strftime("%B %d %Y")
