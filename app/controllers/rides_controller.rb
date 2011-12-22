@@ -90,7 +90,7 @@ class RidesController < ApplicationController
     unless @ride.users.find_by_id(@current_user.id)
       if @ride.users
         @ride.users.each do |user|
-          if user.email && user.email_pref
+          if user.email && user.email_pref  && user.email != ""
             UserMailer.new_rider_email(user, @current_user, url_for(@ride)).deliver
           end
         end
