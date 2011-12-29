@@ -1,0 +1,139 @@
+// Place all the styles related to the Rides controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+//Form
+
+$basem2: rgb(32,43,48);
+$basem1: rgb(78,113,120);
+$baseblue: rgb(79,169,184);
+$basep1: rgb(116,192,207);
+$basep2: rgb(241,247,226);
+
+div#new-ride
+{
+	width: 600px;
+	margin: auto;
+}
+div#edit-ride
+{
+	width: 600px;
+	margin: auto;
+	h1
+	{
+		text-align: center;
+		text-decoration: underline;
+	}
+}
+form
+{
+	.field
+	{
+		margin-bottom: 50px;
+	}
+	label
+	{
+		font-size: 1.5em;
+		font-weight: bold;
+		color: $basep2;
+		display: block;
+		margin-bottom: 10px;
+		letter-spacing: 2px;
+	}
+	input
+	{
+		color: $basem2;
+		display: block;
+	}
+}
+
+//Show
+
+#show-container
+{
+	width: 500px;
+	margin: auto;
+	padding: 40px;
+	border: 4px solid $basep2;
+	box-shadow: 2px 2px 2px $basem1;
+	p
+	{
+		margin: 5px 0 5px 0;
+		font-size: 1.3em;
+		color: $basem1;
+		b
+		{
+			font-size: 1.1em;
+			text-decoration: underline;
+		}
+	}
+	.riders
+	{
+		margin: 20px 0 20px 0;
+	}
+	.rider
+	{
+		float: left;
+		display: block;
+		width: auto;
+		margin: 0 7px 10px 0;
+		img
+		{
+			border: 3px solid $basep2;
+		}
+		.rider-name
+		{
+			clear: left;
+		}
+	}
+	#backedit
+	{
+		float: right;
+		a
+		{
+			float: right;
+			padding: 2px 5px 2px 5px;
+			text-align: center;
+			font-size: 1.2em;
+			color: $basem1;
+			background: $basep2;
+			text-decoration: none;
+			font-weight: bold;
+			border: 2px $basep1 solid;
+			margin-left: 10px;
+		}
+		a:hover
+		{
+			background: $basem1;
+			color: $basep2;
+		}
+	}
+	#facebook
+	{
+		background: $basep2;
+		width: 510px;
+		border: 5px $basep1 solid;
+	}
+	.booking
+	{
+		width: 310px;
+		margin: auto;
+		margin-bottom: 50px;
+		a
+		{
+			padding: 2px 5px 2px 5px;
+			text-align: center;
+			font-size: 1.6em;
+			color: $basep2;
+			background: $basem1;
+			text-decoration: none;
+			font-weight: bold;
+			border: 2px $basep1 solid;
+		}
+		a:hover
+		{
+			color: $basem1;
+			background: $basep2;
+		}
+	}
+}

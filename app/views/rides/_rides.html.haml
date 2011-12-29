@@ -1,0 +1,36 @@
+#rides
+  -if @ftype == "Arrival"
+    #aflight-header
+      %h2 Date
+      %h2.aftime= "Flight #{@ftype} Time"
+      %h2.anumpass= "PAX"
+      .clear
+  -else
+    #dflight-header
+      %h2 Date
+      %h2.dftime= "Flight Time"
+      %h2.drtime Ride Time
+      %h2.dnumpass= "PAX"
+      .clear
+
+  
+  -if @rides
+    -@rides.each do |ride| 
+      -unless ride.users.count == 0
+        .ride-container{:class => ("member" if (@urides.member? ride))}
+          -if @ftype == "Arrival"
+            .aride-info
+              %p.flight-date= ride.flighttime.strftime("%B %d %Y")
+              %p.flight-time= ride.flighttime.strftime("%I:%M %p")
+              %p.ride-count= ride.users.size
+          -else
+            .dride-info
+              %p.flight-date= ride.flighttime.strftime("%B %d %Y")
+              %p.flight-time= ride.flighttime.strftime("%I:%M %p")
+              -if ride.ridetime
+                %p.ride-time= ride.ridetime.strftime("%I:%M %p")
+              -else
+                %p.ride-time Currently Unspecified 
+              %p.ride-count= ride.users.size
+              = link_to '', ride
+              .clear

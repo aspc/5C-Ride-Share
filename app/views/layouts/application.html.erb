@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%=@title%></title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <%= favicon_link_tag%>
+  <meta property="og:title" content="5C ride share" />
+  <meta property="og:description" content="A web app dedicated to finding 5C students rides to and from the airport." />
+  <meta property="fb:app_id" content="300857556614018"/>
+</head>
+<body>
+  <div id="fb-root"></div>
+
+  <script>
+    var current_user_id = <%= 
+      if @current_user 
+        @current_user.id
+      else -1 
+      end%>
+  </script>
+    
+  <%= render 'layouts/header'%>
+  
+  <div class = "main-container">
+    
+    <%if flash[:notice]%>
+    <p class = "notice">
+      <%=notice%>
+    </p>
+    <%end%>
+    <%if flash[:end]%>
+    <p class = "alert">
+      <%=alert%>
+    </p>
+    <%end%>
+    
+    <%= yield %>
+  </div>
+
+  <%= render 'layouts/footer'%>
+  <%= render 'layouts/ga' if Rails.env.production?%>
+</body>
+</html>

@@ -1,0 +1,377 @@
+$basem2: rgb(32,43,48);
+$basem1: rgb(78,113,120);
+$baseblue: rgb(79,169,184);
+$basep1: rgb(116,192,207);
+$basep2: rgb(241,247,226);
+
+*
+{
+	margin: 0px;
+	padding: 0px;
+	color: $basep2;
+}
+
+html,body
+{
+
+	font-family: 'Calibri','Helvetica','Verdana';
+	font-size: 12px;
+	min-width: 960px;
+	background: $baseblue;
+	letter-spacing: 1px;
+	a
+	{
+		text-decoration: none;
+	}
+}
+
+.clear
+{
+	clear: both;
+}
+
+.alert, .notice
+{
+	border: 1px solid;
+	padding: 10px 0 10px 0;
+	margin: 0 200px 20px 200px;
+}
+.alert
+{
+color: #D8000C;
+background-color: #FFBABA;
+}
+
+.notice
+{
+	text-align: center;
+	font-size: 1.2em;
+	color: #4F8A10;
+	background-color: #DFF2BF;
+}
+
+
+//Header
+
+#header-container
+{
+	#top-header
+	{
+		height: 78px;
+		background: $baseblue;
+		border-bottom: 1px solid $basep1;
+		margin: 0 50px 0 50px;
+		.fb-like
+		{
+			float: left;
+			height: 72px;
+			margin:6px 0 0 6px;
+		}
+		h1
+		{
+			float: left;
+			margin-left: 20px;
+			font-size: 2em;
+			a
+			{
+				text-decoration: none;
+				background: none;
+				color: $basep2;
+				font-weight: bold;
+			}
+		
+		}
+		a
+		{
+			margin: 24px 0 0 0;
+			height: 30px;
+			padding: 0 10px 0 10px;
+			float: right;
+			margin-right: 60px;
+			line-height: 30px;
+			text-align: center;
+			font-size: 1.2em;
+			color: $basem1;
+			background: $basep2;
+			text-decoration: none;
+			font-weight: bold;
+			border: 2px $basep1 solid;
+		}
+		a:hover
+		{
+			background: $basem1;
+			color: $basep2;
+		}
+	}
+	#nav
+	{
+		width: 600px;
+		margin: auto;
+		a
+		{
+			float: left;
+			display: block;
+			width: 142px;
+			height: 50px;
+			line-height: 50px;
+			text-align: center;
+			border: 4px solid $basep1;
+			background: $basep2;
+			color: $basem1;
+			font-weight: bold;
+			font-size: 1.3em;
+		}
+		a:hover
+		{
+			background: $basem1;
+			color: $basep2;
+		}
+		.current-page
+		{
+			background: $basem1;
+			color: $basep2;
+		}
+	}
+	#create-new-ride
+	{
+		width: 480px;
+		margin: auto;
+		a
+		{
+			display: block;
+			float: left;
+			text-align: center;
+			width: 150px;
+			font-size: 2.5em;
+			border: 4px $basep1 solid;
+			border-top: none;
+			background: $basep2;
+			color: $basem1;
+		}
+		a:hover
+		{
+			background: $basem1;
+			color: $basep2;
+		}
+		.current-page
+		{
+			background: $basem1;
+			color: $basep2;
+		}
+	}
+}
+
+//Footer
+#footer-container
+{
+	margin: 50px 0 20px 0;
+	text-align: center;
+	a
+	{
+		text-decoration: underline;
+	}
+}
+//Airport Select Page
+#index
+{
+	margin: auto;
+	margin-top: 75px;
+	div
+	{
+		margin-left: 100px;
+		width: 800px;
+		margin: auto;
+	}
+	h1
+	{
+		float: left;
+		background: $basep1;
+		text-align: center;
+		margin: 0 0 30px 66px;
+		a
+		{
+			display: block;
+			width: 290px;
+			height: 200px;
+			line-height: 200px;
+			color: $basep2;
+			border: 5px $basep2 solid;
+			box-shadow: 2px 2px 2px $basem1;
+		}
+		a:hover
+		{
+			border: 5px $basem1 solid;
+		}
+	}
+}
+//Main
+.main-container
+{
+	width: 900px;
+	margin: auto;
+	margin-top: 100px;
+	min-height: 500px;
+	.rides
+	{	
+		h1
+		{
+			font-size: 3em;
+			margin: 0 0 20px 5px;
+		}
+		#aflight-header
+		{
+			width: 550px;
+			margin: auto;
+			h2
+			{
+				float: left;
+				text-decoration: underline;
+				font-weight: bold;
+				font-size: 1.8em;
+				width: 190px;
+				color: $basep2;
+			}
+			.aftime
+			{
+				margin-left: 5px;
+			}
+			.anumpass
+			{
+				width: auto;
+				margin-left: 125px
+			}
+		}
+		#dflight-header
+		{
+			width: 700px;
+			margin: auto;
+			h2
+			{
+				float: left;
+				text-decoration: underline;
+				font-weight: bold;
+				font-size: 1.8em;
+				width:200px;
+				color: $basep2;
+			}
+			.dnumpass
+			{
+				width: auto;
+				margin-left: 60px;
+			}
+		}
+		
+	
+		/////RIDE HOVERS START
+		.dark
+		{
+			background: $basem1;
+			p
+			{
+				color: $basep2;
+			}
+		}
+		
+		.light
+		{
+			background: $basep2;
+			p
+			{
+				color: $basem1;
+			}
+		}
+		
+		.dark:hover, .light:hover
+		{
+			background: $basep1;
+			p
+			{
+				color: $basem2;
+			}
+		}
+		//////RIDE HOVERS END
+
+		
+		div.ride-container
+		{
+			border: $basep1 2px solid;
+			padding: 5px 0px 5px 0px;
+			margin: 10px 0 10px 0;
+			.leave
+			{
+				position: relative;
+				text-align: center;
+				margin-left: 20px;
+				font-size: 1.3em;
+				height: 26px;
+				line-height: 26px;
+				margin: 7px 0 7px 10px;
+				border: 1px solid $basep1;
+				display: block;
+				background: $basep2;
+				color: $basem1;
+			}
+			.leave:hover
+			{
+				color: $basep2;
+				background: $basem1;
+			}
+			div.aride-info
+			{
+				width: 550px;
+				height: 30px;
+				margin: auto;
+				p
+				{
+					float:left;
+					width: 250px;
+					font-size: 1.3em;
+					line-height: 30px;
+				}
+				p.ride-count
+				{
+					width: auto;
+					margin-left: 28px;
+				}
+				a
+				{
+					position: relative;
+					left: -175px;
+					top: -5px;
+					z-index: 100;
+					display: block;
+					width: 900px;
+					height: 40px;
+				}
+			}
+			div.dride-info
+			{
+				width: 700px;
+				height: 30px;
+				margin: auto;
+				p
+				{
+					float:left;
+					width: 200px;
+					font-size: 1.3em;
+					line-height: 30px;
+				}
+				p.ride-count
+				{
+					width: auto;
+					margin-left: 77px;
+				}
+				a
+				{
+					position: relative;
+					left: -100px;
+					top: -5px;
+					z-index: 100;
+					display: block;
+					width: 900px;
+					height: 40px;
+				}
+			}
+		}
+	}
+}

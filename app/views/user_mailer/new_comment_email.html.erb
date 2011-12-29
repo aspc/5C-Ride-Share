@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Hi <%=@user.name.split(" ")[0]%>, <%=link_to @commenter.name, @commenter.fblink%> just commented on your 5C ride!</h1>
+    <p>
+      Visit <%= link_to "the ride", @url%> to continue your conversation and figure out how to get to the airport!
+    </p>
+    <p>
+      Safe travels and have a great day!
+    </p>
+    <p>
+      Sincerely,</br>
+      </br>
+      5C Ride Share
+    </p>
+    </br>
+    <p>
+        <%= link_to "Unsubscribe", :controller => 'users', :action => 'unsubscribe', :id => @email, :host => @host, :only_path => false %>
+    </p>
+  </body>
+</html>
