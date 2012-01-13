@@ -25,6 +25,8 @@ class UsersController < ApplicationController
         @departures << ride
       end
     end
+    @arrivals = sort_rides(@arrivals)
+    @departures = sort_rides(@departures)
   end
   
   def unsubscribe
