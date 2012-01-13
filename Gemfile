@@ -13,6 +13,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'pg', :group => :production
 gem 'rdiscount'
+gem 'rack-no-www'
 
 
 group :test, :development do
