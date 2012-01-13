@@ -15,7 +15,16 @@ class UsersController < ApplicationController
   
   def show
     @title = "5C ride share :: your rides"
-    @rides = sort_rides(@current_user.rides)
+    rides = @current_user.rides
+    @arrivals = []
+    @departures = []
+    rides.each do |ride|
+      if ride.airport == "From Ontario" or ride.airport == "From LAX"
+        @arrivals << ride
+      else
+        @departures << ride
+      end
+    end
   end
   
   def unsubscribe
