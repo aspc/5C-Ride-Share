@@ -50,7 +50,17 @@ background-color: #FFBABA;
 	background-color: #DFF2BF;
 }
 
-
+.notification {
+	border-bottom: black solid 1px;
+	text-align: center;
+	background: #7D7D7D;
+	font-size: 1.2em;
+	padding: 3px 0 3px 0;
+	a
+	{
+		text-decoration: underline;
+	}
+}
 //Header
 
 #header-container
