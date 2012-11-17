@@ -14,6 +14,7 @@ gem 'omniauth-facebook'
 gem 'pg', :group => :production
 gem 'rdiscount'
 gem 'rack-no-www'
+gem 'httparty'
 
 
 group :test, :development do
@@ -23,7 +24,6 @@ group :test, :development do
   gem 'spork'
   gem 'autotest'
   gem 'autotest-growl'
-  gem 'autotest-fsevent'
   gem 'test_notifier'
   gem 'webrat'
   gem 'database_cleaner'

@@ -89,7 +89,7 @@ background-color: #FFBABA;
 				color: $basep2;
 				font-weight: bold;
 			}
-		
+
 		}
 		a
 		{
@@ -222,7 +222,7 @@ background-color: #FFBABA;
 	margin-top: 100px;
 	min-height: 500px;
 	.rides
-	{	
+	{
 		h1
 		{
 			font-size: 3em;
@@ -270,8 +270,8 @@ background-color: #FFBABA;
 				margin-left: 60px;
 			}
 		}
-		
-	
+
+
 		/////RIDE HOVERS START
 		.dark
 		{
@@ -281,7 +281,7 @@ background-color: #FFBABA;
 				color: $basep2;
 			}
 		}
-		
+
 		.light
 		{
 			background: $basep2;
@@ -290,7 +290,7 @@ background-color: #FFBABA;
 				color: $basem1;
 			}
 		}
-		
+
 		.dark:hover, .light:hover
 		{
 			background: $basep1;
@@ -301,7 +301,7 @@ background-color: #FFBABA;
 		}
 		//////RIDE HOVERS END
 
-		
+
 		div.ride-container
 		{
 			border: $basep1 2px solid;
@@ -383,5 +383,43 @@ background-color: #FFBABA;
 				}
 			}
 		}
+	}
+}
+
+#login-container {
+
+	width: 600px;
+	margin: auto;
+	margin-top: 120px;
+	.clef {
+		background: $basep2;
+		border: 2px $basep1 solid;
+		padding: 10px;
+		float: right;
+	}
+	.facebook {
+		float: left;
+		margin-top: 45px;
+	}
+	.or {
+		margin-top: 60px;
+		float: left;
+		h1 {
+			font-size: 2.4em;
+		}
+	}
+	a {
+		height: 30px;
+		padding: 15px;
+		margin-right: 60px;
+		line-height: 30px;
+		text-align: center;
+		font-size: 1.6em;
+		color: $basem1;
+		background: $basep2;
+		text-decoration: none;
+		font-weight: bold;
+		border: 2px $basep1 solid;
+		display: block;
 	}
 }

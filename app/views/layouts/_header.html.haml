@@ -1,13 +1,13 @@
 #header-container
   #top-header
-    %h1 
+    %h1
       %a{:href => root_url} 5C ride share
-    
+
     <div class="fb-like" data-href="http://5crideshare.com" data-send="false" data-width="250" data-show-faces="true"></div>
     -if signed_in?
       = link_to "sign out", :controller => "sessions", :action => "destroy"
     -else
-      =link_to "log in with facebook", :controller => "sessions", :action => "login"
+      =link_to "log in", :controller => "users", :action => "login"
     = link_to "home", root_url
   #nav
     =link_to "to ontario", :controller => "rides", :action => "airport", :id => "1"
@@ -24,4 +24,3 @@
     #create-new-ride
       = link_to 'new ride', new_ride_path, :confirm => "You must sign in with Facebook before you can create a new ride. Would you like to sign in with facebook now?", :notice => 'You successfully signed in.'
 
-  
