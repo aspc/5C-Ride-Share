@@ -15,14 +15,14 @@ class User < ActiveRecord::Base
 
   def self.find_or_create_by_clef_id(response)
     puts response['info']
-    if user = find_by_clef_id(response['info']['id'])
+    if user = find_by_clef_id(response['info']['id'].to_s)
       user
     elsif user = find_by_email(response['info']['email'])
       user.clef_id = response['info']['id']
       user.save
     else
       user = create :name => (response['info']['first_name'] + " " + response['info']['last_name']),
-                    :clef_id => response['info']['id'],
+                    :clef_id => response['info']['id'].to_s,
                     :email => response['info']['email'],
                     :fbimage => 'http://files.sharenator.com/awesome_face_151_U_WANT_CUTE-s580x580-92380-580.png'
     end
