@@ -46,6 +46,7 @@ class UsersController < ApplicationController
   end
 
   def login
+    @title = "5C ride share :: login"
     unless request.env["HTTP_REFERER"].blank?
       session[:redirect_to] = request.env["HTTP_REFERER"]
     end
