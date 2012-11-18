@@ -46,6 +46,9 @@ class UsersController < ApplicationController
   end
 
   def login
+    unless request.env["HTTP_REFERER"].blank?
+      session[:redirect_to] = request.env["HTTP_REFERER"]
+    end
   end
 
   protected
