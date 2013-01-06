@@ -12,10 +12,10 @@
     = f.select :airport, "<option>To LAX</option><option>To Ontario</option><option>From LAX</option><option>From Ontario</option>", :selected => "2"
   .field
     = f.label "when is your flight?"
-    = f.datetime_select :flighttime, :order => [:day, :month, :year], :prompt => {:day => 'day', :month => "month", :year => "year", :hour => "hour", :minute => "minute", }, :ampm => true, :minute_step => 15, :start_year => 2011, :end_year => 2012
+    = f.datetime_select :flighttime, :order => [:day, :month, :year], :prompt => {:day => 'day', :month => "month", :year => "year", :hour => "hour", :minute => "minute", }, :ampm => true, :minute_step => 15, :start_year => 2012, :end_year => 2014
   .field.time-div
     = f.label "when would you like your ride to leave?"
     = f.time_select :ridetime, :ampm => true
   .actions
     = f.submit
-    
+
