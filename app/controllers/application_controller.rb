@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :current_user
-  
+
   def sort_rides(rides)
     rides.sort! {|a,b| a.flighttime <=> b.flighttime}
     rides = rides.find_all{|ride| ride.flighttime > Time.now}
@@ -15,17 +15,17 @@ class ApplicationController < ActionController::Base
     def signed_in?
       !!current_user
     end
-    
+
     def checker
       unless current_user
         redirect_to root_url
       end
     end
-    
+
     def login_helper
       unless current_user
         session[:redirect_to] = :back
-        redirect_to '/auth/facebook'
+        redirect_to '/users/login'
       end
     end
 
