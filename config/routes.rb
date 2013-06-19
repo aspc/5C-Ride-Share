@@ -17,6 +17,7 @@ Shuttleshare::Application.routes.draw do
   get "sessions/create"
   get "sessions/destroy"
   get "sessions/login"
+  post "sessions/logout_hook"
 
   post "mailer/comment"
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121117225204) do
+ActiveRecord::Schema.define(:version => 20130619000604) do
 
   create_table "rides", :force => true do |t|
     t.string   "airport"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20121117225204) do
     t.string   "email"
     t.boolean  "email_pref"
     t.string   "clef_id"
+    t.datetime "logged_out_at"
   end
 
 end

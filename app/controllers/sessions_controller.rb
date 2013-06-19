@@ -30,6 +30,7 @@ class SessionsController < ApplicationController
       # Log the authorizing user in.
     end
 
+    session[:time] = Time.now.utc
     self.current_user = @user
     unless session[:redirect_to].blank?
       begin
@@ -45,6 +46,28 @@ class SessionsController < ApplicationController
   def destroy
     session[:user_id] = nil
     redirect_to root_url
+  end
+
+  def logout_hook
+    token = params[:logout_token]
+
+    data = {
+      body: {
+        logout_token: token,
+        app_id: APP_ID,
+        app_secret: APP_SECRET
+      }
+    }
+
+    response = HTTParty.post('https://clef.io/api/v1/logout', data)
+
+    if response['success']
+      @user = User.find_by_clef_id(response['clef_id'].to_s)
+      @user.logged_out_at = Time.now.utc
+      @user.save
+    end
+
+    render :nothing => true
   end
 
   def failure
