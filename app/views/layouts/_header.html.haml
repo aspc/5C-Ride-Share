@@ -1,9 +1,16 @@
 #header-container
   #top-header
-    %h1
-      %a{:href => root_url} 5C ride share
+    .brand
+      %a.aspc-logo{:href => 'http://aspc.pomona.edu'}
+        %img.aspc-logo__image{:src => root_url + 'assets/aspc_logo.png'}
+        .aspc-logo__text
+          .aspc-logo__title
+            ASPC
+          .aspc-logo__subtitle
+            Associated Students of Pomona College
+      %h1.brand__title
+        %a{:href => root_url} 5C ride share
 
-    <div class="fb-like" data-href="http://5crideshare.com" data-send="false" data-width="250" data-show-faces="true"></div>
     -if signed_in?
       = link_to "sign out", :controller => "sessions", :action => "destroy"
     -else

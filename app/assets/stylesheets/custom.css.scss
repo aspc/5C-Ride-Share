@@ -67,30 +67,11 @@ background-color: #FFBABA;
 {
 	#top-header
 	{
-		height: 78px;
+		height: 96px;
+		min-width: 1200px;
 		background: $baseblue;
 		border-bottom: 1px solid $basep1;
 		margin: 0 50px 0 50px;
-		.fb-like
-		{
-			float: left;
-			height: 72px;
-			margin:6px 0 0 6px;
-		}
-		h1
-		{
-			float: left;
-			margin-left: 20px;
-			font-size: 2em;
-			a
-			{
-				text-decoration: none;
-				background: none;
-				color: $basep2;
-				font-weight: bold;
-			}
-
-		}
 		a
 		{
 			margin: 24px 0 0 0;
@@ -117,6 +98,8 @@ background-color: #FFBABA;
 	{
 		width: 600px;
 		margin: auto;
+		margin-top: 10px;
+
 		a
 		{
 			float: left;
@@ -142,6 +125,65 @@ background-color: #FFBABA;
 			color: $basep2;
 		}
 	}
+
+	.brand {
+		float: left;
+
+		.aspc-logo {
+			font-family: Futura, "Gill Sans", Verdana, Arial;
+			border: none !important;
+			background: none !important;
+			margin: 0 !important;
+			padding: 0 !important;
+			width: auto !important;
+			height: auto !important;
+			float: left !important;
+
+			&:hover {
+				background: none;
+				border: none;
+			}
+
+			.aspc-logo__image {
+				width: 130px;
+				float: left;
+			}
+
+			.aspc-logo__text {
+				text-align: left;
+				margin-left: 10px;
+				margin-top: 30px;
+				float: left;
+
+				.aspc-logo__title {
+					font-size: 32px;
+				}
+
+				.aspc-logo__subtitle {
+					font-size: 14px;
+				}
+			}
+		}
+
+		.brand__title {
+			float: left;
+			margin-left: 80px;
+			font-size: 3em;
+
+			a {
+				height: auto !important;
+				padding: 10px !important;
+				background: none !important;
+				color: $basep2 !important;
+
+				&:hover {
+					background: $basep2 !important;
+					color: $basem1 !important;
+				}
+			}
+		}
+	}
+
 	#create-new-ride
 	{
 		width: 480px;
@@ -180,12 +222,16 @@ background-color: #FFBABA;
 	{
 		text-decoration: underline;
 	}
+
+	.fb-like {
+		margin-top: 7px;
+	}
 }
 //Airport Select Page
 #index
 {
 	margin: auto;
-	margin-top: 75px;
+	margin-top: 50px;
 	div
 	{
 		margin-left: 100px;

@@ -2,8 +2,7 @@
 <html>
 <head>
   <title><%=@title%></title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
+  <link href="/assets/application.css?body=1" media="screen" rel="stylesheet" type="text/css">  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <%= favicon_link_tag%>
   <meta property="og:title" content="5C ride share" />
@@ -16,18 +15,18 @@
   <div id="fb-root"></div>
 
   <script>
-    var current_user_id = <%= 
-      if @current_user 
+    var current_user_id = <%=
+      if @current_user
         @current_user.id
-      else -1 
+      else -1
       end%>
   </script>
 
-  
+
   <%= render 'layouts/header'%>
-  
+
   <div class = "main-container">
-    
+
     <%if flash[:notice]%>
     <p class = "notice">
       <%=notice%>
@@ -38,7 +37,7 @@
       <%=alert%>
     </p>
     <%end%>
-    
+
     <%= yield %>
   </div>
 
