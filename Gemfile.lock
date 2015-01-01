@@ -91,7 +91,6 @@ GEM
     multi_test (0.1.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
-    newrelic_rpm (3.10.0.279)
     nokogiri (1.6.3.1)
       mini_portile (= 0.6.0)
     notifier (0.5.0)
@@ -203,6 +202,7 @@ DEPENDENCIES
   omniauth
   omniauth-facebook
   pg
+  rack
   rack-no-www
   rails (= 3.2.11)
   railties

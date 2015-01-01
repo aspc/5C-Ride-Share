@@ -15,7 +15,8 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'pg', :group => :production
 gem 'rdiscount'
-gem 'rack-no-www'
+gem 'rack'
+gem 'rack-no-www', :require => "rack/no-www"
 gem 'httparty'
 
 
