@@ -1,9 +1,19 @@
 ---
+aspc_logo.png: aspc_logo-9f712aeacf46afb7e656596766f47b29.png
+aspc_logo/index.png: aspc_logo-9f712aeacf46afb7e656596766f47b29.png
+aspc_logo.psd: aspc_logo-d885972564def95758c1ab2b3f7b0fca.psd
+aspc_logo/index.psd: aspc_logo-d885972564def95758c1ab2b3f7b0fca.psd
 badge.jpg: badge-c80595d6e3a6b5ed07480b2819531910.jpg
 badge/index.jpg: badge-c80595d6e3a6b5ed07480b2819531910.jpg
+og_image.png: og_image-120c83545c8cbe18a50c55533702053c.png
+og_image/index.png: og_image-120c83545c8cbe18a50c55533702053c.png
+og_image.psd: og_image-8fe20f049380115e86af6d1ed4abd553.psd
+og_image/index.psd: og_image-8fe20f049380115e86af6d1ed4abd553.psd
 rails.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
 rails/index.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
-application.js: application-570f5a4569a0d0e677ee733542a6dfce.js
-application/index.js: application-570f5a4569a0d0e677ee733542a6dfce.js
-application.css: application-442c65710c30cf9ea01b228206fbecd7.css
-application/index.css: application-442c65710c30cf9ea01b228206fbecd7.css
+application.js: application-286b846730688df020e1c7985979001a.js
+application/index.js: application-286b846730688df020e1c7985979001a.js
+application.css: application-abc9559624a3074a75c60438505de1a8.css
+application/index.css: application-abc9559624a3074a75c60438505de1a8.css
+jquery.min.map: jquery.min-e146c025d6a36461812bc97143056bd3.map
+jquery/index.min.map: jquery.min-e146c025d6a36461812bc97143056bd3.map
