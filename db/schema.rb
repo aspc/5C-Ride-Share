@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(:version => 20130619000604) do
   create_table "rides", :force => true do |t|
     t.string   "airport"
     t.datetime "flighttime"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.integer  "owner_id"
     t.time     "ridetime"
   end
@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(:version => 20130619000604) do
   create_table "users", :force => true do |t|
     t.string   "fb_id"
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.string   "fbimage"
     t.string   "fblink"
     t.string   "email"
