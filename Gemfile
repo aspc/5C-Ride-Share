@@ -9,8 +9,6 @@ gem 'rails', '3.2.11'
 
 gem 'newrelic_rpm'
 
-gem 'sqlite3'
-
 gem 'json'
 gem 'haml'
 gem 'omniauth'
