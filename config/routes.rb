@@ -1,4 +1,7 @@
 Shuttleshare::Application.routes.draw do
+  match "/" => redirect("http://5crideshare.com")
+  match "*path" => redirect("http://5crideshare.com")
+
   resources :rides do
     collection do
       get 'join'
