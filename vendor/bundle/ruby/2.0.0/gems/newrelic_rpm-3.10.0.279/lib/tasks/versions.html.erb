@@ -1,0 +1,27 @@
+<h2 id="<%= anchor %>"><%= title %></h2>
+<table>
+  <thead>
+    <th>Name</th>
+    <th>Supported</th>
+    <th>Deprecated</th>
+    <th>Experimental</th>
+  </thead>
+  <% for version in versions %>
+    <tr>
+      <td><b><%= version.name %></b></td>
+      <td><%= version_list(version.supported) %></td>
+      <td><%= version_list(version.deprecated) %></td>
+      <td><%= version_list(version.experimental) %></td>
+    </tr>
+    <% if version.notes %>
+    <tr>
+      <td></td>
+      <td colspan=3>
+        <% for note in version.notes %>
+          <%= note %><br/>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  <% end %>
+</table>

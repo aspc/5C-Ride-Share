@@ -1,0 +1,14 @@
+if defined?(RUBY_ENGINE) && RUBY_ENGINE == "rbx"
+  # Excon 0.10.0 doesn't seem to work on Rubinius 2.2.10
+  excon_versions = %w(0.25.0 0.24.0 0.19.0 0.18.0)
+else
+  excon_versions = %w(0.25.0 0.24.0 0.19.0 0.18.0 0.10.0)
+end
+
+excon_versions.each do |excon_version|
+  gemfile <<-RB
+    gem 'excon', '~> #{excon_version}'
+    gem 'rack'
+    gem 'json', :platforms => [:rbx, :mri_18]
+  RB
+end

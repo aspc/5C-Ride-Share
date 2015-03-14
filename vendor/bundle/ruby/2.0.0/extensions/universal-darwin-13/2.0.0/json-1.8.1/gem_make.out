@@ -1,0 +1,12 @@
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/bin/ruby -r ./siteconf20140812-58184-12hsf8d.rb extconf.rb 
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+compiling parser.c
+linking shared-object json/ext/parser.bundle
+
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 parser.bundle ./.gem.20140812-58184-1vde4wo/json/ext
+installing default parser libraries
