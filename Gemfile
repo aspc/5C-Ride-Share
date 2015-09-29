@@ -1,55 +1,39 @@
 source 'http://rubygems.org'
-ruby '2.0.0'
 
-gem 'railties'
+gem 'railties', '3.2.11'
 gem 'rails', '3.2.11'
 
-# Bundle edge Rails instead:
-# gem 'rails',     :git => 'git://github.com/rails/rails.git'
+gem 'sqlite3', '1.3.10'
 
-gem 'newrelic_rpm'
-
-gem 'json'
-gem 'haml'
-gem 'omniauth'
-gem 'omniauth-facebook'
-gem 'pg', :group => :production
-gem 'rdiscount'
-gem 'rack-no-www'
-gem 'httparty'
+gem 'json', '1.8.3'
+gem 'haml', '3.1.7'
+gem 'omniauth', '1.1.1'
+gem 'omniauth-facebook', '1.4.1'
+gem 'pg', '0.14.1', :group => :production
+gem 'rdiscount', '1.6.8'
+gem 'rack-no-www', '0.0.2'
+gem 'httparty', '0.10.0'
 
 
 group :test, :development do
-  gem 'rspec-rails'
-  gem 'cucumber-rails'
-  gem 'ZenTest'
-  gem 'spork'
-  gem 'autotest'
-  gem 'autotest-growl'
-  gem 'test_notifier'
-  gem 'webrat'
-  gem 'database_cleaner'
+  gem 'rspec-rails', '2.12.2'
+  gem 'ZenTest', '4.11.0'
+  gem 'spork', '0.9.2'
+  gem 'autotest', '4.4.6'
+  gem 'autotest-growl', '0.2.16'
+  gem 'test_notifier', '1.0.1'
+  gem 'webrat', '0.7.3'
+  gem 'database_cleaner', '0.9.1'
+  gem 'test-unit', '3.1.4'
+  gem 'cucumber-rails', '1.3.0'
 end
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails'
-  gem 'coffee-rails'
-  gem 'uglifier'
+  gem 'sass-rails', '3.2.5'
+  gem 'coffee-rails', '3.2.2'
+  gem 'uglifier', '1.3.0'
 end
 
-gem 'jquery-rails'
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# Use unicorn as the web server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'ruby-debug'
-
+gem 'jquery-rails', '2.1.4'
