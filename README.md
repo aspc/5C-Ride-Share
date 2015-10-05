@@ -1,4 +1,4 @@
-The source code for the Pomona Shuttle Share application.
+The source code for the Pomona Shuttle Share application. Created by Jesse Pollak, maintained by ASPC.
 
 # Local development #
 
@@ -13,7 +13,7 @@ The source code for the Pomona Shuttle Share application.
 9. Start the server with rack: `bundle exec rackup`
 10. Navigate to appropriate port on your browser: `http://localhost:9292`
 
-# Produdction #
+# Production #
 
 5CRideshare is hosted on Heroku. Fortunately the gems always seem to compile there correctly, so there is no manual configuration to do on that front! As of May 2015, the app is deployed on the Cedar-14 stack, using Ruby 2.0.0 and Rails 3.2.11. A legacy version of the app still exists on the Bamboo stack, but has been deprecated. All traffic to `5crideshare.com` is now configured to point to the new Cedar-14 infrastructure. The Heroku appname is `fivecrideshare-cedar` and is owned by Matt Dahl.
 
