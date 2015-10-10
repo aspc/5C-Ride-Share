@@ -3,8 +3,6 @@ source 'http://rubygems.org'
 gem 'railties', '3.2.11'
 gem 'rails', '3.2.11'
 
-gem 'sqlite3', '1.3.10'
-
 gem 'json', '1.8.3'
 gem 'haml', '4.0.5'
 gem 'omniauth', '1.2.2'
@@ -15,6 +13,7 @@ gem 'rack-no-www', '0.0.2'
 gem 'httparty', '0.13.1'
 
 group :test, :development do
+  gem 'sqlite3', '1.3.10'
   gem 'rspec-rails', '3.0.2'
   gem 'ZenTest', '4.11.0'
   gem 'spork', '0.9.2'
