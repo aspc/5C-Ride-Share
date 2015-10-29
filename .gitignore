@@ -16,6 +16,9 @@ bin
 /log/*.log
 /tmp
 
+# Ignore precompiled assets.
+public/assets
+
 # Apple
 .DS_Store
 
