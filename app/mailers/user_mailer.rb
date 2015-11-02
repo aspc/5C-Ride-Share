@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default :from => "5C Ride Share <5crideshare@gmail.com>"
+  default :from => "5C Ride Share <system@aspc.pomona.edu>"
   
   def new_rider_email(user, rider, rideurl)
     @user = user
