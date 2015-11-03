@@ -8,8 +8,10 @@ Shuttleshare::Application.initialize!
 ActionMailer::Base.smtp_settings = {
   :address => 'smtp.gmail.com',
   :port => 465,
+  :domain => "aspc.pomona.edu",
   :user_name => "system@aspc.pomona.edu",
   :password => YAML.load_file("#{Rails.root}/config/email.credentials.yml")['password'],
-  :authentication => 'plain',
+  :authentication => :login,
+  :ssl => true,
   :enable_starttls_auto => true
 }
