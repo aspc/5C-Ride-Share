@@ -26,13 +26,17 @@
     %b flight date:
     = @ride.flighttime.strftime("%B %d %Y")
 
-  %p
-    %b flight time:
-    = @ride.flighttime.strftime("%I:%M %p")
   -if @ride.airport.split(" ")[0] == "To" && @ride.ridetime
+    %p
+      %b flight time:
+      = @ride.flighttime.strftime("%I:%M %p")
     %p
       %b preferred ride time:
       = @ride.ridetime.strftime("%I:%M %p")
+  -else
+    %p
+      %b shuttle arrival time:
+      = @ride.flighttime.strftime("%I:%M %p")
 
   %p
     %b current riders:

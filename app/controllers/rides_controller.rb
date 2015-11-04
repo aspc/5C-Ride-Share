@@ -84,13 +84,13 @@ class RidesController < ApplicationController
       redirect_to root_url
     end
   end
-  
+
   def join
     @ride = Ride.find(params[:id])
     unless @ride.users.find_by_id(@current_user.id)
       if @ride.users
         @ride.users.each do |user|
-          if user.email && user.email_pref  && user.email != ""
+          if user.email && user.email_pref && user.email != ""
             UserMailer.new_rider_email(user, @current_user, url_for(@ride)).deliver
           end
         end

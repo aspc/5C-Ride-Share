@@ -38,10 +38,12 @@ $(document).ready(function() {
 		menu.onchange = function() {
 			if(menu.value === "From LAX" || menu.value === "From Ontario") {
 				ridetime.hide(500);
+        $("#js-flight-label").html("When is your shuttle arriving?");
 			}
 			if(menu.value === "To LAX" || menu.value === "To Ontario") {
 				ridetime.show(500);
-			}
+        $("#js-flight-label").html("When is your flight?");
+      }
 		}
 	}
 	
