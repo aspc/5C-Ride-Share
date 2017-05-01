@@ -31,6 +31,8 @@ Shuttleshare::Application.configure do
   # config.force_ssl = true
 
   # See everything in the log (default is :info)
+  config.logger = Logger.new(STDOUT)
+  config.logger.level = Logger::DEBUG
   config.log_level = :debug
 
   # Use a different logger for distributed setups
