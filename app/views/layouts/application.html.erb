@@ -2,7 +2,8 @@
 <html>
 <head>
   <title><%=@title%></title>
-  <link href="/assets/application.css?body=1" media="screen" rel="stylesheet" type="text/css">  <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag "application" %>
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <%= favicon_link_tag%>
   <meta property="og:title" content="5C ride share" />
