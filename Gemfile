@@ -1,12 +1,12 @@
 source 'http://rubygems.org'
 
-gem 'railties', '3.2.11'
-gem 'rails', '3.2.11'
+gem 'railties', '3.2.22.4'
+gem 'rails', '3.2.22.4'
 
-gem 'json', '1.8.3'
+gem 'json', '1.8.6'
 gem 'haml', '4.0.5'
-gem 'omniauth', '1.2.2'
-gem 'omniauth-facebook', '2.0.0'
+gem 'omniauth', '1.4.2'
+gem 'omniauth-facebook', '4.0.0'
 gem 'pg', '0.14.1', :group => :production
 gem 'rdiscount', '1.6.8'
 gem 'rack-no-www', '0.0.2'
