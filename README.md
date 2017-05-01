@@ -3,19 +3,21 @@ The source code for the Pomona Shuttle Share application. Created by Jesse Polla
 # Local development #
 
 1. [Install rvm](https://rvm.io/)
-2. Install ruby 2.0.0: `rvm install ruby-2.0.0-p643`
+2. Install ruby 2.4.1: `rvm install ruby-2.4.1`
 3. Go to your cloned repository: `cd /path/to/5crideshare/`
 4. Install bundler: `gem install bundler`
 5. Install dependencies: `bundle install`
 6. Run the migrations for develop: `bundle exec rake db:migrate`
-7. Run the migrations for the tests: `RAILS_ENV=test bundle exec rake db:migrate`
-8. Run the limited tests that we have: `bundle exec rspec spec/`
-9. Start the server with rack: `bundle exec rackup`
-10. Navigate to appropriate port on your browser: `http://localhost:9292`
+7. Start the server with rails on localhost: `rails s -b 127.0.0.1`
+
+# Tests #
+
+1. Run the migrations for the tests: `RAILS_ENV=test bundle exec rake db:migrate`
+2. Run the limited tests that we have: `bundle exec rspec spec/`
 
 # Production #
 
-5CRideshare is hosted on Heroku. Fortunately the gems always seem to compile there correctly, so there is no manual configuration to do on that front! As of May 2015, the app is deployed on the Cedar-14 stack, using Ruby 2.0.0 and Rails 3.2.11. A legacy version of the app still exists on the Bamboo stack, but has been deprecated. All traffic to `5crideshare.com` is now configured to point to the new Cedar-14 infrastructure. The Heroku appname is `fivecrideshare-cedar` and is owned by Matt Dahl.
+5CRideshare is hosted on Heroku. As of May 2017, the app is deployed on the Cedar-14 stack, using Ruby 2.4.1 and Rails 4. A legacy version of the app still exists on the Bamboo stack, but has been deprecated. All traffic to `5crideshare.com` is now configured to point to the new Cedar-14 infrastructure. The Heroku appname is `fivecrideshare-cedar` and is owned by Matt Dahl.
 
 To deploy:
 
