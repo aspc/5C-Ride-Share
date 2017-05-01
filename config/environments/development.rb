@@ -29,5 +29,7 @@ Shuttleshare::Application.configure do
   config.assets.debug = true
   
   #fix cache messages
-  config.action_dispatch.rack_cache = {:metastore => "rails:/", :entitystore => "rails:/", :verbose => false} 
+  config.action_dispatch.rack_cache = {:metastore => "rails:/", :entitystore => "rails:/", :verbose => false}
+
+  config.eager_load = false
 end

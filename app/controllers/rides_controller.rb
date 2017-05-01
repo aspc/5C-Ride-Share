@@ -42,7 +42,8 @@ class RidesController < ApplicationController
   end
 
   def create
-    @ride = Ride.new(params[:ride])
+    @ride = Ride.new(params[:ride].permit("airport", "flighttime(1i)", "flighttime(2i)", "flighttime(3i)", "flighttime(4i)", "flighttime(5i)",
+    "ridetime(1i)","ridetime(2i)","ridetime(3i)","ridetime(4i)","ridetime(5i)"))
     @ride.owner_id = @current_user.id
     @ride.users << @current_user
 
@@ -150,7 +151,7 @@ class RidesController < ApplicationController
       :title => "5C ride share :: to ontario",
       :airport => "To Ontario",
       :ftype => "Departure",
-      :rides => Ride.find_all_by_airport("To Ontario"),
+      :rides => Ride.where(airport: "To Ontario").all,
       :check => true
       }
     when "2"
@@ -158,7 +159,7 @@ class RidesController < ApplicationController
       :title => "5C ride share :: from ontario",
       :airport => "From Ontario",
       :ftype => "Arrival",
-      :rides => Ride.find_all_by_airport("From Ontario"),
+      :rides =>  Ride.where(airport: "From Ontario").all,
       :check => true
       }
     when "3"
@@ -166,7 +167,7 @@ class RidesController < ApplicationController
       :title => "5C ride share :: to LAX",
       :airport => "To LAX",
       :ftype => "Departure",
-      :rides => Ride.find_all_by_airport("To LAX"),
+      :rides => Ride.where(airport: "To LAX").all,
       :check => true
       }
     when "4"
@@ -174,7 +175,7 @@ class RidesController < ApplicationController
       :title => "5C ride share :: from LAX",
       :airport => "From LAX",
       :ftype => "Arrival",
-      :rides => Ride.find_all_by_airport("From LAX"),
+      :rides => Ride.where(airport: "From LAX").all,
       :check => true
       }
     else

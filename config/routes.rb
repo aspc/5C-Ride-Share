@@ -21,9 +21,9 @@ Shuttleshare::Application.routes.draw do
 
   post "mailer/comment"
 
-  root :to => "Rides#index"
+  root :to => "rides#index"
 
-  match '/auth/:provider/callback', :to => 'sessions#create'
-  match '/auth/failure', :to => 'sessions#failure'
+  match '/auth/:provider/callback', :to => 'sessions#create', via: [:get, :post]
+  match '/auth/failure', :to => 'sessions#failure', via: [:get, :post]
 
 end

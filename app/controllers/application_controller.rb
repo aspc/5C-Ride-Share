@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   protected
 
     def current_user
-      @current_user ||= User.find_by_id(session[:user_id])
+      @current_user ||= User.find_by_id(session[:user_id]) if session[:user_id]
 
       if @current_user && @current_user.logged_out_at && @current_user.logged_out_at > session[:time]
         @current_user = nil
