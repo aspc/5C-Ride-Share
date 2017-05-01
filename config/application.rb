@@ -48,7 +48,7 @@ module Shuttleshare
     config.time_zone = 'Pacific Time (US & Canada)'
 
     if Rails.env.production?
-      config.middleware.insert_before Rack::Lock, Rack::NoWWW
+      config.middleware.insert_before Rack::Runtime, Rack::NoWWW
     end
   end
 end
