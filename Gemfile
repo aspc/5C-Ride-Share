@@ -7,7 +7,7 @@ gem 'json', '1.8.6'
 gem 'haml', '4.0.5'
 gem 'omniauth', '1.4.2'
 gem 'omniauth-facebook', '4.0.0'
-gem 'pg', '0.14.1', :group => :production
+gem 'pg', '0.20.0', :group => :production
 gem 'rdiscount', '1.6.8'
 gem 'rack-no-www', '0.0.2'
 gem 'httparty', '0.13.1'
