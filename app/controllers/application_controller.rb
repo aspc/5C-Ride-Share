@@ -3,9 +3,9 @@ class ApplicationController < ActionController::Base
   before_filter :current_user
 
   def sort_rides(rides)
-    rides.sort_by(&:flighttime)
-    rides.find_all{|ride| ride.flighttime > Time.now}
+    rides.find_all{|ride| ride.flighttime > Time.now}.sort_by!(&:flighttime)
   end
+
   protected
 
     def current_user
