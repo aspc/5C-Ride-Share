@@ -258,5 +258,8 @@ DEPENDENCIES
   uglifier (= 3.2.0)
   webrat (= 0.7.3)
 
+RUBY VERSION
+   ruby 2.4.1p111
+
 BUNDLED WITH
    1.14.6
