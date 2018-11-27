@@ -29,10 +29,16 @@ group :test, :development do
   gem 'pry-byebug'
   gem 'activerecord-deprecated_finders', require: 'active_record/deprecated_finders'
   gem 'sqlite3'
+
+  gem 'capistrano', '~> 3.11', require: false
+  gem 'capistrano-rails', '~> 1.4', require: false
+  gem 'capistrano3-puma', '~> 3.1.1', require: false
+  gem 'capistrano-rvm', require: false
+  gem 'capistrano-rake', require: false
 end
 
 group :test do
-  gem 'cucumber-rails', '1.4.5'
+  gem 'cucumber-rails', '1.4.5', require: false
 end
 
 # Gems used only for assets and not required
