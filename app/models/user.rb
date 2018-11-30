@@ -1,6 +1,18 @@
 class User < ActiveRecord::Base
   has_and_belongs_to_many :rides
   validates :name, :presence => true
+  validates :email, :presence => true, :uniqueness => true
+  validate :is_password_necessary
+
+  enum school: [ :unknown, :pomona, :claremont_mckenna, :harvey_mudd, :scripps, :pitzer ]
+
+  def is_password_necessary
+    return if is_cas_authenticated
+
+    if password.blank?
+      errors.add(:password, 'needs to be present if is_cas_authenticated is false')
+    end
+  end
 
   def self.find_from_hash(hash)
     user = find_by_fb_id(hash['uid'])
