@@ -1,4 +1,7 @@
 Shuttleshare::Application.routes.draw do
+
+  root :to => 'rides#index'
+
   resources :rides do
     collection do
       get 'join'
@@ -14,16 +17,18 @@ Shuttleshare::Application.routes.draw do
     end
   end
 
-  get "sessions/create"
-  get "sessions/destroy"
-  get "sessions/login"
-  post "sessions/logout_hook"
+  scope controller: :sessions do
+    get   'unauthorized' => :not_authorized
+    get   'login' => :new
+    match 'logout' => :destroy, :via => [:get, :destroy]
+    match 'login/cas' => :create_via_cas, :via => [:get, :post]
+    match 'login/credentials' => :create_via_credentials, :via => [:get, :post]
+    match 'login/create_account' => :create_new_account, :via => [:get, :post]
+  end
 
-  post "mailer/comment"
+  post 'mailer/comment'
 
-  root :to => "rides#index"
-
-  match '/auth/:provider/callback', :to => 'sessions#create', via: [:get, :post]
-  match '/auth/failure', :to => 'sessions#failure', via: [:get, :post]
+  #match '/auth/:provider/callback', :to => 'sessions#create', via: [:get, :post]
+  #match '/auth/failure', :to => 'sessions#failure', via: [:get, :post]
 
 end

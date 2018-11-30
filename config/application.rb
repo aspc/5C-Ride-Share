@@ -50,5 +50,8 @@ module Shuttleshare
     if Rails.env.production?
       config.middleware.insert_before Rack::Runtime, Rack::NoWWW
     end
+
+    # Pomona College SSO
+    config.CAS_SERVER_URL = 'https://ssocas.campus.pomona.edu/cas'
   end
 end

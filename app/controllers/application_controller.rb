@@ -9,16 +9,9 @@ class ApplicationController < ActionController::Base
   protected
 
     def current_user
-      @current_user ||= User.find_by_id(session[:user_id]) if session[:user_id]
+      @current_user ||= User.find_by_id(session[:current_user_id]) if session[:current_user_id]
 
-      if @current_user && @current_user.logged_out_at && @current_user.logged_out_at > session[:time]
-        @current_user = nil
-        session[:user_id] = nil
-        session[:time] = nil
-        nil
-      else
-        @current_user
-      end
+      @current_user
     end
 
     def signed_in?
@@ -34,7 +27,7 @@ class ApplicationController < ActionController::Base
     def login_helper
       unless current_user
         session[:redirect_to] = :back
-        redirect_to '/users/login'
+        redirect_to login_path
       end
     end
 
@@ -42,6 +35,22 @@ class ApplicationController < ActionController::Base
 
     def current_user=(user)
       @current_user = user
-      session[:user_id] = user.id
+      session[:current_user_id] = user.id
     end
+
+    def setup_application_controller_environment
+      if(Rails.env.development?)
+        # Login as a fake user in development mode
+        # NOTE: this user will _never_ be available in production
+        dev_user = User.find_or_create_by(:email => "dev_user@pomonastudents.org",
+                                          :name => "Dev User",
+                                          :is_cas_authenticated => false,
+                                          :is_admin => true,
+                                          :school => :pomona,
+                                          :password => "dev_password");
+
+        session[:current_user_id] = dev_user.id
+      end
+    end
+
 end

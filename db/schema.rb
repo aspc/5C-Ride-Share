@@ -9,35 +9,35 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended to check this file into your version control system.
+# It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130619000604) do
+ActiveRecord::Schema.define(version: 20181129221335) do
 
-  create_table "rides", :force => true do |t|
-    t.string   "airport"
+  create_table "rides", force: :cascade do |t|
+    t.string   "airport",    limit: 255
     t.datetime "flighttime"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.integer  "owner_id"
     t.time     "ridetime"
   end
 
-  create_table "rides_users", :force => true do |t|
+  create_table "rides_users", force: :cascade do |t|
     t.integer "ride_id"
     t.integer "user_id"
   end
 
-  create_table "users", :force => true do |t|
-    t.string   "fb_id"
-    t.string   "name"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-    t.string   "fbimage"
-    t.string   "fblink"
-    t.string   "email"
+  create_table "users", force: :cascade do |t|
+    t.string   "name",                 limit: 255
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
+    t.string   "email",                limit: 255
     t.boolean  "email_pref"
-    t.string   "clef_id"
     t.datetime "logged_out_at"
+    t.boolean  "is_cas_authenticated",             default: false, null: false
+    t.boolean  "is_admin",                         default: false, null: false
+    t.integer  "school",                           default: 0,     null: false
+    t.string   "password"
   end
 
 end
