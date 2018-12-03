@@ -1,4 +1,7 @@
 # This file is used by Rack-based servers to start the application.
 
 require ::File.expand_path('../config/environment',  __FILE__)
-run Shuttleshare::Application
+map '/5crideshare' do
+  run Shuttleshare::Application
+end
+

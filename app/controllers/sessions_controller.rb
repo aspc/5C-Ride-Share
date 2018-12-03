@@ -61,7 +61,7 @@ class SessionsController < ApplicationController
 
   def create_via_cas
     next_page = '/'
-    service_url = 'https://' + root_url + Rails.application.routes.url_helpers.login_cas_path + '?next=' + CGI::escape(next_page)
+    service_url = 'https://' + 'aspc.pomonastudents.org/5crideshare' + Rails.application.routes.url_helpers.login_cas_path + '?next=' + CGI::escape(next_page)
     ticket = params[:ticket]
 
     # if request doesn't have CAS Ticket, direct them there

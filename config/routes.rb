@@ -1,5 +1,4 @@
 Shuttleshare::Application.routes.draw do
-
   root :to => 'rides#index'
 
   resources :rides do
@@ -30,5 +29,4 @@ Shuttleshare::Application.routes.draw do
 
   #match '/auth/:provider/callback', :to => 'sessions#create', via: [:get, :post]
   #match '/auth/failure', :to => 'sessions#failure', via: [:get, :post]
-
 end

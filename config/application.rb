@@ -53,5 +53,8 @@ module Shuttleshare
 
     # Pomona College SSO
     config.CAS_SERVER_URL = 'https://ssocas.campus.pomona.edu/cas'
+
+    # Temporary subpath alias
+    config.relative_url_root = '/5crideshare'
   end
 end
