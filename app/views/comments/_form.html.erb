@@ -1,0 +1,4 @@
+<%= form_for([@ride, @ride.comments.build]) do |f| %>
+  <%= f.text_area :comment %>
+  <%= f.submit "add a comment" %>
+<% end %>

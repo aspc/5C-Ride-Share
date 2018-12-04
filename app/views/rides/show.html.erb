@@ -1,0 +1,66 @@
+<script>
+</script>
+
+<div id="show-container">
+  <div id="backedit">
+    <% if @current_user %>
+      <% unless @ride.users.find_by_id(@current_user.id) %>
+        <%= link_to 'Join Ride',{ :controller => "rides", :action => "join", :id => @ride }, :confirm => "Are you sure you want to join this ride?" %>
+      <% else %>
+        <%= link_to 'Leave Ride', { :controller => "rides", :action => "leave", :id => @ride }, :confirm => "Are you sure you want to leave this ride?" %>
+      <% end %>
+      <% if @ride.owner_id == @current_user.id %>
+        <%= link_to 'Edit', edit_ride_path(@ride) %>
+      <% end %>
+    <% else %>
+      <%= link_to 'Join Ride',{ :controller => "rides", :action => "join", :id => @ride }, :confirm => "You must sign in before you can join a ride. Would you like to sign in now?" %>
+    <% end %>
+    <% if :back == "/rides/new" %>
+      <%= link_to root_ul %>
+    <% else %>
+      <%= link_to "Back", :back %>
+    <% end %>
+  </div>
+
+  <p>
+    <b>type of ride:</b>
+    <%= @ride.airport %>
+  </p>
+
+  <p>
+    <b>flight date:</b>
+    <%= @ride.flighttime.strftime("%B %d %Y") %>
+  </p>
+
+  <% if @ride.airport.split(" ")[0] == "To" && @ride.ridetime %>
+    <p>
+      <b>flight time:</b>
+      <%= @ride.flighttime.strftime("%I:%M %p")%>
+    </p>
+
+    <p>
+      <b>preferred ride time:</b>
+      <%= @ride.ridetime.strftime("%I:%M %p")%>
+    </p>
+  <% else %>
+    <p>
+      <b>shuttle arrival time:</b>
+      <%= @ride.flighttime.strftime("%I:%M %p")%>
+    </p>
+  <% end %>
+
+  <p><b>current riders:</b></p>
+  <div class="riders">
+    <% @users.each do |user| %>
+      <div class="rider">
+        <span class="rider-name"><%= user.name %>
+      </div>
+    <% end %>
+    <div class="clear"></div>
+  </div>
+
+  <div class="comments">
+    <%= render "comments/form"%>
+    <%= render @ride.comments %>
+  </div>
+</div>
