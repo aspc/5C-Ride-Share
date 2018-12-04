@@ -25,6 +25,8 @@ set :rails_env, :production
 
 # Linked files are shared between deploys
 append :linked_files, "puma.rb" # Server configuration
+append :linked_files, "db/production.sqlite3" # MySQL database
+
 append :linked_dirs, "tmp/pids" # Runfiles
 append :linked_dirs, "tmp/sockets" # Runfiles
 append :linked_dirs, "log" # Log files
