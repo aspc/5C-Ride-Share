@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
     end
 
     def login_helper
-      unless current_user
+      unless signed_in?
         session[:redirect_to] = :back
         redirect_to login_path
       end
@@ -47,7 +47,7 @@ class ApplicationController < ActionController::Base
                                           :name => "Dev User",
                                           :is_cas_authenticated => false,
                                           :is_admin => true,
-                                          :school => :pomona,
+                                          :school => User.schools[:pomona],
                                           :password => "dev_password");
 
         session[:current_user_id] = dev_user.id

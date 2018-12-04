@@ -1,4 +1,5 @@
 Shuttleshare::Application.routes.draw do
+  ActiveAdmin.routes(self)
   root :to => 'rides#index'
 
   resources :rides do

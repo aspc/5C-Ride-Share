@@ -14,6 +14,8 @@ gem 'httparty', '0.13.1'
 
 gem 'rack-cache', '1.7.0'
 
+gem 'activeadmin'
+
 group :test, :development do
   gem 'rspec-rails', '3.5.2'
   gem 'ZenTest', '4.11.0'

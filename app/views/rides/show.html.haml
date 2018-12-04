@@ -44,8 +44,7 @@
   .riders
     -@users.each do |user|
       .rider
-        %img{:src => user.fbimage}
-        .rider-name=link_to user.name, user.fblink
+        .rider-name=user.name
     .clear
 
   .booking
