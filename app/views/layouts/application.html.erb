@@ -31,7 +31,8 @@
 
     <%if flash[:notice]%>
     <p class = "notice">
-      <%=notice%>
+      <%=notice%><br>
+      <%=flash[:notice_subtitle]%>
     </p>
     <%end%>
     <%if flash[:end]%>

@@ -1,9 +1,0 @@
-#login-container
-    .facebook
-        =link_to "log in with CAS", :controller => "sessions", :action => "create_via_cas"
-    .or
-        %h1
-            or
-    .facebook
-        =link_to "log in with password", :controller => "sessions", :action => "create_via_credentials"
-        =link_to "create an account", :controller => "sessions", :action => "create_new_account"
