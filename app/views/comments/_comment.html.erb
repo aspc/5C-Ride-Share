@@ -1,4 +1,5 @@
 <p>
   Comment: <%= comment.comment %>
   <%= link_to 'Delete', [comment.ride, comment], method: :delete, class: "button is-danger", data: { confirm: 'Are you sure?' } %>
+  Submitter: <%= comment.get_user %>
 </p>

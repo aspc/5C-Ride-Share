@@ -1,4 +1,5 @@
 <%= form_for([@ride, @ride.comments.build]) do |f| %>
   <%= f.text_area :comment %>
+  <%= f.hidden_field :user_id, :value => @current_user.id %>
   <%= f.submit "add a comment" %>
 <% end %>
