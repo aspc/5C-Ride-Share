@@ -1,0 +1,63 @@
+<%= form_for(@ride) do |f| %>
+  <% if @ride.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ride.errors.count, "error") %></h2> prohibited this ride from being saved:
+
+      <ul>
+        <% @ride.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "I want to request a free ride to ONT/LAX funded by ASPC. By doing so, I acknowledge that if I join a ride outside this program, either via a ride publicly listed on the 5C Rideshare website or otherwise, I will forfeit my request for a free ride." %>
+    <%= f.check_box :is_aspc, { id: "aspc-checkbox", onclick: "toggleForms()" } %>
+  </div>
+  <div class="field">
+    <%= f.label "type of ride?" %>
+    <%= f.select :airport, ["To LAX", "To Ontario", "From LAX", "From Ontario"], :selected => "2" %>
+  </div>
+  <div class="field">
+    <%= f.label "when is your flight?", id: "js-flight-label" %>
+    <%= f.datetime_select :flighttime, :order => [:day, :month, :year], :prompt => {:day => 'day', :month => "month", :year => "year", :hour => "hour", :minute => "minute", }, :ampm => true, :minute_step => 15, :start_year => 2018, :end_year => 2019 %>
+  </div>
+
+  <div id="non-aspc-free">
+    <div class="field time-div">
+      <%= f.label "when would you like your ride to leave?" %>
+      <%= f.time_select :ridetime, :ampm => true %>
+    </div>
+  </div>
+
+  <div id="aspc-free">
+    <div class="field">
+      <%= f.label "which of these ride times would be suitable for you?" %>
+      <%= f.select :airport, ["To LAX", "To Ontario", "From LAX", "From Ontario"] %>
+    </div>
+    <div class="field">
+      <%= f.label "If none of the above rides work, when would you like your ride to leave?" %>
+      <%= f.time_select :ridetime, :ampm => true %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<script>
+  function toggleForms() {
+    var nonAspc = document.getElementById("non-aspc-free");
+    var aspc = document.getElementById("aspc-free");
+    var aspcCheckbox = $("#aspc-checkbox")[0];
+
+    // nonAspc.style.display = aspcCheckbox.checked ? "none" : "block";
+    // aspc.style.display = aspcCheckbox.checked ? "block" : "none";
+    nonAspc.style.visibility = aspcCheckbox.checked ? "hidden" : "visible";
+    aspc.style.visibility = aspcCheckbox.checked ? "visible" : "hidden";
+  }
+  
+  toggleForms();
+</script>

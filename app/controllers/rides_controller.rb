@@ -42,7 +42,7 @@ class RidesController < ApplicationController
   end
 
   def create
-    @ride = Ride.new(params[:ride].permit("airport", "flighttime(1i)", "flighttime(2i)", "flighttime(3i)", "flighttime(4i)", "flighttime(5i)",
+    @ride = Ride.new(params[:ride].permit("is_aspc", "airport", "flighttime(1i)", "flighttime(2i)", "flighttime(3i)", "flighttime(4i)", "flighttime(5i)",
     "ridetime(1i)","ridetime(2i)","ridetime(3i)","ridetime(4i)","ridetime(5i)"))
     @ride.owner_id = @current_user.id
     @ride.users << @current_user
@@ -189,7 +189,7 @@ class RidesController < ApplicationController
 
   def ride_params
     if params[:ride]
-      params.require(:ride).permit("airport", "flighttime(1i)", "flighttime(2i)", "flighttime(3i)", "flighttime(4i)", "flighttime(5i)",
+      params.require(:ride).permit("is_aspc", "airport", "flighttime(1i)", "flighttime(2i)", "flighttime(3i)", "flighttime(4i)", "flighttime(5i)",
       "ridetime(1i)","ridetime(2i)","ridetime(3i)","ridetime(4i)","ridetime(5i)")
     end
   end
