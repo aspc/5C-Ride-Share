@@ -62,7 +62,7 @@ class RidesController < ApplicationController
     @ride = Ride.find(params[:id])
     
     respond_to do |format|
-      if @ride.update_attributes(params[:ride])
+      if @ride.update_attributes(ride_params)
         format.html { redirect_to @ride, :notice => 'Ride was successfully updated.' }
         format.json { head :ok }
       else
@@ -185,6 +185,12 @@ class RidesController < ApplicationController
     end
   end
   
+  private
 
-  
+  def ride_params
+    if params[:ride]
+      params.require(:ride).permit("airport", "flighttime(1i)", "flighttime(2i)", "flighttime(3i)", "flighttime(4i)", "flighttime(5i)",
+      "ridetime(1i)","ridetime(2i)","ridetime(3i)","ridetime(4i)","ridetime(5i)")
+    end
+  end
 end

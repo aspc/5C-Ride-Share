@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_filter :login_helper, :only => [:create, :destroy]
+
   def create
     @ride = Ride.find(params[:ride_id])
     @comment = @ride.comments.create(params[:comment].permit("comment", "commit", "ride_id", "user_id"))

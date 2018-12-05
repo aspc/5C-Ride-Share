@@ -32,22 +32,20 @@
     <%= @ride.flighttime.strftime("%B %d %Y") %>
   </p>
 
-  <% if @ride.airport.split(" ")[0] == "To" && @ride.ridetime %>
-    <p>
-      <b>flight time:</b>
+  <p>
+    <% if @ride.airport.split(" ")[0] == "To" && @ride.ridetime %>
+      <b>flight departure time:</b>
       <%= @ride.flighttime.strftime("%I:%M %p")%>
-    </p>
+    <% else %>
+      <b>flight arrival time:</b>
+      <%= @ride.flighttime.strftime("%I:%M %p")%>
+    <% end %>
+  </p>
 
-    <p>
-      <b>preferred ride time:</b>
-      <%= @ride.ridetime.strftime("%I:%M %p")%>
-    </p>
-  <% else %>
-    <p>
-      <b>shuttle arrival time:</b>
-      <%= @ride.flighttime.strftime("%I:%M %p")%>
-    </p>
-  <% end %>
+  <p>
+    <b>preferred ride time:</b>
+    <%= @ride.ridetime.strftime("%I:%M %p")%>
+  </p>
 
   <p><b>current riders:</b></p>
   <div class="riders">
@@ -60,7 +58,7 @@
   </div>
 
   <div class="comments">
-    <%= render "comments/form"%>
+    <% if @current_user %><%= render "comments/form" %><% end %>
     <%= render @ride.comments %>
   </div>
 </div>
