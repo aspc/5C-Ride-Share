@@ -76,18 +76,14 @@
     <div class="field">
       <%= f.label "If none of the above rides work, when would you like your ride to leave?" %>
       <%= f.datetime_select :ridetime, :order => [:day, :month, :year], :prompt => {:day => 'day', :month => "month", :year => "year", :hour => "hour", :minute => "minute", }, :ampm => true, :minute_step => 15, :start_year => 2018, :end_year => 2019 %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit %>
-    </div>
+      <%= f.submit "Submit" %>
   <% end %>
 
   
 </div>
 
 <script>
-  $(document).ready(function() {
+  function refreshAspcRides() {
     $("#aspc-free").find("#ride_airport").change(function() {
       var airport = $(this).val();
 
@@ -105,7 +101,9 @@
         });
       });
     });
-  });
+  }
+
+  $(document).ready(refreshAspcRides());
   
   var nonAspc = $("#non-aspc-free")[0];
   var aspc = $("#aspc-free")[0];
