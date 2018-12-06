@@ -1,7 +1,9 @@
-<p>
-  Comment: <%= comment.comment %>
-  <% if comment.user_id == session["current_user_id"] %>
-    <%= link_to 'Delete', [comment.ride, comment], method: :delete, class: "button is-danger", data: { confirm: 'Are you sure?' } %>
-  <% end %>
-  Submitter: <%= comment.get_user %>
-</p>
+<% if comment.comment %>
+  <p>
+    Comment: <%= comment.comment %>
+    <% if comment.user_id == session["current_user_id"] %>
+      <%= link_to 'Delete', [comment.ride, comment], method: :delete, class: "button is-danger", data: { confirm: 'Are you sure?' } %>
+    <% end %>
+    Submitter: <%= comment.get_user %>
+  </p>
+<% end %>
