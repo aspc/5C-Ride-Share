@@ -2,7 +2,12 @@ The source code for the Pomona Shuttle Share application. Created by Jesse Polla
 
 # To-do
 
-- Sort comments in reverse chronological order
+- Styling
+- Make sure user auth and ride creation/commenting works with CAS
+- Update comments
+  - Sort comments in reverse chronological order
+  - Link to email address of commenter (current user model has no email field!)
+  - Display when comment was created
 - Form validation
 - Update documentation
 
