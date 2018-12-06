@@ -70,10 +70,6 @@
     </div>
     <div class="field">
       <%= f.label "which of these ride times would be suitable for you?" %>
-      <%# Ride.where(is_aspc: true).each do |r| %>
-        <%#= button_to r.ridetime, { :controller => "rides", :action => "join", :id => r }, { :method => :get } %>
-        <p><%#= link_to r.airport + " " + r.ridetime.strftime("%m/%d/%Y %I:%M%p"), { :controller => "rides", :action => "join", :id => r }, :confirm => "Are you sure you want to join this ride?" %></p>
-      <%# end %>
       <div class="field" id="existing-aspc-rides">
       </div>
     </div>

@@ -3,7 +3,6 @@ The source code for the Pomona Shuttle Share application. Created by Jesse Polla
 # To-do
 
 - Sort comments in reverse chronological order
-- Replace textbox with dropdown for school in login page
 - Form validation
 - Update documentation
 
