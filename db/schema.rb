@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181205070314) do
+ActiveRecord::Schema.define(version: 20181205211603) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20181205070314) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "owner_id"
-    t.time     "ridetime"
+    t.datetime "ridetime"
     t.boolean  "is_aspc"
   end
 

@@ -28,3 +28,8 @@ To deploy:
 Heroku provides a free Postgres database hosted on EC2 that we use. You can manage that by logging into the Heroku dashboard online, or using the standard CLI with the connection details found on the dashboard.
 
 ASPC manages the DNS records for this site too, unlike those of Peninsula which ITS takes care of.
+
+# To-do
+
+- Sort comments in reverse chronological order
+- Replace textbox with dropdown for school in login page

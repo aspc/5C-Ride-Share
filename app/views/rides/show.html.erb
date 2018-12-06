@@ -43,6 +43,11 @@
   </p>
 
   <p>
+    <b>ride date:</b>
+    <%= @ride.ridetime.strftime("%B %d %Y") %>
+  </p>
+
+  <p>
     <b>preferred ride time:</b>
     <%= @ride.ridetime.strftime("%I:%M %p")%>
   </p>
@@ -57,8 +62,10 @@
     <div class="clear"></div>
   </div>
 
-  <div class="comments">
-    <% if @current_user %><%= render "comments/form" %><% end %>
-    <%= render @ride.comments %>
-  </div>
+  <% if @ride.comments %>
+    <div class="comments">
+      <% if @current_user %><%= render "comments/form" %><% end %>
+      <%= render @ride.comments %>
+    </div>
+  <% end %>
 </div>
