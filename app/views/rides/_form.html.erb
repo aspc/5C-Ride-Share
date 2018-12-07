@@ -84,26 +84,37 @@
 
 <script>
   function refreshAspcRides() {
-    $("#aspc-free").find("#ride_airport").change(function() {
-      var airport = $(this).val();
+    var airport = $("#aspc-free").find("#ride_airport").val();
+    console.log("test");
 
-      switch (airport) {
-        case "To Ontario": var airport_id = 1; break;
-        case "From Ontario": var airport_id = 2; break;
-        case "To LAX": var airport_id = 3; break;
-        case "From LAX": var airport_id = 4; break;
-      }
-      
-      $.get("/5crideshare/rides/airport.json", { id: airport_id }, function(data) {
-        $("#existing-aspc-rides").html("");
-        $.each(data, function(index, value) {
-          $("#existing-aspc-rides").append("<p><a href='/5crideshare/rides/join?id=" + value.id + "'>" + value.airport + " " + value.ridetime + "</a></p>");
-        });
+    switch (airport) {
+      case "To Ontario": var airport_id = 1; break;
+      case "From Ontario": var airport_id = 2; break;
+      case "To LAX": var airport_id = 3; break;
+      case "From LAX": var airport_id = 4; break;
+    }
+    
+    $.get("/5crideshare/rides/airport.json", { id: airport_id }, function(data) {
+      $("#existing-aspc-rides").html("");
+      $.each(data, function(index, value) {
+        var timeSelects = [];
+        for (var i = 1; i <= 5; i++) {
+          timeSelects.push($("#aspc-free").find("#ride_flighttime_" + i + "i").val());
+        }
+        var flighttime = new Date(timeSelects[0], timeSelects[1]-1, timeSelects[2], timeSelects[3], timeSelects[4], 0);
+        $("#existing-aspc-rides").append("<p><a href='/5crideshare/rides/join?id=" + value.id + "&flighttime=" + flighttime.getTime() + "'>" + value.airport + " " + value.ridetime + "</a></p>");
       });
     });
   }
 
-  $(document).ready(refreshAspcRides());
+  $(document).ready(function() {
+    $("#aspc-free").find("#ride_airport").change(refreshAspcRides);
+    $("#aspc-free").find("#ride_flighttime_1i").change(refreshAspcRides);
+    $("#aspc-free").find("#ride_flighttime_2i").change(refreshAspcRides);
+    $("#aspc-free").find("#ride_flighttime_3i").change(refreshAspcRides);
+    $("#aspc-free").find("#ride_flighttime_4i").change(refreshAspcRides);
+    $("#aspc-free").find("#ride_flighttime_5i").change(refreshAspcRides);
+  });
   
   var nonAspc = $("#non-aspc-free")[0];
   var aspc = $("#aspc-free")[0];

@@ -50,10 +50,6 @@ class RidesController < ApplicationController
     @ride.owner_id = @current_user.id
     @ride.users << @current_user
 
-    @current_user.flighttime = @ride.flighttime
-
-    # puts "test", @ride.ridetime, params[:ride]["ridetime"], Ride.find(params[:ride]["ridetime"]).inspect, "endtest"
-
     respond_to do |format|
       if @ride.save
         format.html { redirect_to @ride, :notice => 'You successfully created a ride! Start the conversation below, so that when others comment you get a Facebook notification. Safe travels!' }
@@ -94,7 +90,13 @@ class RidesController < ApplicationController
   end
 
   def join
-    @ride = Ride.find(params[:id]))
+    @ride = Ride.find(params[:id])
+
+    if params[:flighttime]
+      @current_user.flighttime = Time.zone.at(params[:flighttime].to_i/1000)
+      @current_user.save
+    end
+
     unless @ride.users.find_by_id(@current_user.id)
       if @ride.users
         @ride.users.each do |user|
@@ -104,8 +106,6 @@ class RidesController < ApplicationController
         end
       end
       @ride.users << @current_user
-
-      @current_user.flighttime = @ride.flighttime
       
       respond_to do |format|
         format.html { redirect_to @ride, :notice => 'You successfully joined this ride. You should comment below, so when other riders comment, you get a Facebook notification. Safe Travels!' }
