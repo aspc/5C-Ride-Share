@@ -1,0 +1,26 @@
+=content_for :header do
+  =render 'layouts/page_header', :title => "Available Rides"
+
+- if @rides.length > 0
+  %table.table.is-striped.is-hoverable.is-fullwidth
+    %thead
+      %tr
+        %th Ride Day
+        %th Ride Time
+        %th Riders
+    %tbody
+      - @rides.each do |ride|
+        - unless ride.users.count == 0 || ride.is_aspc
+          %tr
+            %th
+              %a{:href => ride_path(ride)}
+                =ride.flighttime.strftime("%B %d, %Y")
+            %td
+              =ride.ridetime.strftime("%I:%M %p")
+            %td
+              =ride.users.size
+- else
+  %h2.subtitle
+    It looks like there are no rides to this airport right now. Would you like to
+    =link_to "create one?", new_ride_path
+

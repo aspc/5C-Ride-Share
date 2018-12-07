@@ -1,71 +1,58 @@
-<script>
-</script>
+<%= content_for :header do %>
+  <%= render 'layouts/page_header', :title => "Ride Details", :subtitle => "#{@ride.airport} on #{@ride.flighttime.strftime("%B %d, %Y")}" %>
+<% end %>
 
-<div id="show-container">
-  <div id="backedit">
-    <% if @current_user %>
-      <% unless @ride.users.find_by_id(@current_user.id) %>
-        <%= link_to 'Join Ride',{ :controller => "rides", :action => "join", :id => @ride }, :confirm => "Are you sure you want to join this ride?" %>
+<div class="columns">
+  <div class="column">
+    <p>
+      <% if @ride.airport.split(" ")[0] == "To" && @ride.ridetime %>
+        <b>Flight Departure:</b>
+        <%= @ride.flighttime.strftime("%I:%M %p")%>
       <% else %>
-        <%= link_to 'Leave Ride', { :controller => "rides", :action => "leave", :id => @ride }, :confirm => "Are you sure you want to leave this ride?" %>
+        <b>Flight Arrival:</b>
+        <%= @ride.flighttime.strftime("%I:%M %p")%>
       <% end %>
-      <% if @ride.owner_id == @current_user.id %>
-        <%= link_to 'Edit', edit_ride_path(@ride) %>
+    </p>
+  </div>
+  <div class="column">
+    <p>
+      <b>Preferred ride time:</b>
+      <%= @ride.ridetime.strftime("%I:%M %p")%>
+    </p>
+  </div>
+  <div class="column">
+    <div class="has-text-right-tablet">
+      <% if @current_user %>
+        <% unless @ride.users.find_by_id(@current_user.id) %>
+          <%= link_to 'Join Ride',{ :controller => "rides", :action => "join", :id => @ride }, :confirm => "Are you sure you want to join this ride?", :class => "button is-primary" %>
+        <% else %>
+          <%= link_to 'Leave Ride', { :controller => "rides", :action => "leave", :id => @ride }, :confirm => "Are you sure you want to leave this ride?", :class => "button is-danger" %>
+        <% end %>
+        <% if @ride.owner_id == @current_user.id %>
+          <%= link_to 'Edit', edit_ride_path(@ride), :class => "button is-lighter" %>
+        <% end %>
+      <% else %>
+        <%= link_to 'Join Ride',{ :controller => "rides", :action => "join", :id => @ride }, :confirm => "You must sign in before you can join a ride. Would you like to sign in now?", :class => "button is-primary" %>
       <% end %>
-    <% else %>
-      <%= link_to 'Join Ride',{ :controller => "rides", :action => "join", :id => @ride }, :confirm => "You must sign in before you can join a ride. Would you like to sign in now?" %>
-    <% end %>
-    <% if :back == "/rides/new" %>
-      <%= link_to root_ul %>
-    <% else %>
-      <%= link_to "Back", :back %>
-    <% end %>
+    </div>
   </div>
+</div>
+<hr />
 
-  <p>
-    <b>type of ride:</b>
-    <%= @ride.airport %>
-  </p>
-
-  <p>
-    <b>flight date:</b>
-    <%= @ride.flighttime.strftime("%B %d %Y") %>
-  </p>
-
-  <p>
-    <% if @ride.airport.split(" ")[0] == "To" && @ride.ridetime %>
-      <b>flight departure time:</b>
-      <%= @ride.flighttime.strftime("%I:%M %p")%>
-    <% else %>
-      <b>flight arrival time:</b>
-      <%= @ride.flighttime.strftime("%I:%M %p")%>
-    <% end %>
-  </p>
-
-  <p>
-    <b>ride date:</b>
-    <%= @ride.ridetime.strftime("%B %d %Y") %>
-  </p>
-
-  <p>
-    <b>preferred ride time:</b>
-    <%= @ride.ridetime.strftime("%I:%M %p")%>
-  </p>
-
-  <p><b>current riders:</b></p>
-  <div class="riders">
-    <% @users.each do |user| %>
-      <div class="rider">
-        <span class="rider-name"><%= user.name %>
-      </div>
-    <% end %>
-    <div class="clear"></div>
-  </div>
-
-  <% if @ride.comments %>
-    <div class="comments">
-      <% if @current_user %><%= render "comments/form" %><% end %>
-      <%= render @ride.comments %>
+<div class="comments">
+  <p><b>Current riders:</b></p>
+  <% @users.each do |user| %>
+    <span class="tag"><%= user.name %></span>
+  <% end %>
+  <br />
+  <br />
+  <% @ride.comments.each do |comment| %>
+    <div class="message is-info">
+    <div class="message-body">
+    <%= render comment %>
+    </div>
     </div>
   <% end %>
+  <br />
+  <% if @current_user %><%= render "comments/form" %><% end %>
 </div>

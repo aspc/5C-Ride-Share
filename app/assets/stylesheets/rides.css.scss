@@ -10,6 +10,24 @@ $baseblue: rgb(79,169,184);
 $basep1: rgb(116,192,207);
 $basep2: rgb(241,247,226);
 
+/*#call-to-action
+{
+  padding: 20px;
+  border: 3px solid whitesmoke;
+  border-radius: 25px;
+}*/
+
+.index-notification {
+  height: 305px;
+}
+
+.column-divider {
+  border-left:1px solid gainsboro;
+  position: relative;
+  left: 50%;
+  height:100%;
+}
+
 div#new-ride
 {
 	width: 600px;
@@ -23,27 +41,6 @@ div#edit-ride
 	{
 		text-align: center;
 		text-decoration: underline;
-	}
-}
-form
-{
-	.field
-	{
-		margin-bottom: 50px;
-	}
-	label
-	{
-		font-size: 1.5em;
-		font-weight: bold;
-		color: $basep2;
-		display: block;
-		margin-bottom: 10px;
-		letter-spacing: 2px;
-	}
-	input
-	{
-		color: $basem2;
-		display: block;
 	}
 }
 

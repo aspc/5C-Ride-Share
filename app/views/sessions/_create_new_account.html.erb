@@ -1,0 +1,34 @@
+<%= form_tag({controller: "sessions", action: "create_new_account"}, method: "get") do %>
+  <div class="field">
+    <label class="label">Email</label>
+    <div class="control">
+      <%= text_field_tag :email, nil, :placeholder => "email", :class => "input" %>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Name</label>
+    <div class="control">
+      <%= text_field_tag :name, nil, :placeholder => "name", :class => "input" %>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Password</label>
+    <div class="control">
+      <%= password_field_tag :password, nil, :placeholder => "password", :class => "input" %>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">College Affiliation</label>
+    <div class="control">
+      <div class="select">
+        <%= select_tag(:school, options_for_select([["Claremont McKenna", "claremont_mckenna"], ["Harvey Mudd", "harvey_mudd"], ["Pitzer", "pitzer"], ["Scripps", "scripps"]])) %>
+      </div>
+    </div>
+  </div>
+  <hr />
+   <%= submit_tag "Create account", :class => "button is-info" %>
+<% end %>
+</div>

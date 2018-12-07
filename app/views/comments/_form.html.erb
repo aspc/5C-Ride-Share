@@ -1,5 +1,7 @@
 <%= form_for([@ride, @ride.comments.build]) do |f| %>
-  <%= f.text_area :comment %>
+  <%= f.text_area :comment, :class => "textarea", :placeholder => "Any comment you post will be public" %>
   <%= f.hidden_field :user_id, :value => @current_user.id %>
-  <%= f.submit "add a comment" %>
+  <br />
+
+  <%= f.submit "Post comment", :class => "button is-light is-small" %>
 <% end %>

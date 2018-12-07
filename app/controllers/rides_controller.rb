@@ -133,11 +133,12 @@ class RidesController < ApplicationController
   
   def airport
     info = airport_helper(params[:id])
+    check = info[:check]
+
     @title = info[:title]
     @airport = info[:airport]
     @ftype = info[:ftype]
     @rides = info[:rides]
-    check = info[:check]
     @rides = sort_rides(@rides)
     @urides = @current_user.rides.to_set if @current_user
     if check

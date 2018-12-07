@@ -1,31 +1,76 @@
-<div id="login-container">
-  <div class="facebook">
-    <%= link_to "log in with CAS", :controller => "sessions", :action => "create_via_cas" %>
+<% content_for :header do %>
+  <%= render 'layouts/page_header', :title => "Sign In", :subtitle => "Log in to create and join rides" %>
+<% end %>
+
+<div class="message is-dark">
+  <div class="message-header has-background-grey-light">Pomona Students</div>
+  <div class="message-body">
+    <p class="subtitle">Sign in with the CAS Login System you know and love! Authenticate with your Pomona account.</p>
+    <p><%= button_to 'Sign in', :login_cas, :class => 'button is-info' %></p>
   </div>
+</div>
 
-  <div class="or">
-    <h1>or</h1>
-  </div>
-
-  <div class="facebook">
-    <div>
-      <h3>log in with password</h3>
-      <%= form_tag({controller: "sessions", action: "create_via_credentials"}, method: "get") do %>
-        <%= text_field_tag(:email, nil, :placeholder => "email") %>
-        <%= password_field_tag(:password, nil, :placeholder => "password") %>
-        <%= submit_tag("log in") %>
-      <% end %>
-    </div>
-
-    <div>
-      <h3>create an account</h3>
-      <%= form_tag({controller: "sessions", action: "create_new_account"}, method: "get") do %>
-        <%= text_field_tag(:email, nil, :placeholder => "email") %>
-        <%= password_field_tag(:password, nil, :placeholder => "password") %>
-        <%= text_field_tag(:name, nil, :placeholder => "name") %>
-        <%= select_tag(:school, options_for_select([["Pomona", "pomona"], ["Claremont McKenna", "claremont_mckenna"], ["Harvey Mudd", "harvey_mudd"], ["Pitzer", "pitzer"], ["Scripps", "scripps"]])) %>
-        <%= submit_tag("log in") %>
-      <% end %>
+<div class="message is-dark">
+  <div class="message-header has-background-grey-light">5C Students</div>
+  <div class="message-body">
+    <p class="subtitle">Sign in or create an account specific to this website.</p>
+    <hr/>
+    <div class="buttons">
+      <span class="button is-info" id="sign-in-to-account-button">Sign in</span>
+      <span class="button is-light" id="create-account-button">Create an account</span>
     </div>
   </div>
 </div>
+
+<div class="modal" id="sign-in-to-account-modal">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <div class="columns">
+      <div class="column">
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">Login to Existing Account</p>
+            <button class="delete" aria-label="close"></button>
+          </header>
+          <section class="modal-card-body">
+            <%= render 'sessions/login_to_existing_account' %>
+          </section>
+          <footer class="modal-card-foot"></footer>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="create-account-modal">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <div class="columns">
+      <div class="column">
+        <div class="modal-card"></div>
+        <header class="modal-card-head">
+          <p class="modal-card-title">Create New Account</p>
+          <button class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+          <%= render 'sessions/create_new_account' %>
+        </section>
+        <footer class="modal-card-foot"></footer>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    (function () {
+        $(".delete").click(function () {
+            $(".modal.is-active").removeClass('is-active');
+        });
+        $("#sign-in-to-account-button").click(function () {
+            $("#sign-in-to-account-modal").addClass('is-active');
+        });
+        $("#create-account-button").click(function () {
+            $("#create-account-modal").addClass('is-active');
+        });
+    })();
+</script>

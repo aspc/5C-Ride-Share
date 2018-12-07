@@ -1,10 +1,14 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  # before_filter :setup_application_controller_environment
+  #before_filter :setup_application_controller_environment
   before_filter :current_user
 
   def sort_rides(rides)
-    rides.find_all{|ride| ride.flighttime > Time.now}.sort_by!(&:flighttime)
+    if rides
+      rides.find_all{|ride| ride.flighttime > Time.now}.sort_by!(&:flighttime)
+    else
+      nil
+    end
   end
 
   protected

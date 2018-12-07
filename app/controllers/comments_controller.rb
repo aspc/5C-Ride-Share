@@ -8,11 +8,13 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @ride = Ride.find(params[:ride_id])
-    @comment = @ride.comments.find(params[:id])
-    if @comment.user_id == session["current_user_id"]
+    @comment = Comment.find(params[:id])
+    @ride = @comment.ride
+
+    if @comment.user_id == @current_user.id
       @comment.destroy
     end
+
     redirect_to ride_path(@ride)
   end
 end
