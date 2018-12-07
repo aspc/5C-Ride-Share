@@ -2,8 +2,12 @@ The source code for the Pomona Shuttle Share application. Created by Jesse Polla
 
 # To-do
 
+- Remove users from other rides once they join a ride (i.e. prevent users from joining multiple rides)
+- Change table headings and datetimes displayed on "your rides" page
 - Styling
+  - Change font colour of dropdowns in forms
 - Make sure user auth and ride creation/commenting works with CAS
+- Update static notices to remove references to Facebook
 - Update comments
   - Sort comments in reverse chronological order
   - Link to email address of commenter (current user model has no email field!)
