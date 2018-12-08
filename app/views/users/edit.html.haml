@@ -11,10 +11,6 @@
         %ul
         -@ride.errors.full_messages.each do |msg|
           %li= msg
-    
-    -@current_user.rides_users.each do |itinerary|
-      %p
-        =itinerary.flighttime
 
     .field
       = f.label "Name", :class => "label"
