@@ -16,6 +16,7 @@ class RidesController < ApplicationController
 
   def show
     @ride = Ride.find(params[:id])
+    @ride_user = RidesUser.find_by(:ride => @ride, :user => @current_user)
     @users = @ride.users
 
     respond_to do |format|
@@ -42,17 +43,30 @@ class RidesController < ApplicationController
   end
 
   def create
-    # @ride = Ride.new(params[:ride].permit("is_aspc", "airport", "flighttime(1i)", "flighttime(2i)", "flighttime(3i)", "flighttime(4i)", "flighttime(5i)",
-    # "ridetime(1i)","ridetime(2i)","ridetime(3i)","ridetime(4i)","ridetime(5i)"))
-    @ride = Ride.new(params[:ride].permit("is_aspc", "airport", "flighttime", "ridetime"))
+    @ride = Ride.new(ride_params)
 
-    if @ride.is_aspc != true then @ride.is_aspc = false end
+    if @ride.is_aspc && @ride.existing_aspc_ride.present?
+      return redirect_to join_rides_path(:id => @ride.existing_aspc_ride, :flighttime => @ride.flighttime)
+    end
+
     @ride.owner_id = @current_user.id
     @ride.users << @current_user
 
+    if @ride.is_aspc != true then @ride.is_aspc = false end
+
     respond_to do |format|
       if @ride.save
-        format.html { redirect_to @ride, :notice => 'You successfully created a ride! Start the conversation below, so that when others comment you get a Facebook notification. Safe travels!' }
+
+        @ride_user = RidesUser.find_by(:ride => @ride, :user => @current_user)
+        @ride_user.flighttime = @ride.flighttime
+        @ride_user.save
+
+        notice_text = 'You successfully created a ride! When other riders comment, you\'ll get an email notification. Safe Travels!'
+        if @ride.is_aspc
+          notice_text = 'Your free ride request has been submitted to ASPC for processing. We will notify all applicants of their ride status soon. Thank you!'
+        end
+
+        format.html { redirect_to @ride, :notice => notice_text }
         format.json { render :json => @ride, :status => :created, :location => @ride }
       else
         format.html { render :action => "new" }
@@ -92,23 +106,37 @@ class RidesController < ApplicationController
   def join
     @ride = Ride.find(params[:id])
 
-    if params[:flighttime]
-      @current_user.flighttime = Time.zone.at(params[:flighttime].to_i/1000)
-      @current_user.save
-    end
 
     unless @ride.users.find_by_id(@current_user.id)
       if @ride.users
         @ride.users.each do |user|
-          if user.email && user.email_pref && user.email != ""
-            UserMailer.new_rider_email(user, @current_user, url_for(@ride)).deliver
+          if user.email && user.email_pref && user.email != "" && !@ride.is_aspc?
+            begin
+              UserMailer.new_rider_email(user, @current_user, url_for(@ride)).deliver
+            rescue
+              # Oops, an email error
+            end
           end
         end
       end
+
       @ride.users << @current_user
+      @ride.save
+
+      if params[:flighttime]
+        @ride_user = RidesUser.find_by(:ride => @ride, :user => @current_user)
+        @ride_user.flighttime = params[:flighttime]
+        @ride_user.save
+      end
       
       respond_to do |format|
-        format.html { redirect_to @ride, :notice => 'You successfully joined this ride. You should comment below, so when other riders comment, you get a Facebook notification. Safe Travels!' }
+
+        notice_text = 'You successfully joined this ride. When other riders comment, you\'ll get an email notification. Safe Travels!'
+        if @ride.is_aspc
+          notice_text = 'Your free ride request has been submitted to ASPC for processing. We will notify all applicants of their ride status soon. Thank you!'
+        end
+
+        format.html { redirect_to @ride, :notice => notice_text }
         format.json { head :ok }
       end
     else
@@ -199,8 +227,8 @@ class RidesController < ApplicationController
 
   def ride_params
     if params[:ride]
-      params.require(:ride).permit("is_aspc", "airport", "flighttime(1i)", "flighttime(2i)", "flighttime(3i)", "flighttime(4i)", "flighttime(5i)",
-      "ridetime(1i)","ridetime(2i)","ridetime(3i)","ridetime(4i)","ridetime(5i)")
+      params.require(:ride).permit("airport", "flighttime(1i)", "flighttime(2i)", "flighttime(3i)", "flighttime(4i)", "flighttime(5i)",
+      "ridetime(1i)","ridetime(2i)","ridetime(3i)","ridetime(4i)","ridetime(5i)", "is_aspc", "existing_aspc_ride")
     end
   end
 end

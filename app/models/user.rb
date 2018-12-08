@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
-  has_and_belongs_to_many :rides
+  has_many :rides_users
+  has_many :rides, :through => :rides_users
+
   validates :name, :presence => true
   validates :email, :presence => true, :uniqueness => true
   validate :is_password_necessary

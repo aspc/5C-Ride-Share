@@ -12,7 +12,9 @@
         -@ride.errors.full_messages.each do |msg|
           %li= msg
     
-    %p= @current_user.flighttime
+    -@current_user.rides_users.each do |itinerary|
+      %p
+        =itinerary.flighttime
 
     .field
       = f.label "Name", :class => "label"

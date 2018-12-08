@@ -43,19 +43,19 @@
     </div>
 
     <div class="field">
-      <%= f.label "where are you going?", :class => 'label' %>
+      <%= f.label "Where are you going?", :class => 'label' %>
       <div class="control">
         <%= f.select :airport, ["To LAX", "To Ontario", "From LAX", "From Ontario"], {:selected => "2" }, {:class => 'select'} %>
       </div>
     </div>
     <div class="field">
-      <%= f.label "when is your flight?", id: "js-flight-label", :class => 'label' %>
+      <%= f.label "When is your flight?", id: "js-flight-label", :class => 'label' %>
       <div class="control">
         <%= f.datetime_select :flighttime, { :order => [:day, :month, :year], :prompt => {:day => 'day', :month => "month", :year => "year", :hour => "hour", :minute => "minute", }, :ampm => true, :minute_step => 15, :start_year => 2018, :end_year => 2019 }, { :class => 'select' } %>
       </div>
     </div>
     <div class="field time-div">
-      <%= f.label "when would you like your ride to leave?", :class => 'label' %>
+      <%= f.label "When would you like your ride to leave?", :class => 'label' %>
       <div class="control">
         <%= f.datetime_select :ridetime, { :order => [:day, :month, :year], :prompt => {:day => 'day', :month => "month", :year => "year", :hour => "hour", :minute => "minute", }, :ampm => true, :minute_step => 15, :start_year => 2018, :end_year => 2019 }, { :class => 'select' } %>
       </div>
@@ -86,13 +86,13 @@
     </div>
 
     <div class="field">
-      <%= f.label "where are you going?", :class => 'label' %>
+      <%= f.label "Where are you going?", :class => 'label' %>
       <div class="control">
         <%= f.select :airport, ["To LAX", "To Ontario", "From LAX", "From Ontario"], {:selected => "2" }, {:class => 'select'} %>
       </div>
     </div>
     <div class="field">
-      <%= f.label "when is your flight?", id: "js-flight-label", :class => 'label' %>
+      <%= f.label "When is your flight?", id: "js-flight-label", :class => 'label' %>
       <div class="control">
         <%= f.datetime_select :flighttime, { :order => [:day, :month, :year], :prompt => {:day => 'day', :month => "month", :year => "year", :hour => "hour", :minute => "minute", }, :ampm => true, :minute_step => 15, :start_year => 2018, :end_year => 2019 }, { :class => 'select' } %>
       </div>
@@ -100,7 +100,10 @@
 
     <div class="field" id="existing-aspc-rides-section">
       <%= f.label "Are any of these ride times suitable for your schedule?", :class => "label" %>
-      <div class="field" id="existing-aspc-rides">
+      <div class="control">
+        <div class="select">
+          <%= f.select :existing_aspc_ride, [], {:selected => "0"}, {:id => "existing-aspc-rides"} %>
+        </div>
       </div>
     </div>
 
@@ -126,7 +129,10 @@
           $.get("/5crideshare/rides/airport.json", {id: airportId}, function (data) {
               $("#existing-aspc-rides").html("");
               $.each(data, function (index, value) {
-                  $("#existing-aspc-rides").append("<p><a href='/5crideshare/rides/join?id=" + value.id + "'>" + value.airport + " " + value.ridetime + "</a></p>");
+                  $("#existing-aspc-rides").append(
+                      $(`<option>`, {value: value.id})
+                      .text(value.ridetime)
+                  );
               });
 
               if ($("#existing-aspc-rides").children().length == 0) {
@@ -135,6 +141,13 @@
                   $("#existing-aspc-rides-section").hide();
                   $("#aspc-custom-ride-section").show();
               } else {
+                  $("#existing-aspc-rides")
+                      .prepend(
+                          $(`<option>`, {value: ""})
+                          .text("Select a ride which works for you")
+                      )
+                      .find("option:eq(0)").prop("selected", true);
+
                   $("#aspc-custom-ride-label").text("If none of the above options work, When would you like your ride to leave?");
 
                   $("#existing-aspc-rides-section").show();

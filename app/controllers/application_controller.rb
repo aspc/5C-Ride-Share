@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  #before_filter :setup_application_controller_environment
+  before_filter :setup_application_controller_environment
   before_filter :current_user
 
   def sort_rides(rides)

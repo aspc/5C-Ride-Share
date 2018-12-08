@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181206183428) do
+ActiveRecord::Schema.define(version: 20181207182127) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -37,32 +37,32 @@ ActiveRecord::Schema.define(version: 20181206183428) do
   end
 
   create_table "rides", force: :cascade do |t|
-    t.string   "airport",    limit: 255
+    t.string   "airport"
     t.datetime "flighttime"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "owner_id"
     t.datetime "ridetime"
     t.boolean  "is_aspc"
   end
 
   create_table "rides_users", force: :cascade do |t|
-    t.integer "ride_id"
-    t.integer "user_id"
+    t.integer  "ride_id"
+    t.integer  "user_id"
+    t.datetime "flighttime"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name",                 limit: 255
-    t.datetime "created_at",                                       null: false
-    t.datetime "updated_at",                                       null: false
-    t.string   "email",                limit: 255
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "email"
     t.boolean  "email_pref"
     t.datetime "logged_out_at"
-    t.boolean  "is_cas_authenticated",             default: false, null: false
-    t.boolean  "is_admin",                         default: false, null: false
-    t.integer  "school",                           default: 0,     null: false
+    t.boolean  "is_cas_authenticated", default: false, null: false
+    t.boolean  "is_admin",             default: false, null: false
+    t.integer  "school",               default: 0,     null: false
     t.string   "password"
-    t.datetime "flighttime"
   end
 
 end
