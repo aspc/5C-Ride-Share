@@ -8,4 +8,17 @@ class Ride < ActiveRecord::Base
   attr_accessor :existing_aspc_ride
 
   validates :airport, :flighttime, :presence => true
+  validate :is_aspc_valid
+
+  def is_aspc_valid
+    return unless is_aspc
+
+    # Change these depending on the program date
+    aspc_ride_start_date = Date.new(2018, 12, 17)
+    aspc_ride_end_date = Date.new(2018, 12, 22)
+
+    if not flighttime.to_date.between? aspc_ride_start_date, aspc_ride_end_date
+      errors.add(:flighttime, "falls outside the range of the program (#{aspc_ride_start_date.strftime("%B %d, %Y") + " - " + aspc_ride_end_date.strftime("%B %d, %Y")})")
+    end
+  end
 end
