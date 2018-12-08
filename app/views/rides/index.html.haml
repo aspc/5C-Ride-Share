@@ -1,10 +1,51 @@
-#index
-  .ontario
-    %h1= link_to "Rides to Ontario", :controller => "rides", :action => "airport", :id => "1"
-    %h1= link_to "Rides from Ontario", :controller => "rides", :action => "airport", :id => "2"
-    .clear
-  .lax
-    %h1= link_to "Rides to LAX", :controller => "rides", :action => "airport", :id => "3"
-    %h1= link_to "Rides from LAX", :controller => "rides", :action => "airport", :id => "4"
-    .clear
-  .clear
+=content_for :header do
+  =render 'layouts/page_header', :title => "5C Rideshare", :subtitle => "An ASPC Service"
+
+.columns
+  .column
+    .box.has-background-light
+      .field.has-addons
+        %p.control
+          %a.button.is-static.is-large.has-background-white
+            I'm looking for a shared ride... &nbsp;
+        %p.control.is-expanded
+          %span.select.is-fullwidth.is-large
+            %select#airportSelect
+              %option{:value => 1} To Ontario
+              %option{:value => 2} From Ontario
+              %option{:value => 3} To LAX
+              %option{:value => 4} From LAX
+        %p.control#goButton
+          %a.button.is-link.is-large
+            Go!
+
+.section
+  .columns
+    .column.is-5
+      .index-notification
+        %p
+          %strong ASPC is excited to reintroduce the 5C Rideshare service
+        %br
+        %p
+          We know getting to and from the airport can be a hassle, so we're trying to make it easier for students at all of the Claremont Colleges to do so.
+        %br
+        %p
+          The aim of this service is to allow students going to and from Ontario or LAX to connect with each other and split the cost of the ride – simply sign in and create or join a ride at a time which works for you!
+    .column.is-2
+      .column-divider
+    .column.is-5
+      .index-notification
+        %p
+          %strong Pomona Students: You're eligible for a free ride over winter break!
+        %br
+        %p
+          For more details, sign in with your Pomona login and
+          =link_to "create a new ride.", new_ride_path
+
+:javascript
+  (function() {
+    $("#goButton").click(function() {
+      let airportId = $("#airportSelect").val();
+      window.location.href = "#{airport_rides_url}?id=" + airportId;
+    });
+  })();

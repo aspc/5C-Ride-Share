@@ -1,3 +1,7 @@
+=content_for :header do
+  =render 'layouts/page_header', :title => "Account Preferences"
+
+
 #edit-user
   =form_for(@current_user) do |f|
     -if @current_user.errors.any?
@@ -7,16 +11,24 @@
         %ul
         -@ride.errors.full_messages.each do |msg|
           %li= msg
+    
+    -@current_user.rides_users.each do |itinerary|
+      %p
+        =itinerary.flighttime
 
     .field
-      = f.label "Name"
-      = f.text_field :name
+      = f.label "Name", :class => "label"
+      .control
+        = f.text_field :name, :class => "input"
     .field
-      = f.label "Email"
-      = f.text_field :email
+      = f.label "Email", :class => "label"
+      .control
+        = f.text_field :email, :class => "input"
     .field.time-div
-      = f.label "Would you like to receive email notifications?"
-      = f.check_box :email_pref
+      = f.label "Would you like to receive email notifications?", :class => "label"
+      .control
+        = f.check_box :email_pref
+
     .actions
-      = f.submit
+      = f.submit "Update profile", :class => "button is-info"
     

@@ -47,6 +47,9 @@ module Shuttleshare
     config.assets.version = '1.0'
     config.time_zone = 'Pacific Time (US & Canada)'
 
+    # Include vendor directory for asset pipeline
+    config.assets.paths << Rails.root.join('vendor', 'stylesheets')
+
     if Rails.env.production?
       config.middleware.insert_before Rack::Runtime, Rack::NoWWW
     end

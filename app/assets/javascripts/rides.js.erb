@@ -1,27 +1,3 @@
-window.fbAsyncInit = function() {
-  FB.init({
-    appId      : '300857556614018', // App ID
-    channelUrl : '//localhost:3000/channel.html', // Channel File
-    status     : true, // check login status
-    cookie     : true, // enable cookies to allow the server to access the session
-    xfbml      : true  // parse XFBML
-  });
-
-  // Additional initialization code here
-	
-	FB.Event.subscribe('comment.create', function (response) {
-		commentMailer(response, current_user_id)
-	})
-};
-
-// Load the SDK Asynchronously
-(function(d){
-   var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
-   js = d.createElement('script'); js.id = id; js.async = true;
-   js.src = "//connect.facebook.net/en_US/all.js";
-   d.getElementsByTagName('head')[0].appendChild(js);
- }(document));
-
 $(document).ready(function() {
 	var menu = $("#ride_airport")[0]
 	var ridetime = $(".time-div")
@@ -31,14 +7,14 @@ $(document).ready(function() {
 	} 
 	
 	currentPage(title)
-	centerNewRide(current_user_id)
-	userRides()
+	//centerNewRide(current_user_id)
+	//userRides()
 	
 	if(menu != undefined) {
 		menu.onchange = function() {
 			if(menu.value === "From LAX" || menu.value === "From Ontario") {
 				ridetime.hide(500);
-        $("#js-flight-label").html("When is your shuttle arriving?");
+        $("#js-flight-label").html("When is your flight arriving?");
 			}
 			if(menu.value === "To LAX" || menu.value === "To Ontario") {
 				ridetime.show(500);

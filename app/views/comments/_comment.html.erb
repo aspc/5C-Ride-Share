@@ -1,0 +1,11 @@
+<p class="help">
+  <span class="tag is-info is-pulled-right">
+    Posted by <%= comment.user.name %>
+    <% if @current_user and comment.user_id == @current_user.id %>
+      <%= link_to '', ride_comment_path(comment.ride_id, comment.id), :method => :delete, :class=> "delete is-small"  %>
+    <%end %>
+  </span>
+</p>
+<p>
+  <%= comment.comment %>
+</p>

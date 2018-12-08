@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @current_user.update_attributes(params[:user])
+    if @current_user.update_attributes(user_params)
       redirect_to edit_user_path(@current_user), :notice => "Your user information was successfully updated."
     else
       redirect_to :action => 'edit'
@@ -51,5 +51,11 @@ class UsersController < ApplicationController
 
     def correct_user
       redirect_to root_url unless @current_user && params[:id] == @current_user.id.to_s
+    end
+
+    def user_params
+      if params[:user]
+        params.require(:user).permit(:name, :email, :email_pref)
+      end
     end
 end

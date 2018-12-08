@@ -1,4 +1,4 @@
-Hi <%=@user.name.split(" ")[0]%>, <%=link_to @commenter.name, @commenter.fblink%> just commented on your 5C ride!
+Hi <%=@user.name %>, <%= @commenter.name %> just commented on your 5C ride!
 =========================================================
  
 Visit <%= link_to "the ride", @url%> to continue your conversation and figure out how to get to the airport!

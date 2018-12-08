@@ -1,0 +1,95 @@
+<%= content_for :header do %>
+  <%= render 'layouts/page_header', :title => "Ride Details", :subtitle => "#{@ride.airport} on #{@ride.flighttime.strftime("%B %d, %Y")}" %>
+<% end %>
+
+<% if @ride.is_aspc %>
+  <p class="subtitle">
+    Thank you for requesting a free ride from ASPC. We are currently collecting and processing all requests, and we will
+    notify everyone of their finalized ride status soon.
+  </p>
+  <p>
+    Here is the request data we have collect – please contact us ASAP at EMAIL if it is not correct.
+    <br/><br />
+    <table class="table is-bordered is-striped is-fullwidth">
+      <tbody>
+        <tr>
+          <th>Name</th>
+          <td><%= @current_user.name %></td>
+        </tr>
+        <tr>
+          <th>Email</th>
+          <td><%= @current_user.email %></td>
+        </tr>
+        <tr>
+          <th>Flight Time</th>
+          <td><%= @ride_user.flighttime %></td>
+        </tr>
+        <tr>
+          <th>Preferred Ride Time</th>
+          <td><%= @ride.ridetime %> <%= @ride.airport %></td>
+        </tr>
+      </tbody>
+    </table>
+  </p>
+  <br />
+  <br />
+  <p class="is-size-7">
+    Please note that your ride departure time is not yet finalized until we get back to you. In the meantime, if
+    you use this website to join or create any other rides to the airport from START DATE through END DATE, you will forfeit your free ride request.
+  </p>
+<% else  %>
+<div class="columns">
+  <div class="column">
+    <p>
+      <% if @ride.airport.split(" ")[0] == "To" && @ride.ridetime %>
+        <b>Flight Departure:</b>
+        <%= @ride.flighttime.strftime("%I:%M %p")%>
+      <% else %>
+        <b>Flight Arrival:</b>
+        <%= @ride.flighttime.strftime("%I:%M %p")%>
+      <% end %>
+    </p>
+  </div>
+  <div class="column">
+    <p>
+      <b>Preferred ride time:</b>
+      <%= @ride.ridetime.strftime("%I:%M %p")%>
+    </p>
+  </div>
+  <div class="column">
+    <div class="has-text-right-tablet">
+      <% if @current_user %>
+        <% unless @ride.users.find_by_id(@current_user.id) %>
+          <%= link_to 'Join Ride',{ :controller => "rides", :action => "join", :id => @ride }, :confirm => "Are you sure you want to join this ride?", :class => "button is-primary" %>
+        <% else %>
+          <%= link_to 'Leave Ride', { :controller => "rides", :action => "leave", :id => @ride }, :confirm => "Are you sure you want to leave this ride?", :class => "button is-danger" %>
+        <% end %>
+        <% if @ride.owner_id == @current_user.id %>
+          <%= link_to 'Edit', edit_ride_path(@ride), :class => "button is-lighter" %>
+        <% end %>
+      <% else %>
+        <%= link_to 'Join Ride',{ :controller => "rides", :action => "join", :id => @ride }, :confirm => "You must sign in before you can join a ride. Would you like to sign in now?", :class => "button is-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<hr />
+
+<div class="comments">
+  <p><b>Current riders:</b></p>
+  <% @users.each do |user| %>
+    <span class="tag"><%= user.name %></span>
+  <% end %>
+  <br />
+  <br />
+  <% @ride.comments.each do |comment| %>
+    <div class="message is-info">
+    <div class="message-body">
+    <%= render comment %>
+    </div>
+    </div>
+  <% end %>
+  <br />
+  <% if @current_user %><%= render "comments/form" %><% end %>
+</div>
+<% end %>

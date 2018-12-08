@@ -2,12 +2,58 @@
  * This is a manifest file that'll automatically include all the stylesheets available in this directory
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require bulma-0.7.2/css/bulma.css
+ *
+ *= require comments.css.scss
+ *= require custom.css.scss
+ *= require mailer.css.scss
+ *= require rides.css.scss
+ *= require scaffolds.css.scss
+ *= require sessions.css.scss
+ *= require users.css.scss
+ *
  *= require_self
- *= require_tree . 
 */
 
-$basem2: rgb(32,43,48);
-$basem1: rgb(78,113,120);
-$baseblue: rgb(79,169,184);
-$basep1: rgb(116,192,207);
-$basep2: rgb(241,247,226);
+html, body {
+    min-width: 775px;
+}
+
+.application-body-container {
+    background:#4fa9b8;
+}
+
+.application-content-section, .application-content-container {
+    background: white;
+    min-height: 60vh;
+}
+
+.page-header {
+    /*background-color: #0071a6 !important;*/
+}
+
+.clear
+{
+    clear: both;
+}
+
+.alert, .notice
+{
+    border: 1px solid;
+    padding: 10px 0 10px 0;
+    margin: 0 200px 20px 200px;
+}
+.alert
+{
+    color: #D8000C;
+    background-color: #FFBABA;
+}
+
+.notice
+{
+    text-align: center;
+    font-size: 1.2em;
+    color: #4F8A10;
+    background-color: #DFF2BF;
+}

@@ -1,0 +1,204 @@
+<% hide_aspc_signup = local_assigns.fetch(:hide_aspc_signup, false) %>
+
+<% if @current_user.school == "pomona" && !hide_aspc_signup %>
+  <div class="message is-info">
+    <div class="message-header">
+      As a Pomona Student, you're eligible for a free ride over winter break!
+    </div>
+    <div class="message-body">
+      <div class="field is-grouped">
+        <p class="control">
+          <input type="checkbox" id="aspc-checkbox" />
+        </p>
+        <label class="label help">I would like to request a free ride to ONT/LAX funded by ASPC.</label>
+      </div>
+      <p class="is-size-7">
+        By doing so, I acknowledge that if I join a ride outside this program, either via a ride publicly listed on the
+        5C Rideshare website or otherwise, I will forfeit my request for a free ride.
+        <br /><br />
+        Furthermore, I understand that not every request may be fulfilled, depending on demand and availability. ASPC will
+        send out a notification of my ride status by [DATE HERE], to provide enough time to arrange another ride if one
+        is not available for my given flight departure time.
+      </p>
+    </div>
+  </div>
+<% end %>
+
+<div id="non-aspc-free">
+  <%= form_for(@ride) do |f| %>
+    <% if @ride.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@ride.errors.count, "error") %></h2> prohibited this ride from being saved:
+
+        <ul>
+          <% @ride.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.hidden_field :is_aspc, :value => "false" %>
+    </div>
+
+    <div class="field">
+      <%= f.label "Where are you going?", :class => 'label' %>
+      <div class="control">
+        <%= f.select :airport, ["To LAX", "To Ontario", "From LAX", "From Ontario"], {:selected => "2" }, {:class => 'select'} %>
+      </div>
+    </div>
+    <div class="field">
+      <%= f.label "When is your flight?", id: "js-flight-label", :class => 'label' %>
+      <div class="control">
+        <%= f.datetime_select :flighttime, { :order => [:day, :month, :year], :prompt => {:day => 'day', :month => "month", :year => "year", :hour => "hour", :minute => "minute", }, :ampm => true, :minute_step => 15, :start_year => 2018, :end_year => 2019 }, { :class => 'select' } %>
+      </div>
+    </div>
+    <div class="field time-div">
+      <%= f.label "When would you like your ride to leave?", :class => 'label' %>
+      <div class="control">
+        <%= f.datetime_select :ridetime, { :order => [:day, :month, :year], :prompt => {:day => 'day', :month => "month", :year => "year", :hour => "hour", :minute => "minute", }, :ampm => true, :minute_step => 15, :start_year => 2018, :end_year => 2019 }, { :class => 'select' } %>
+      </div>
+    </div>
+    <br />
+    <div class="control">
+      <%= f.submit :class => 'button is-primary' %>
+    </div>
+  <% end %>
+</div>
+
+<div id="aspc-free" style="display: none;">
+  <%= form_for(@ride) do |f| %>
+    <% if @ride.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@ride.errors.count, "error") %></h2> prohibited this ride from being saved:
+
+        <ul>
+          <% @ride.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.hidden_field :is_aspc, :value => "true" %>
+    </div>
+
+    <div class="field">
+      <%= f.label "Where are you going?", :class => 'label' %>
+      <div class="control">
+        <%= f.select :airport, ["To LAX", "To Ontario", "From LAX", "From Ontario"], {:selected => "2" }, {:class => 'select'} %>
+      </div>
+    </div>
+    <div class="field">
+      <%= f.label "When is your flight?", id: "js-flight-label", :class => 'label' %>
+      <div class="control">
+        <%= f.datetime_select :flighttime, { :order => [:day, :month, :year], :prompt => {:day => 'day', :month => "month", :year => "year", :hour => "hour", :minute => "minute", }, :ampm => true, :minute_step => 15, :start_year => 2018, :end_year => 2019 }, { :class => 'select' } %>
+      </div>
+    </div>
+
+    <div class="field" id="existing-aspc-rides-section">
+      <%= f.label "Are any of these ride times suitable for your schedule?", :class => "label" %>
+      <div class="control">
+        <div class="select">
+          <%= f.select :existing_aspc_ride, [], {:selected => "0"}, {:id => "existing-aspc-rides"} %>
+        </div>
+      </div>
+    </div>
+
+    <div class="field time-div" id="aspc-custom-ride-section">
+      <%= f.label "If none of the above rides work, when would you like your ride to leave?", :id => "aspc-custom-ride-label", :class => "label" %>
+      <div class="control">
+        <%= f.datetime_select :ridetime, { :order => [:day, :month, :year], :prompt => {:day => 'day', :month => "month", :year => "year", :hour => "hour", :minute => "minute", }, :ampm => true, :minute_step => 15, :start_year => 2018, :end_year => 2019 }, { :class => 'select' } %>
+      </div>
+    </div>
+
+    <br />
+    <div class="control">
+      <%= f.submit :class => 'button is-primary' %>
+    </div>
+  <% end %>
+
+  
+</div>
+
+<script>
+  (function() {
+      function displayExistingASPCRides(airportId) {
+          $.get("/5crideshare/rides/airport.json", {id: airportId}, function (data) {
+              $("#existing-aspc-rides").html("");
+              $.each(data, function (index, value) {
+                  $("#existing-aspc-rides").append(
+                      $(`<option>`, {value: value.id})
+                      .text(value.ridetime)
+                  );
+              });
+
+              if ($("#existing-aspc-rides").children().length == 0) {
+                  $("#aspc-custom-ride-label").text("When would you like your ride to leave?");
+
+                  $("#existing-aspc-rides-section").hide();
+                  $("#aspc-custom-ride-section").show();
+              } else {
+                  $("#existing-aspc-rides")
+                      .prepend(
+                          $(`<option>`, {value: ""})
+                          .text("Select a ride which works for you")
+                      )
+                      .find("option:eq(0)").prop("selected", true);
+
+                  $("#aspc-custom-ride-label").text("If none of the above options work, When would you like your ride to leave?");
+
+                  $("#existing-aspc-rides-section").show();
+                  $("#aspc-custom-ride-section").show();
+              }
+          });
+      }
+
+      function getAirportIdFromSelection() {
+          let airport = $("#aspc-free").find("#ride_airport").val();
+          let airport_id;
+
+          switch (airport) {
+              case "To Ontario":
+                  airport_id = 1;
+                  break;
+              case "From Ontario":
+                  airport_id = 2;
+                  break;
+              case "To LAX":
+                  airport_id = 3;
+                  break;
+              case "From LAX":
+                  airport_id = 4;
+                  break;
+
+          }
+
+          return airport_id;
+      }
+
+
+      let nonAspcForm = $("#non-aspc-free")[0];
+      let aspcForm = $("#aspc-free")[0];
+      let aspcCheckbox = $("#aspc-checkbox");
+      aspcCheckbox.click(function () {
+          nonAspcForm.style.display = aspcCheckbox[0].checked ? "none" : "block";
+          aspcForm.style.display = aspcCheckbox[0].checked ? "block" : "none";
+
+          if (aspcCheckbox[0].checked) {
+              $("#existing-aspc-rides-section").hide();
+              $("#aspc-custom-ride-section").hide();
+
+              let airportId = getAirportIdFromSelection();
+              displayExistingASPCRides(airportId);
+          }
+      });
+
+      $("#aspc-free").find("#ride_airport").change(function () {
+          let airportId = getAirportIdFromSelection();
+          displayExistingASPCRides(airportId);
+      });
+  })();
+</script>

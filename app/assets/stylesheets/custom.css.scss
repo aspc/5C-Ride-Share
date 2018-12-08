@@ -4,51 +4,6 @@ $baseblue: rgb(79,169,184);
 $basep1: rgb(116,192,207);
 $basep2: rgb(241,247,226);
 
-*
-{
-	margin: 0px;
-	padding: 0px;
-	color: $basep2;
-}
-
-html,body
-{
-
-	font-family: 'Calibri','Helvetica','Verdana';
-	font-size: 12px;
-	min-width: 1100px;
-	background: $baseblue;
-	letter-spacing: 1px;
-	a
-	{
-		text-decoration: none;
-	}
-}
-
-.clear
-{
-	clear: both;
-}
-
-.alert, .notice
-{
-	border: 1px solid;
-	padding: 10px 0 10px 0;
-	margin: 0 200px 20px 200px;
-}
-.alert
-{
-color: #D8000C;
-background-color: #FFBABA;
-}
-
-.notice
-{
-	text-align: center;
-	font-size: 1.2em;
-	color: #4F8A10;
-	background-color: #DFF2BF;
-}
 
 .notification {
 	border-bottom: black solid 1px;
@@ -61,6 +16,7 @@ background-color: #FFBABA;
 		text-decoration: underline;
 	}
 }
+
 //Header
 
 #header-container

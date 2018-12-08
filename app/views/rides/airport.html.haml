@@ -1,37 +1,26 @@
-.rides
-  -if @ftype == "Arrival"
-    #aflight-header
-      %h2 Date
-      %h2.aftime= "Shuttle #{@ftype} Time"
-      %h2.anumpass= "PAX"
-      .clear
-  -else
-    #dflight-header
-      %h2 Date
-      %h2.dftime= "Flight Time"
-      %h2.drtime Ride Time
-      %h2.dnumpass= "PAX"
-      .clear
+=content_for :header do
+  =render 'layouts/page_header', :title => "Available Rides"
 
-  
-  -if @rides
-    -@rides.each do |ride| 
-      -unless ride.users.count == 0
-        .ride-container{:class => ("member" if (@current_user && (@urides.member? ride)))}
-          -if @ftype == "Arrival"
-            .aride-info
-              %p.flight-date= ride.flighttime.strftime("%B %d %Y")
-              %p.flight-time= ride.flighttime.strftime("%I:%M %p")
-              %p.ride-count= ride.users.size
-              = link_to '', ride
-          -else
-            .dride-info
-              %p.flight-date= ride.flighttime.strftime("%B %d %Y")
-              %p.flight-time= ride.flighttime.strftime("%I:%M %p")
-              -if ride.ridetime
-                %p.ride-time= ride.ridetime.strftime("%I:%M %p")
-              -else
-                %p.ride-time Currently Unspecified 
-              %p.ride-count= ride.users.size
-              = link_to '', ride
-              .clear
+- if @rides.length > 0
+  %table.table.is-striped.is-hoverable.is-fullwidth
+    %thead
+      %tr
+        %th Ride Day
+        %th Ride Time
+        %th Riders
+    %tbody
+      - @rides.each do |ride|
+        - unless ride.users.count == 0 || ride.is_aspc
+          %tr
+            %th
+              %a{:href => ride_path(ride)}
+                =ride.flighttime.strftime("%B %d, %Y")
+            %td
+              =ride.ridetime.strftime("%I:%M %p")
+            %td
+              =ride.users.size
+- else
+  %h2.subtitle
+    It looks like there are no rides to this airport right now. Would you like to
+    =link_to "create one?", new_ride_path
+

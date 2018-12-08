@@ -8,6 +8,8 @@ Shuttleshare::Application.routes.draw do
       get 'leave'
       get 'airport'
     end
+
+    resources :comments
   end
 
   resources :users do
