@@ -125,8 +125,8 @@
 
 <script>
   (function() {
-      function displayExistingASPCRides(airportId) {
-          $.get("/5crideshare/rides/airport.json", {id: airportId}, function (data) {
+      function displayExistingASPCRides(airport) {
+          $.get("/5crideshare/rides/aspc_rides.json", {airport: airport}, function (data) {
               $("#existing-aspc-rides").html("");
               $.each(data, function (index, value) {
                   $("#existing-aspc-rides").append(
@@ -156,27 +156,9 @@
           });
       }
 
-      function getAirportIdFromSelection() {
+      function getSelectedAirport() {
           let airport = $("#aspc-free").find("#ride_airport").val();
-          let airport_id;
-
-          switch (airport) {
-              case "To Ontario":
-                  airport_id = 1;
-                  break;
-              case "From Ontario":
-                  airport_id = 2;
-                  break;
-              case "To LAX":
-                  airport_id = 3;
-                  break;
-              case "From LAX":
-                  airport_id = 4;
-                  break;
-
-          }
-
-          return airport_id;
+          return airport;
       }
 
 
@@ -191,14 +173,14 @@
               $("#existing-aspc-rides-section").hide();
               $("#aspc-custom-ride-section").hide();
 
-              let airportId = getAirportIdFromSelection();
-              displayExistingASPCRides(airportId);
+              let airport = getSelectedAirport();
+              displayExistingASPCRides(airport);
           }
       });
 
       $("#aspc-free").find("#ride_airport").change(function () {
-          let airportId = getAirportIdFromSelection();
-          displayExistingASPCRides(airportId);
+          let airport = getSelectedAirport();
+          displayExistingASPCRides(airport);
       });
   })();
 </script>

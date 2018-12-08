@@ -161,6 +161,13 @@ class RidesController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  def aspc_rides
+    airport = params[:airport]
+    @rides = sort_rides(Ride.where(:airport => airport, :is_aspc => true).all)
+
+    render :json => @rides
+  end
   
   def airport
     info = airport_helper(params[:id])

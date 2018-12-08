@@ -7,6 +7,7 @@ Shuttleshare::Application.routes.draw do
       get 'join'
       get 'leave'
       get 'airport'
+      get 'aspc_rides'
     end
 
     resources :comments

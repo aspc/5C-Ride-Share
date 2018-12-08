@@ -1,7 +1,7 @@
 =content_for :header do
   =render 'layouts/page_header', :title => "Available Rides"
 
-- if @rides.length > 0
+- if @rides.select{|ride| !ride.is_aspc}.length > 0
   %table.table.is-striped.is-hoverable.is-fullwidth
     %thead
       %tr
