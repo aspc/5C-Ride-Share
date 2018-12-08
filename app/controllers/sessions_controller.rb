@@ -89,7 +89,8 @@ class SessionsController < ApplicationController
       user = User.create({
                              :email => user_info[:email],
                              :name => user_info[:name],
-                             :is_cas_authenticated => true
+                             :is_cas_authenticated => true,
+                             :school => User.schools[:pomona]
                          })
     end
 
