@@ -129,9 +129,19 @@
           $.get("/5crideshare/rides/aspc_rides.json", {airport: airport}, function (data) {
               $("#existing-aspc-rides").html("");
               $.each(data, function (index, value) {
+                  let rt = new Date(value.ridetime);
+                  let ridetime = rt.toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "long",
+                      weekday: "long",
+                      day: "numeric",
+                      hour: "numeric",
+                      minute: "numeric"
+                  });
+
                   $("#existing-aspc-rides").append(
                       $(`<option>`, {value: value.id})
-                      .text(value.ridetime)
+                      .text(ridetime)
                   );
               });
 

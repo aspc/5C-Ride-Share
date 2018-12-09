@@ -21,12 +21,16 @@
           <td><%= @current_user.email %></td>
         </tr>
         <tr>
+          <th>Direction</th>
+          <td><%= @ride.airport %></td>
+        </tr>
+        <tr>
           <th>Flight Time</th>
-          <td><%= @ride_user.flighttime %></td>
+          <td><%= @ride_user.flighttime.strftime("%l:%M%P on %B %d, %Y") %></td>
         </tr>
         <tr>
           <th>Preferred Ride Time</th>
-          <td><%= @ride.ridetime %> <%= @ride.airport %></td>
+          <td><%= @ride.ridetime.strftime("%l:%M%P on %B %d, %Y") %></td>
         </tr>
       </tbody>
     </table>
