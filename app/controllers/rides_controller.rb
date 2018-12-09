@@ -149,15 +149,26 @@ class RidesController < ApplicationController
   
   def leave
     @ride = Ride.find(params[:id])
+
     if @ride.users.find_by_id(@current_user.id)
       @ride.users.delete(@current_user)
-      if @ride.owner_id == @current_user.id
-        @ride.owner_id = nil
+
+      if(@ride.users.length == 0)
+        @ride.destroy
+      elsif @ride.owner_id == @current_user.id
+        @ride.owner_id = @ride.users.first.id # Set a new owner on owner leaving
         @ride.save
       end
     end
+
     respond_to do |format|
-      format.html { redirect_to :back, :confirm => 'Are you sure you want to leave this ride?' }
+      format.html do
+        if Ride.exists?(:id => params[:id])
+          redirect_to :back, :confirm => 'Are you sure you want to leave this ride?'
+        else
+          redirect_to :root
+        end
+      end
       format.json { head :ok }
     end
   end
