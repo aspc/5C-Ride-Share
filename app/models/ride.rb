@@ -8,7 +8,14 @@ class Ride < ActiveRecord::Base
   attr_accessor :existing_aspc_ride
 
   validates :airport, :flighttime, :owner_id, :presence => true
+  validate :is_flighttime_valid
   validate :is_aspc_valid
+
+  def is_flighttime_valid
+    if flighttime < Time.now
+      errors.add(:flighttime, "cannot be in the past")
+    end
+  end
 
   def is_aspc_valid
     return unless is_aspc
