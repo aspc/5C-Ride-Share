@@ -14,15 +14,15 @@
             %th Riders
         %tbody
           - @arrivals.each do |ride|
-            - unless ride.users.count == 0 || ride.is_aspc
-              %tr
-                %th
-                  %a{:href => ride_path(ride)}
-                    =ride.flighttime.strftime("%B %d %Y")
-                %td
-                  =ride.flighttime.strftime("%I:%M %p")
-                %td
-                  =ride.users.size
+            %tr
+              %th
+                =link_to ride.flighttime.strftime("%B %d, %Y"), ride_path(ride)
+                -if ride.is_aspc
+                  %span.tag.is-primary.is-rounded ASPC Free Ride Request
+              %td
+                =ride.flighttime.strftime("%I:%M %p")
+              %td
+                =ride.users.size
 
 - if @departures.length > 0
   .message.is-dark
@@ -37,15 +37,15 @@
             %th Riders
         %tbody
           - @departures.each do |ride|
-            - unless ride.users.count == 0 || ride.is_aspc
-              %tr
-                %th
-                  %a{:href => ride_path(ride)}
-                    =ride.flighttime.strftime("%B %d %Y")
-                %td
-                  =ride.ridetime.strftime("%I:%M %p")
-                %td
-                  =ride.users.size
+            %tr
+              %th
+                =link_to ride.flighttime.strftime("%B %d, %Y"), ride_path(ride)
+                -if ride.is_aspc
+                  %span.tag.is-primary.is-rounded ASPC Free Ride Request
+              %td
+                =ride.ridetime.strftime("%I:%M %p")
+              %td
+                =ride.users.size
 
 - if @departures.length == 0 and @arrivals.length == 0
   %h2.subtitle
