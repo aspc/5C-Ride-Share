@@ -10,12 +10,19 @@ $baseblue: rgb(79,169,184);
 $basep1: rgb(116,192,207);
 $basep2: rgb(241,247,226);
 
-/*#call-to-action
-{
-  padding: 20px;
-  border: 3px solid whitesmoke;
-  border-radius: 25px;
-}*/
+#ride-search-bar-big {
+  display: block;
+  @media screen and (max-width: 769px) {
+    display: none;
+  }
+}
+
+#ride-search-bar-mobile {
+  display: none;
+  @media screen and (max-width: 769px) {
+    display: initial;
+  }
+}
 
 .index-notification {
   height: 305px;

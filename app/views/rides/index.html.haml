@@ -3,20 +3,35 @@
 
 .columns
   .column
-    .box.has-background-light
-      .field.has-addons
-        %p.control
-          %a.button.is-static.is-large.has-background-white
-            I'm looking for a shared ride... &nbsp;
-        %p.control.is-expanded
-          %span.select.is-fullwidth.is-large
-            %select#airportSelect
+    #ride-search-bar-big
+      .box.has-background-light
+        .field.has-addons
+          %p.control
+            %a.button.is-static.is-large.has-background-white
+              I'm looking for a shared ride... &nbsp;
+          %p.control.is-expanded
+            %span.select.is-fullwidth.is-large
+              %select#airportSelect-big
+                %option{:value => 1} To Ontario
+                %option{:value => 2} From Ontario
+                %option{:value => 3} To LAX
+                %option{:value => 4} From LAX
+          %p.control#goButton-big
+            %a.button.is-link.is-large
+              Go!
+    #ride-search-bar-mobile
+      %nav.panel
+        %p.panel-heading
+          I'm looking for a shared ride...
+        .panel-block
+          %span.select.is-fullwidth
+            %select#airportSelect-mobile
               %option{:value => 1} To Ontario
               %option{:value => 2} From Ontario
               %option{:value => 3} To LAX
               %option{:value => 4} From LAX
-        %p.control#goButton
-          %a.button.is-link.is-large
+        .panel-block
+          %a.button.is-link.is-outlined.is-fullwidth#goButton-mobile
             Go!
 
 .section
@@ -44,8 +59,11 @@
 
 :javascript
   (function() {
-    $("#goButton").click(function() {
-      let airportId = $("#airportSelect").val();
+    function goToSelectedPage(selector) {
+      let airportId = $(selector).val();
       window.location.href = "#{airport_rides_url}?id=" + airportId;
-    });
+    }
+
+    $("#goButton-big").click(function() { goToSelectedPage("#airportSelect-big"); });
+    $("#goButton-mobile").click(function() { goToSelectedPage("#airportSelect-mobile"); });
   })();

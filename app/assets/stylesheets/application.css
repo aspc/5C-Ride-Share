@@ -16,10 +16,6 @@
  *= require_self
 */
 
-html, body {
-    min-width: 775px;
-}
-
 .application-body-container {
     background:#4fa9b8;
 }
