@@ -7,7 +7,7 @@ class Ride < ActiveRecord::Base
   accepts_nested_attributes_for :users
   attr_accessor :existing_aspc_ride
 
-  validates :airport, :flighttime, :presence => true
+  validates :airport, :flighttime, :owner_id, :presence => true
   validate :is_aspc_valid
 
   def is_aspc_valid

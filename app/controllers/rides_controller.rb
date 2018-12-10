@@ -80,6 +80,10 @@ class RidesController < ApplicationController
     
     respond_to do |format|
       if @ride.update_attributes(ride_params)
+        ride_user = RidesUser.find_by(:ride => @ride, :user => @ride.owner)
+        ride_user.flighttime = @ride.flighttime
+        ride_user.save
+
         format.html { redirect_to @ride, :notice => 'Ride was successfully updated.' }
         format.json { head :ok }
       else
