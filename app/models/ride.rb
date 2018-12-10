@@ -18,7 +18,17 @@ class Ride < ActiveRecord::Base
     aspc_ride_end_date = Date.new(2018, 12, 22)
 
     if not flighttime.to_date.between? aspc_ride_start_date, aspc_ride_end_date
-      errors.add(:flighttime, "falls outside the range of the program (#{aspc_ride_start_date.strftime("%B %d, %Y") + " - " + aspc_ride_end_date.strftime("%B %d, %Y")})")
+      errors.add(:flighttime, "falls outside the range of the program dates (#{aspc_ride_start_date.strftime("%B %d, %Y") + " - " + aspc_ride_end_date.strftime("%B %d, %Y")})")
+    end
+
+    users.each do |user|
+      if Ride.joins(:users)
+             .where(:is_aspc => true, :flighttime => aspc_ride_start_date..aspc_ride_end_date, :users => {:id => user.id})
+             .count > 0
+
+        errors.add(:users, "cannot join more than one ASPC funded ride at a time")
+        break
+      end
     end
   end
 end
