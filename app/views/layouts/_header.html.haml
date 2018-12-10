@@ -1,8 +1,13 @@
-%nav.navbar
+%nav.navbar#application-header
   .navbar-brand
     %a.navbar-item{:href => '/5crideshare/'}
       %img{:src => asset_path('aspc_logo.png')}
       &nbsp;<strong>5C Ride Share</strong>
+
+    .navbar-burger.burger
+      %span
+      %span
+      %span
 
   .navbar-menu
     .navbar-start
@@ -18,3 +23,11 @@
         -else
           =link_to "Login", {:controller => "sessions", :action => "new"}, {:class => "button is-link"}
 
+:javascript
+   $(document).ready(function () {
+      $("#application-header .burger").click(function () {
+          // Toggle the class on both the burger and the menu
+          $(this).toggleClass('is-active');
+          $("#application-header .navbar-menu").toggleClass('is-active');
+      })
+  });
