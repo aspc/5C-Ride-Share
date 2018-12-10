@@ -168,7 +168,7 @@ class RidesController < ApplicationController
     respond_to do |format|
       format.html do
         if Ride.exists?(:id => params[:id])
-          redirect_to :back, :confirm => 'Are you sure you want to leave this ride?'
+          redirect_to :back
         else
           redirect_to :root
         end

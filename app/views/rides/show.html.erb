@@ -3,6 +3,7 @@
 <% end %>
 
 <% if @ride.is_aspc %>
+  <% if @ride_user %>
   <p class="subtitle">
     Thank you for requesting a free ride from ASPC. We are currently collecting and processing all requests, and we will
     notify everyone of their finalized ride status soon.
@@ -14,11 +15,11 @@
       <tbody>
         <tr>
           <th>Name</th>
-          <td><%= @current_user.name %></td>
+          <td><%= @ride_user.user.name %></td>
         </tr>
         <tr>
           <th>Email</th>
-          <td><%= @current_user.email %></td>
+          <td><%= @ride_user.user.email %></td>
         </tr>
         <tr>
           <th>Direction</th>
@@ -42,6 +43,14 @@
     you use this website to join or create any other rides to the airport from <strong>December 17</strong> through
     <strong>December 22</strong>, you will forfeit your free ride request.
   </p>
+  <br />
+  <%= link_to 'Withdraw Free Ride Request', { :controller => "rides", :action => "leave", :id => @ride }, :confirm => "Are you sure you want to leave this ride?", :class => "button is-danger" %>
+  <% else %>
+    <p class="subtitle">
+      You must be logged in and a member of this ride to view this page.
+    </p>
+  <% end %>
+
 <% else  %>
 <div class="columns">
   <div class="column">
