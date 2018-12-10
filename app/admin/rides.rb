@@ -1,5 +1,5 @@
 ActiveAdmin.register Ride do
-  permit_params :airport, :flighttime, :owner, :ridetime,
+  permit_params :airport, :flighttime, :owner_id, :ridetime, :is_aspc,
                 user_ids: []
 
   form do |f|

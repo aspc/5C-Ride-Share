@@ -156,7 +156,7 @@ class RidesController < ApplicationController
       if(@ride.users.length == 0)
         @ride.destroy
       elsif @ride.owner_id == @current_user.id
-        @ride.owner_id = @ride.users.first.id # Set a new owner on owner leaving
+        @ride.owner_id = @ride.users.first.id # Set a new owner upon owner leaving
         @ride.save
       end
     end
