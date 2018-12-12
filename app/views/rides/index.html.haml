@@ -36,7 +36,7 @@
 
 .section
   .columns
-    .column.is-5
+    .column.is-12
       .index-notification
         %p
           %strong ASPC is excited to reintroduce the 5C Rideshare service
@@ -46,16 +46,17 @@
         %br
         %p
           The aim of this service is to allow students going to and from Ontario or LAX to connect with each other and split the cost of the ride – simply sign in and create or join a ride at a time which works for you!
-    .column.is-2
-      .column-divider
-    .column.is-5
-      .index-notification
-        %p
-          %strong Pomona Students: You're eligible for a free ride over winter break!
-        %br
-        %p
-          For more details, sign in with your Pomona login and
-          =link_to "create a new ride.", new_ride_path
+    /
+      .column.is-2
+        .column-divider
+      .column.is-5
+        .index-notification
+          %p
+            %strong Pomona Students: Youx're eligible for a free ride over winter break!
+          %br
+          %p
+            For more details, sign in with your Pomona login and
+            =link_to "create a new ride.", new_ride_path
 
 :javascript
   (function() {

@@ -19,6 +19,7 @@ class Ride < ActiveRecord::Base
 
   def is_aspc_valid
     return unless is_aspc
+    errors.add(:is_aspc, "ASPC-Funded Ride Booking through this website is currently disabled");
 
     # Change these depending on the program date
     aspc_ride_start_date = Date.new(2018, 12, 17)
