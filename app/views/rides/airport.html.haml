@@ -16,7 +16,7 @@
               %a{:href => ride_path(ride)}
                 =ride.flighttime.strftime("%B %d, %Y")
             %td
-              =ride.ridetime.strftime("%I:%M %p")
+              =ride.ridetime&.strftime("%I:%M %p") || "N/A"
             %td
               =ride.users.size
 - else

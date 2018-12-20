@@ -31,7 +31,7 @@
         </tr>
         <tr>
           <th>Preferred Ride Time</th>
-          <td><%= @ride.ridetime.strftime("%l:%M%P on %B %d, %Y") %></td>
+          <td><%= @ride.ridetime&.strftime("%l:%M%P on %B %d, %Y") || "N/A" %></td>
         </tr>
       </tbody>
     </table>
@@ -67,7 +67,7 @@
   <div class="column">
     <p>
       <b>Preferred ride time:</b>
-      <%= @ride.ridetime.strftime("%I:%M %p")%>
+      <%= @ride.ridetime&.strftime("%I:%M %p") || "N/A" %>
     </p>
   </div>
   <div class="column">
