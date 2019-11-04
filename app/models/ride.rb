@@ -19,11 +19,11 @@ class Ride < ActiveRecord::Base
 
   def is_aspc_valid
     return unless is_aspc
-    errors.add(:is_aspc, "ASPC-Funded Ride Booking through this website is currently disabled");
 
     # Change these depending on the program date
-    aspc_ride_start_date = Date.new(2018, 12, 17)
-    aspc_ride_end_date = Date.new(2018, 12, 22)
+    # TODO: set this in admin panel
+    aspc_ride_start_date = Date.new(2019, 12, 17)
+    aspc_ride_end_date = Date.new(2019, 12, 22)
 
     if not flighttime.to_date.between? aspc_ride_start_date, aspc_ride_end_date
       errors.add(:flighttime, "falls outside the range of the program dates (#{aspc_ride_start_date.strftime("%B %d, %Y") + " - " + aspc_ride_end_date.strftime("%B %d, %Y")})")

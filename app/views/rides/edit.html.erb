@@ -3,4 +3,4 @@
 <% end %>
 
 
-<%= render 'form', :hide_aspc_signup => true %>
+<%= render 'form', :hide_aspc_signup => current_user.is_admin %>
