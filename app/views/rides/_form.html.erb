@@ -1,6 +1,4 @@
-<% hide_aspc_signup = local_assigns.fetch(:hide_aspc_signup, false) %>
-
-<% if @current_user.school == "pomona" && !hide_aspc_signup %>
+<% if @current_user.school == "pomona" && @current_user.is_admin %>
   <div class="message is-info">
     <div class="message-header">
       As a Pomona Student, you're eligible for a free ride over winter break!
@@ -120,7 +118,7 @@
     </div>
   <% end %>
 
-  
+
 </div>
 
 <script>
