@@ -1,4 +1,8 @@
 <p class="help">
+  <span class="tag is-pulled-right"><%= comment.user.email %></span>
+  <% if comment.user.phone_number %>
+    <span class="tag is-pulled-right"><%= comment.user.phone_number %></span>
+  <% end %>
   <span class="tag is-info is-pulled-right">
     Posted by <%= comment.user.name %>
     <% if @current_user and comment.user_id == @current_user.id %>

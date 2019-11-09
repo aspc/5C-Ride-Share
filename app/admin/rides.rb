@@ -1,7 +1,7 @@
 ActiveAdmin.register Ride do
   belongs_to :user, optional: true
 
-  permit_params :airport, :flighttime, :owner_id, :ridetime, :is_aspc,
+  permit_params :airport, :flighttime, :owner_id, :ridetime, :is_aspc, :terminal,
                 user_ids: []
 
   sidebar "Nested Resources", only: [:show, :edit] do

@@ -7,11 +7,13 @@ class Ride < ActiveRecord::Base
   accepts_nested_attributes_for :users
   attr_accessor :existing_aspc_ride
 
-  validates :airport, :flighttime, :owner_id, :presence => true
+  validates :airport, :flighttime, :owner_id, :terminal, :presence => true
   validate :is_flighttime_valid
   validate :is_aspc_valid
 
   def is_flighttime_valid
+    return unless flighttime
+
     if flighttime < Time.now
       errors.add(:flighttime, "cannot be in the past")
     end
@@ -22,8 +24,8 @@ class Ride < ActiveRecord::Base
 
     # Change these depending on the program date
     # TODO: set this in admin panel
-    aspc_ride_start_date = Date.new(2019, 12, 17)
-    aspc_ride_end_date = Date.new(2019, 12, 22)
+    aspc_ride_start_date = Date.new(2019, 12, 19)
+    aspc_ride_end_date = Date.new(2019, 12, 21)
 
     if not flighttime.to_date.between? aspc_ride_start_date, aspc_ride_end_date
       errors.add(:flighttime, "falls outside the range of the program dates (#{aspc_ride_start_date.strftime("%B %d, %Y") + " - " + aspc_ride_end_date.strftime("%B %d, %Y")})")

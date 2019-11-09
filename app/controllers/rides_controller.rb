@@ -1,11 +1,11 @@
 class RidesController < ApplicationController
   before_filter :checker, :only => [:edit, :update, :destroy, :leave]
   before_filter :login_helper, :only => [:new, :join]
-  
+
   before_filter do
     @title = "5C ride share"
   end
-  
+
   def index
     @title = "5C ride share :: home"
     respond_to do |format|
@@ -61,6 +61,9 @@ class RidesController < ApplicationController
         @ride_user.flighttime = @ride.flighttime
         @ride_user.save
 
+        current_user.phone_number = params[:phone_number]
+        current_user.save
+
         notice_text = 'You successfully created a ride! When other riders comment, you\'ll get an email notification. Safe Travels!'
         if @ride.is_aspc
           notice_text = 'Your free ride request has been submitted to ASPC for processing. We will notify all applicants of their ride status soon. Thank you!'
@@ -77,7 +80,7 @@ class RidesController < ApplicationController
 
   def update
     @ride = Ride.find(params[:id])
-    
+
     respond_to do |format|
       if @ride.update_attributes(ride_params)
         ride_user = RidesUser.find_by(:ride => @ride, :user => @ride.owner)
@@ -132,7 +135,7 @@ class RidesController < ApplicationController
         @ride_user.flighttime = params[:flighttime]
         @ride_user.save
       end
-      
+
       respond_to do |format|
 
         notice_text = 'You successfully joined this ride. When other riders comment, you\'ll get an email notification. Safe Travels!'
@@ -150,7 +153,7 @@ class RidesController < ApplicationController
       end
     end
   end
-  
+
   def leave
     @ride = Ride.find(params[:id])
 
@@ -183,7 +186,7 @@ class RidesController < ApplicationController
 
     render :json => @rides
   end
-  
+
   def airport
     info = airport_helper(params[:id])
     check = info[:check]
@@ -203,7 +206,7 @@ class RidesController < ApplicationController
       redirect_to root_url
     end
   end
-  
+
   def airport_helper(type)
     case type
     when "1"
@@ -244,13 +247,13 @@ class RidesController < ApplicationController
       }
     end
   end
-  
+
   private
 
   def ride_params
     if params[:ride]
       params.require(:ride).permit("airport", "flighttime(1i)", "flighttime(2i)", "flighttime(3i)", "flighttime(4i)", "flighttime(5i)",
-      "ridetime(1i)","ridetime(2i)","ridetime(3i)","ridetime(4i)","ridetime(5i)", "is_aspc", "existing_aspc_ride")
+      "ridetime(1i)","ridetime(2i)","ridetime(3i)","ridetime(4i)","ridetime(5i)", "is_aspc", "existing_aspc_ride", "terminal")
     end
   end
 end

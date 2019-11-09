@@ -12,14 +12,17 @@
       </div>
       <p class="is-size-7">
         <ul>
-          <li>You MUST be a Pomona College student.</li>
-          <li>Due to vehicle space limitations, we ask you limit the number of suitcases/luggage to 2 large items or 1 large + 2 small items</li>
-          <li>Not all departure times may receive transportation; this form’s purpose is to determine which Sagecoach and Sagehen Shuttle times should be finalized based on student ride demand!</li>
-          <li>Again, filling out this form does NOT guarantee a ride!!!</li>
-          <li>Any comments, questions, or concerns can be sent to <a href="mailto:operations@aspc.pomona.edu">operations@aspc.pomona.edu</a></li>
+          <li>- You MUST be a Pomona College student.</li>
+          <li>- Due to vehicle space limitations, we ask you limit the number of suitcases/luggage to 2 large items or 1 large + 2 small items</li>
+          <li>- Not all departure times may receive transportation; this form’s purpose is to determine which Sagecoach and Sagehen Shuttle times should be finalized based on student ride demand!</li>
+          <li>- Again, filling out this form does NOT guarantee a ride!!!</li>
         </ul>
         <br />
+        <br />
         We will work to notify you of your assigned time as fast as we can. Thank you for your patience!
+        <br />
+        <br />
+        Any comments, questions, or concerns can be sent to <a href="mailto:operations@aspc.pomona.edu">operations@aspc.pomona.edu</a>.
       </p>
     </div>
   </div>
@@ -50,15 +53,27 @@
       </div>
     </div>
     <div class="field">
+      <%= f.label "What terminal are you going to?", :class => 'label' %>
+      <div class="control">
+        <%= f.select :terminal, 1...7, {:selected => "1" }, {:class => 'select'} %>
+      </div>
+    </div>
+    <div class="field">
       <%= f.label "When is your flight?", id: "js-flight-label", :class => 'label' %>
       <div class="control">
-        <%= f.datetime_select :flighttime, { :order => [:day, :month, :year], :prompt => {:day => 'day', :month => "month", :year => "year", :hour => "hour", :minute => "minute", }, :ampm => true, :minute_step => 15, :start_year => 2018, :end_year => 2019 }, { :class => 'select' } %>
+        <%= f.datetime_select :flighttime, { :order => [:day, :month, :year], :prompt => {:day => 'day', :month => "month", :year => "year", :hour => "hour", :minute => "minute", }, :ampm => true, :minute_step => 15, :start_year => 2019, :end_year => 2020 }, { :class => 'select' } %>
       </div>
     </div>
     <div class="field time-div">
-      <%= f.label "When would you like your ride to leave?", :class => 'label' %>
+      <%= f.label "When is the earliest time you’d be willing to leave for your flight?", :class => 'label' %>
       <div class="control">
-        <%= f.datetime_select :ridetime, { :order => [:day, :month, :year], :prompt => {:day => 'day', :month => "month", :year => "year", :hour => "hour", :minute => "minute", }, :ampm => true, :minute_step => 15, :start_year => 2018, :end_year => 2019 }, { :class => 'select' } %>
+        <%= f.datetime_select :ridetime, { :order => [:day, :month, :year], :prompt => {:day => 'day', :month => "month", :year => "year", :hour => "hour", :minute => "minute", }, :ampm => true, :minute_step => 15, :start_year => 2019, :end_year => 2020 }, { :class => 'select' } %>
+      </div>
+    </div>
+    <div class="field">
+      <%= f.label "What is your phone number?", :class => 'label' %>
+      <div class="control">
+        <%= number_field_tag :phone_number %>
       </div>
     </div>
     <br />
@@ -89,7 +104,13 @@
     <div class="field">
       <%= f.label "Where are you going?", :class => 'label' %>
       <div class="control">
-        <%= f.select :airport, ["To LAX", "To Ontario", "From LAX", "From Ontario"], {:selected => "2" }, {:class => 'select'} %>
+        <%= f.select :airport, ["To LAX", "To Ontario"], {:selected => "2" }, {:class => 'select'} %>
+      </div>
+    </div>
+    <div class="field">
+      <%= f.label "What terminal are you going to?", :class => 'label' %>
+      <div class="control">
+        <%= f.select :terminal, 1...7, {:selected => "1" }, {:class => 'select'} %>
       </div>
     </div>
     <div class="field">
@@ -109,9 +130,16 @@
     </div>
 
     <div class="field time-div" id="aspc-custom-ride-section">
-      <%= f.label "If none of the above rides work, when would you like your ride to leave?", :id => "aspc-custom-ride-label", :class => "label" %>
+      <%= f.label "If none of the above rides work, when is the earliest time you’d be willing to leave for your flight?", :id => "aspc-custom-ride-label", :class => "label" %>
       <div class="control">
         <%= f.datetime_select :ridetime, { :order => [:day, :month, :year], :prompt => {:day => 'day', :month => "month", :year => "year", :hour => "hour", :minute => "minute", }, :ampm => true, :minute_step => 15, :start_year => 2018, :end_year => 2019 }, { :class => 'select' } %>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= f.label "What is your phone number?", :class => 'label' %>
+      <div class="control">
+        <%= number_field_tag :phone_number %>
       </div>
     </div>
 
@@ -147,7 +175,7 @@
               });
 
               if ($("#existing-aspc-rides").children().length == 0) {
-                  $("#aspc-custom-ride-label").text("When would you like your ride to leave?");
+                  $("#aspc-custom-ride-label").text("When is the earliest time you’d be willing to leave for your flight?");
 
                   $("#existing-aspc-rides-section").hide();
                   $("#aspc-custom-ride-section").show();

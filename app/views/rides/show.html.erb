@@ -22,15 +22,23 @@
           <td><%= @ride_user.user.email %></td>
         </tr>
         <tr>
+          <th>Phone</th>
+          <td><%= @ride_user.user.phone_number %></td>
+        </tr>
+        <tr>
           <th>Direction</th>
           <td><%= @ride.airport %></td>
+        </tr>
+        <tr>
+          <th>Terminal</th>
+          <td><%= @ride.terminal %></td>
         </tr>
         <tr>
           <th>Flight Time</th>
           <td><%= @ride_user.flighttime.strftime("%l:%M%P on %B %d, %Y") %></td>
         </tr>
         <tr>
-          <th>Preferred Ride Time</th>
+          <th>Earliest Preferred Ride Time</th>
           <td><%= @ride.ridetime&.strftime("%l:%M%P on %B %d, %Y") || "N/A" %></td>
         </tr>
       </tbody>
@@ -39,9 +47,7 @@
   <br />
   <br />
   <p class="is-size-7">
-    Please note that your ride departure time is not yet finalized until we get back to you. In the meantime, if
-    you use this website to join or create any other rides to the airport from <strong>December 17</strong> through
-    <strong>December 22</strong>, you will forfeit your free ride request.
+    Please note that your ride departure time is not yet finalized until we get back to you.
   </p>
   <br />
   <%= link_to 'Withdraw Free Ride Request', { :controller => "rides", :action => "leave", :id => @ride }, :confirm => "Are you sure you want to leave this ride?", :class => "button is-danger" %>
