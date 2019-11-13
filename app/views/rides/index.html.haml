@@ -3,6 +3,17 @@
 
 .columns
   .column
+    %p.title.is-4
+      ASPC is excited to reintroduce the 5C Rideshare service     
+    %p
+      We know getting to and from the airport can be a hassle, so we're trying to make it easier for students at all of the Claremont Colleges to do so.
+    %p
+    The aim of this service is to allow students going to and from Ontario or LAX to connect with each other and split the cost of the ride – simply sign in and create or join a ride at a time which works for you!
+
+%br
+
+.columns
+  .column
     #ride-search-bar-big
       .box.has-background-light
         .field.has-addons
@@ -34,28 +45,21 @@
           %a.button.is-link.is-outlined.is-fullwidth#goButton-mobile
             Go!
 
-.section
-  .columns
-    .column.is-5
-      .index-notification
-        %p
-          %strong 5C Rideshare service
-        %p
-          We know getting to and from the airport can be a hassle, so we're trying to make it easier for students at all of the Claremont Colleges to do so.
-        %br
-        %p
-          The aim of this service is to allow students going to and from Ontario or LAX to connect with each other and split the cost of the ride – simply sign in and create or join a ride at a time which works for you!
-    .column.is-2
-      .column-divider
-    - if @current_user && @current_user.is_admin
-      .column.is-5
-        .index-notification
-          %p
-            %strong Pomona Students ONLY: Free Rides to LAX/ONT During Finals Week
-          %br
-          %p
-            The ASPC Rideshare Program is back and will be providing POMONA COLLEGE STUDENTS ONLY (of all class years) transportation (FREE OF CHARGE) from campus to LAX (Los Angeles International) and Ontario Airport on selected times during finals week.
-            For more details, sign in with your Pomona login and
+%br
+
+.columns
+  .column
+    .message.is-info
+      .message-header
+        %p 
+          %strong POM STUDENTS ONLY: 
+          Free Rides to LAX/ONT During Finals Week
+      .message-body
+        %p 
+          The ASPC Rideshare Program is back and will be providing POMONA COLLEGE STUDENTS ONLY (of all class years) transportation (FREE OF CHARGE) from campus to LAX (Los Angeles International) and Ontario Airport on selected times during finals week. 
+        %p 
+          %strong
+            For more details, sign in with your Pomona login and 
             =link_to "create a new ride.", new_ride_path
 
 :javascript
