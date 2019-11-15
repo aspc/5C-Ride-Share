@@ -1,3 +1,10 @@
+<% terminals = Hash.new
+(1..8).each do |i|
+  terminals[i.to_s] = i
+  end
+terminals["Tom Bradley International Terminal"] = 9
+%>
+
 <% if @current_user.school == "pomona" && @current_user.is_admin %>
   <div class="message is-info">
     <div class="message-header">
@@ -8,7 +15,7 @@
         <p class="control">
           <input type="checkbox" id="aspc-checkbox" />
         </p>
-        <label class="label help">I would like to request a free ride to ONT/LAX funded by ASPC (<strong>December 19 - 21</strong>).</label>
+        <label class="label help">I would like to request a free ride to ONT/LAX funded by ASPC.</label>
       </div>
       <p class="is-size-7">
         <ul>
@@ -20,6 +27,9 @@
         <br />
         <br />
         We will work to notify you of your assigned time as fast as we can. Thank you for your patience!
+        <br />
+        <br />
+        <strong>This form closes at 5pm on November 22nd.</strong>
         <br />
         <br />
         Any comments, questions, or concerns can be sent to <a href="mailto:operations@aspc.pomona.edu">operations@aspc.pomona.edu</a>.
@@ -55,7 +65,7 @@
     <div class="field">
       <%= f.label "What terminal are you going to?", :class => 'label' %>
       <div class="control">
-        <%= f.select :terminal, 1..8, {:selected => "1" }, {:class => 'select'} %>
+        <%= f.select :terminal, terminals.except("Tom Bradley International Terminal"), {:selected => "1" }, {:class => 'select'} %>
       </div>
     </div>
     <div class="field">
@@ -110,7 +120,7 @@
     <div class="field">
       <%= f.label "What terminal are you going to?", :class => 'label' %>
       <div class="control">
-        <%= f.select :terminal, 1...7, {:selected => "1" }, {:class => 'select'} %>
+        <%= f.select :terminal, terminals, {:selected => "1" }, {:class => 'select'} %>
       </div>
     </div>
     <div class="field">
