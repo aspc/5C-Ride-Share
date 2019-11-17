@@ -83,7 +83,7 @@ terminals["Tom Bradley International Terminal"] = 9
     <div class="field">
       <%= f.label "What is your phone number?", :class => 'label' %>
       <div class="control">
-        <%= number_field_tag :phone_number %>
+        <%= number_field_tag :phone_number, nil, :class => 'input' %>
       </div>
     </div>
     <br />
@@ -126,30 +126,21 @@ terminals["Tom Bradley International Terminal"] = 9
     <div class="field">
       <%= f.label "When is your flight?", id: "js-flight-label", :class => 'label' %>
       <div class="control">
-        <%= f.datetime_select :flighttime, { :order => [:day, :month, :year], :prompt => {:day => 'day', :month => "month", :year => "year", :hour => "hour", :minute => "minute", }, :ampm => true, :minute_step => 15, :start_year => 2018, :end_year => 2019 }, { :class => 'select' } %>
+        <%= f.datetime_select :flighttime, { :order => [:day, :month, :year], :prompt => {:day => 'day', :month => "month", :year => "year", :hour => "hour", :minute => "minute", }, :ampm => true, :minute_step => 15, :start_year => 2019, :end_year => 2020 }, { :class => 'select' } %>
       </div>
     </div>
 
-    <div class="field" id="existing-aspc-rides-section">
-      <%= f.label "Are any of these ride times suitable for your schedule?", :class => "label" %>
+    <div class="field time-div" >
+      <%= f.label "When is the earliest time you’d be willing to leave for your flight?", :class => "label" %>
       <div class="control">
-        <div class="select">
-          <%= f.select :existing_aspc_ride, [], {:selected => "0"}, {:id => "existing-aspc-rides"} %>
-        </div>
-      </div>
-    </div>
-
-    <div class="field time-div" id="aspc-custom-ride-section">
-      <%= f.label "If none of the above rides work, when is the earliest time you’d be willing to leave for your flight?", :id => "aspc-custom-ride-label", :class => "label" %>
-      <div class="control">
-        <%= f.datetime_select :ridetime, { :order => [:day, :month, :year], :prompt => {:day => 'day', :month => "month", :year => "year", :hour => "hour", :minute => "minute", }, :ampm => true, :minute_step => 15, :start_year => 2018, :end_year => 2019 }, { :class => 'select' } %>
+        <%= f.datetime_select :ridetime, { :order => [:day, :month, :year], :prompt => {:day => 'day', :month => "month", :year => "year", :hour => "hour", :minute => "minute", }, :ampm => true, :minute_step => 15, :start_year => 2019, :end_year => 2020 }, { :class => 'select' } %>
       </div>
     </div>
 
     <div class="field">
       <%= f.label "What is your phone number?", :class => 'label' %>
       <div class="control">
-        <%= number_field_tag :phone_number %>
+        <%= number_field_tag :phone_number, nil, :class => 'input' %>
       </div>
     </div>
 
@@ -164,72 +155,12 @@ terminals["Tom Bradley International Terminal"] = 9
 
 <script>
   (function() {
-      function displayExistingASPCRides(airport) {
-          $.get("/5crideshare/rides/aspc_rides.json", {airport: airport}, function (data) {
-              $("#existing-aspc-rides").html("");
-              $.each(data, function (index, value) {
-                  let rt = new Date(value.ridetime);
-                  let ridetime = rt.toLocaleDateString("en-US", {
-                      year: "numeric",
-                      month: "long",
-                      weekday: "long",
-                      day: "numeric",
-                      hour: "numeric",
-                      minute: "numeric"
-                  });
-
-                  $("#existing-aspc-rides").append(
-                      $(`<option>`, {value: value.id})
-                      .text(ridetime)
-                  );
-              });
-
-              if ($("#existing-aspc-rides").children().length == 0) {
-                  $("#aspc-custom-ride-label").text("When is the earliest time you’d be willing to leave for your flight?");
-
-                  $("#existing-aspc-rides-section").hide();
-                  $("#aspc-custom-ride-section").show();
-              } else {
-                  $("#existing-aspc-rides")
-                      .prepend(
-                          $(`<option>`, {value: ""})
-                          .text("Select a ride which works for you")
-                      )
-                      .find("option:eq(0)").prop("selected", true);
-
-                  $("#aspc-custom-ride-label").text("If none of the above options work, When would you like your ride to leave?");
-
-                  $("#existing-aspc-rides-section").show();
-                  $("#aspc-custom-ride-section").show();
-              }
-          });
-      }
-
-      function getSelectedAirport() {
-          let airport = $("#aspc-free").find("#ride_airport").val();
-          return airport;
-      }
-
-
       let nonAspcForm = $("#non-aspc-free")[0];
       let aspcForm = $("#aspc-free")[0];
       let aspcCheckbox = $("#aspc-checkbox");
       aspcCheckbox.click(function () {
           nonAspcForm.style.display = aspcCheckbox[0].checked ? "none" : "block";
           aspcForm.style.display = aspcCheckbox[0].checked ? "block" : "none";
-
-          if (aspcCheckbox[0].checked) {
-              $("#existing-aspc-rides-section").hide();
-              $("#aspc-custom-ride-section").hide();
-
-              let airport = getSelectedAirport();
-              displayExistingASPCRides(airport);
-          }
-      });
-
-      $("#aspc-free").find("#ride_airport").change(function () {
-          let airport = getSelectedAirport();
-          displayExistingASPCRides(airport);
       });
   })();
 </script>
