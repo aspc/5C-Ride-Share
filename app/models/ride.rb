@@ -24,7 +24,7 @@ class Ride < ActiveRecord::Base
 
     # Change these depending on the program date
     # TODO: set this in admin panel
-    aspc_ride_start_date = Date.new(2019, 12, 19)
+    aspc_ride_start_date = Date.new(2019, 12, 16)
     aspc_ride_end_date = Date.new(2019, 12, 21)
 
     if not flighttime.to_date.between? aspc_ride_start_date, aspc_ride_end_date
