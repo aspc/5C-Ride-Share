@@ -4,7 +4,7 @@
 .columns
   .column
     %p.title.is-4
-      ASPC is excited to reintroduce the 5C Rideshare service     
+      ASPC is excited to reintroduce the 5C Rideshare service
     %p
       We know getting to and from the airport can be a hassle, so we're trying to make it easier for students at all of the Claremont Colleges to do so.
     %p
@@ -50,17 +50,18 @@
 .columns
   .column
     .message.is-info
-      .message-header
-        %p 
-          %strong POM STUDENTS ONLY: 
-          Free Rides to LAX/ONT During Finals Week
-      .message-body
-        %p 
-          The ASPC Rideshare Program is back and will be providing POMONA COLLEGE STUDENTS ONLY (of all class years) transportation (FREE OF CHARGE) from campus to LAX (Los Angeles International) and Ontario Airport on selected times during finals week. 
-        %p 
-          %strong
-            For more details, sign in with your Pomona login and 
-            =link_to "request a ride.", new_ride_path
+      - if false
+        .message-header
+          %p
+            %strong POM STUDENTS ONLY:
+            Free Rides to LAX/ONT During Finals Week
+        .message-body
+          %p
+            The ASPC Rideshare Program is back and will be providing POMONA COLLEGE STUDENTS ONLY (of all class years) transportation (FREE OF CHARGE) from campus to LAX (Los Angeles International) and Ontario Airport on selected times during finals week.
+          %p
+            %strong
+              For more details, sign in with your Pomona login and
+              =link_to "request a ride.", new_ride_path
 
 :javascript
   (function() {
