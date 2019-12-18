@@ -204,7 +204,7 @@ GEM
       pry (~> 0.10)
     public_suffix (2.0.5)
     puma (3.12.0)
-    rack (1.6.5)
+    rack (1.6.12)
     rack-cache (1.7.0)
       rack (>= 0.4)
     rack-no-www (0.0.2)
