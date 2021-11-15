@@ -49,9 +49,9 @@ module Shuttleshare
     # Include vendor directory for asset pipeline
     config.assets.paths << Rails.root.join('vendor', 'stylesheets')
 
-    if Rails.env.production?
-      config.middleware.insert_before Rack::Runtime, Rack::NoWWW
-    end
+    # if Rails.env.production?
+    #   config.middleware.insert_before Rack::Runtime, Rack::NoWWW
+    # end
 
     # Pomona College SSO
     config.CAS_SERVER_URL = 'https://ssocas.campus.pomona.edu/cas'
