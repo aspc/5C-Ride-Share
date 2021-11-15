@@ -4,7 +4,7 @@ ruby '2.4.1'
 gem 'rails', '4.2.8'
 
 gem 'json', '1.8.6'
-gem 'haml', '4.0.5'
+gem 'haml', '5.0.0'
 gem 'omniauth', '1.4.2'
 gem 'omniauth-facebook', '4.0.0'
 gem 'pg', '0.20.0', :group => :production
