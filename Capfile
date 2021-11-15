@@ -21,6 +21,7 @@ install_plugin Capistrano::SCM::Git
 require "capistrano/rvm"
 
 # Load Rails plugins
+require "capistrano/bundler"
 require "capistrano/rails"
 require "capistrano/puma"
 
