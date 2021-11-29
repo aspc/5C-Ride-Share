@@ -303,7 +303,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  ZenTest (= 4.11.0)
   activeadmin
   activerecord-deprecated_finders
   autotest (= 4.4.6)
@@ -339,7 +338,7 @@ DEPENDENCIES
   webrat (= 0.7.3)
 
 RUBY VERSION
-   ruby 2.4.1p111
+   ruby 2.4.0p0
 
 BUNDLED WITH
    1.16.6

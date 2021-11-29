@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '2.4.1'
+ruby '2.4.0'
 gem 'rails', '4.2.8'
 
 gem 'json', '1.8.6'
@@ -18,7 +18,6 @@ gem 'activeadmin'
 
 group :test, :development do
   gem 'rspec-rails', '3.5.2'
-  gem 'ZenTest', '4.11.0'
   gem 'spork', '0.9.2'
   gem 'autotest', '4.4.6'
   gem 'autotest-growl', '0.2.16'
