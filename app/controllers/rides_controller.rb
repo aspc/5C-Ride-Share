@@ -241,6 +241,22 @@ class RidesController < ApplicationController
       :rides => Ride.where(airport: "From LAX").all,
       :check => true
       }
+    when "5"
+      {
+      :title => "5C ride share :: to Burbank",
+      :airport => "To Burbank",
+      :ftype => "Arrival",
+      :rides => Ride.where(airport: "To Burbank").all,
+      :check => true
+      }
+    when "6"
+      {
+      :title => "5C ride share :: from Burbank",
+      :airport => "From Burbank",
+      :ftype => "Departure",
+      :rides => Ride.where(airport: "From Burbank").all,
+      :check => true
+      }
     else
       {
         :check => false
