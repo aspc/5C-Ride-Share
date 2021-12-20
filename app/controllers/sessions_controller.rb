@@ -172,6 +172,7 @@ class SessionsController < ApplicationController
     }
 
     cas_server_url = Rails.configuration.CAS_SERVER_URL
+    puts [cas_server_url, 'login'].join('/') + '?' + query_params.to_query.to_s
     [cas_server_url, 'login'].join('/') + '?' + query_params.to_query.to_s
   end
 end
