@@ -11,7 +11,7 @@ lock "~> 3.11.0"
 # across production/staging configs.
 set :application, "claremontrideshare"
 set :repo_url, "https://github.com/aspc/5C-Ride-Share.git"
-set :rvm_ruby_version, "2.4.1"
+set :rvm_ruby_version, "2.6.3"
 
 # SSH Authentication
 ask :user, "Username for peninsula.pomona.edu"

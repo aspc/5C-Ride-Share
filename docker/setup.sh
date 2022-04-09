@@ -2,14 +2,10 @@
 
 FILE=/claremontrideshare/docker/setup_completion_marker
 
-setupYarnPackages(){
-    yarn install
-}
-
 setupDB() {
     echo "Setting up DB"
-    bundle exec rails db:create 
-    bundle exec rails db:migrate
+    bundle exec rake db:create 
+    bundle exec rake db:migrate
     touch $FILE 
 }
 
@@ -20,7 +16,6 @@ dbIsSetup() {
     fi
 }
 
-setupYarnPackages
 dbIsSetup && echo "Database is Already Setup!" || setupDB
 echo "Setup Complete"
 
