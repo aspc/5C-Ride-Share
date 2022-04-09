@@ -17,6 +17,7 @@ RUN gem install bundler
 WORKDIR /claremontrideshare
 
 COPY Gemfile Gemfile.lock /claremontrideshare/
+RUN gem install nokogiri -v '1.7.1' -- --use-system-libraries
 RUN bundle install
 # COPY package.json yarn.lock /claremontrideshare/
 # RUN yarn install
