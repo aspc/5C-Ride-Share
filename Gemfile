@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '2.4.1'
+ruby '2.6.3'
 gem 'rails', '4.2.8'
 
 gem 'json', '1.8.6'
@@ -17,10 +17,7 @@ gem 'rack-cache', '1.7.0'
 gem 'activeadmin'
 
 group :test, :development do
-  gem 'rspec-rails', '3.5.2'
   gem 'spork', '0.9.2'
-  gem 'autotest', '4.4.6'
-  gem 'autotest-growl', '0.2.16'
   gem 'test_notifier', '2.0.3'
   gem 'webrat', '0.7.3'
   gem 'database_cleaner', '1.3.0'
