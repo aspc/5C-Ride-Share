@@ -1,45 +1,14 @@
-The source code for the Pomona Shuttle Share application. Created by Jesse Pollak, maintained by ASPC.
+The source code for version 2 of the 5C Rideshare web application. Created by Brad Bain, Pavle
+Rohalj, and Adam Guo. Original version created by Jesse Pollak. Maintained by ASPC.
 
-# To-do
+# Local development
 
-- Remove users from other rides once they join a ride (i.e. prevent users from joining multiple rides)
-- Change table headings and datetimes displayed on "your rides" page
-- Styling
-  - Change font colour of dropdowns in forms
-- Make sure user auth and ride creation/commenting works with CAS
-- Update static notices to remove references to Facebook
-- Update comments
-  - Sort comments in reverse chronological order
-  - Link to email address of commenter (current user model has no email field!)
-  - Display when comment was created
-- Form validation
-- Update documentation
+1. Install [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/)
+2. Go to your cloned repository: `cd /path/to/5crideshare/`
+3. Run `docker-compose up -d`
+4. Go to [localhost:3000/5crideshare](localhost:3000/5crideshare)
 
-# Local development #
+# Production
 
-1. [Install rvm](https://rvm.io/)
-2. Install ruby 2.4.1: `rvm install ruby-2.4.1`
-3. Go to your cloned repository: `cd /path/to/5crideshare/`
-4. Install bundler: `gem install bundler`
-5. Install dependencies: `bundle install`
-6. Run the migrations for develop: `bundle exec rake db:migrate`
-7. Start the server with rails on localhost: `rails s -b 127.0.0.1`
-
-# Tests #
-
-1. Run the migrations for the tests: `RAILS_ENV=test bundle exec rake db:migrate`
-2. Run the limited tests that we have: `bundle exec rspec spec/`
-
-# Production #
-
-5CRideshare is hosted on Heroku. As of May 2017, the app is deployed on the Cedar-14 stack, using Ruby 2.4.1 and Rails 4. A legacy version of the app still exists on the Bamboo stack, but has been deprecated. All traffic to `5crideshare.com` is now configured to point to the new Cedar-14 infrastructure. The Heroku appname is `fivecrideshare-cedar` and is owned by Matt Dahl.
-
-To deploy:
-
-1. Set up your git remotes: `git remote add heroku-cedar git@heroku.com:fivecrideshare-cedar.git`
-2. Push: `git push heroku-cedar master`
-3. Compile the static assets if you need to: `heroku run rake assets:precompile --app fivecrideshare-cedar`
-
-Heroku provides a free Postgres database hosted on EC2 that we use. You can manage that by logging into the Heroku dashboard online, or using the standard CLI with the connection details found on the dashboard.
-
-ASPC manages the DNS records for this site too, unlike those of Peninsula which ITS takes care of.
+5CRideshare is hosted on Peninsula and deployment is managed using Capistrano. To deploy, run
+`docker-compose run web bundle exec cap production deploy`.
