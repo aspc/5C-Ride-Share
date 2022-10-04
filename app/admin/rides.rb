@@ -1,7 +1,7 @@
 ActiveAdmin.register Ride do
   belongs_to :user, optional: true
 
-  permit_params :airport, :flighttime, :owner_id, :ridetime, :is_aspc, :terminal,
+  permit_params :airport, :flighttime, :owner_id, :ridetime, :is_aspc, :max_riders,
                 user_ids: []
 
 
@@ -21,13 +21,13 @@ ActiveAdmin.register Ride do
     end
     column :ridetime
     column :is_aspc
-    column :terminal
+    column :max_riders
   end
 
   csv do
     column :id
     column :airport
-    column :terminal
+    column :max_riders
     column :flighttime
     column "preferred ride time" do |ride|
       ride.ridetime

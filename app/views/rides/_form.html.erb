@@ -1,8 +1,7 @@
-<% terminals = Hash.new
+<% maxRiders = Hash.new
 (1..8).each do |i|
-  terminals[i.to_s] = i
+  maxRiders[i.to_s] = i
   end
-terminals["Tom Bradley International Terminal"] = 9
 %>
 
 <% if @current_user.school == "pomona" && false %>
@@ -63,9 +62,9 @@ terminals["Tom Bradley International Terminal"] = 9
       </div>
     </div>
     <div class="field">
-      <%= f.label "What terminal are you going to?", :class => 'label' %>
+      <%= f.label "What is the total maximum number of riders for the vehicle?", :class => 'label' %>
       <div class="control">
-        <%= f.select :terminal, terminals.except("Tom Bradley International Terminal"), {:selected => "1" }, {:class => 'select'} %>
+        <%= f.select :max_riders, maxRiders, {:selected => "1" }, {:class => 'select'} %>
       </div>
     </div>
     <div class="field">
@@ -118,9 +117,9 @@ terminals["Tom Bradley International Terminal"] = 9
       </div>
     </div>
     <div class="field">
-      <%= f.label "What terminal are you going to?", :class => 'label' %>
+      <%= f.label "What is the total maximum number of riders for the vehicle?", :class => 'label' %>
       <div class="control">
-        <%= f.select :terminal, terminals, {:selected => "1" }, {:class => 'select'} %>
+        <%= f.select :max_riders, maxRiders, {:selected => "1" }, {:class => 'select'} %>
       </div>
     </div>
     <div class="field">

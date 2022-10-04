@@ -269,7 +269,7 @@ class RidesController < ApplicationController
   def ride_params
     if params[:ride]
       params.require(:ride).permit("airport", "flighttime(1i)", "flighttime(2i)", "flighttime(3i)", "flighttime(4i)", "flighttime(5i)",
-      "ridetime(1i)","ridetime(2i)","ridetime(3i)","ridetime(4i)","ridetime(5i)", "is_aspc", "existing_aspc_ride", "terminal")
+      "ridetime(1i)","ridetime(2i)","ridetime(3i)","ridetime(4i)","ridetime(5i)", "is_aspc", "existing_aspc_ride", "max_riders")
     end
   end
 end
