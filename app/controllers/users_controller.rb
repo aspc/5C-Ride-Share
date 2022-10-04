@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_filter :correct_user, :only => [:edit, :show]
 
   def edit
-    @title = "5C ride share :: settings"
+    @title = "5C Rideshare :: settings"
   end
 
   def update
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @title = "5C ride share :: your rides"
+    @title = "5C Rideshare :: your rides"
     rides = @current_user.rides
     @arrivals = []
     @departures = []
