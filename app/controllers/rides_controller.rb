@@ -3,11 +3,11 @@ class RidesController < ApplicationController
   before_filter :login_helper, :only => [:new, :join]
 
   before_filter do
-    @title = "5C ride share"
+    @title = "5C Rideshare"
   end
 
   def index
-    @title = "5C ride share :: home"
+    @title = "5C Rideshare :: home"
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @rides }
@@ -26,7 +26,7 @@ class RidesController < ApplicationController
   end
 
   def new
-    @title = "5C ride share :: new"
+    @title = "5C Rideshare :: new"
     @ride = Ride.new
 
     respond_to do |format|
@@ -211,7 +211,7 @@ class RidesController < ApplicationController
     case type
     when "1"
       {
-      :title => "5C ride share :: to ontario",
+      :title => "5C Rideshare :: to ontario",
       :airport => "To Ontario",
       :ftype => "Departure",
       :rides => Ride.where(airport: "To Ontario").all,
@@ -219,7 +219,7 @@ class RidesController < ApplicationController
       }
     when "2"
       {
-      :title => "5C ride share :: from ontario",
+      :title => "5C Rideshare :: from ontario",
       :airport => "From Ontario",
       :ftype => "Arrival",
       :rides =>  Ride.where(airport: "From Ontario").all,
@@ -227,7 +227,7 @@ class RidesController < ApplicationController
       }
     when "3"
       {
-      :title => "5C ride share :: to LAX",
+      :title => "5C Rideshare :: to LAX",
       :airport => "To LAX",
       :ftype => "Departure",
       :rides => Ride.where(airport: "To LAX").all,
@@ -235,7 +235,7 @@ class RidesController < ApplicationController
       }
     when "4"
       {
-      :title => "5C ride share :: from LAX",
+      :title => "5C Rideshare :: from LAX",
       :airport => "From LAX",
       :ftype => "Arrival",
       :rides => Ride.where(airport: "From LAX").all,
@@ -243,7 +243,7 @@ class RidesController < ApplicationController
       }
     when "5"
       {
-      :title => "5C ride share :: to Burbank",
+      :title => "5C Rideshare :: to Burbank",
       :airport => "To Burbank",
       :ftype => "Arrival",
       :rides => Ride.where(airport: "To Burbank").all,
@@ -251,7 +251,7 @@ class RidesController < ApplicationController
       }
     when "6"
       {
-      :title => "5C ride share :: from Burbank",
+      :title => "5C Rideshare :: from Burbank",
       :airport => "From Burbank",
       :ftype => "Departure",
       :rides => Ride.where(airport: "From Burbank").all,

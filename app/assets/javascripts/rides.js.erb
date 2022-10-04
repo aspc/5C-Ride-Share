@@ -2,7 +2,7 @@ $(document).ready(function() {
 	var menu = $("#ride_airport")[0]
 	var ridetime = $(".time-div")
 	var title = $('title')[0].text
-	if (title === "5C ride share :: Home") {
+	if (title === "5C Rideshare :: Home") {
 		$('#nav').hide()
 	} 
 	
@@ -34,25 +34,25 @@ $(document).ready(function() {
 function currentPage(title) {
 	var nav = $('#nav').children()
 	switch(title) {
-		case "5C ride share :: to LAX":
+		case "5C Rideshare :: to LAX":
 			nav.eq(2).addClass('current-page')
 			break
-		case "5C ride share :: from LAX":
+		case "5C Rideshare :: from LAX":
 			nav.eq(3).addClass('current-page')
 			break
-		case "5C ride share :: to ontario":
+		case "5C Rideshare :: to ontario":
 			nav.first().addClass('current-page')
 			break
-		case "5C ride share :: from ontario":
+		case "5C Rideshare :: from ontario":
 			nav.eq(1).addClass('current-page')
 			break
-		case "5C ride share :: new":
+		case "5C Rideshare :: new":
 			$("#create-new-ride").children().eq(1).addClass('current-page')
 			break
-		case "5C ride share :: settings":
+		case "5C Rideshare :: settings":
 			$("#create-new-ride").children().eq(0).addClass('current-page')
 			break
-		case "5C ride share :: your rides":
+		case "5C Rideshare :: your rides":
 			$("#create-new-ride").children().eq(2).addClass('current-page')
 			break
 	}
