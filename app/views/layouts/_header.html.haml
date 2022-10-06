@@ -21,7 +21,7 @@
         -if signed_in?
           =link_to "Logout", {:controller => "sessions", :action => "destroy"}, {:class => "button is-light"}
         -else
-          =link_to "Login", {:controller => "sessions", :action => "new"}, {:class => "button is-link"}
+          =button_to 'Sign in', :login_cas, :class => 'button is-info'
 
 :javascript
    $(document).ready(function () {
