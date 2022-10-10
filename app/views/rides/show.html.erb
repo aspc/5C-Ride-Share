@@ -79,7 +79,8 @@
     <div class="has-text-right-tablet">
       <% if @current_user %>
         <% unless @ride.users.find_by_id(@current_user.id) %>
-          <%= link_to 'Join Ride',{ :controller => "rides", :action => "join", :id => @ride }, :confirm => "Are you sure you want to join this ride?", :class => "button is-primary" %>
+          <% if @users.length <= @ride.max_riders %> 
+            <%= link_to 'Join Ride',{ :controller => "rides", :action => "join", :id => @ride }, :confirm => "Are you sure you want to join this ride?", :class => "button is-primary" %>
         <% else %>
           <%= link_to 'Leave Ride', { :controller => "rides", :action => "leave", :id => @ride }, :confirm => "Are you sure you want to leave this ride?", :class => "button is-danger" %>
         <% end %>
