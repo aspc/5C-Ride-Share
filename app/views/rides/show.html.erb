@@ -81,6 +81,7 @@
         <% unless @ride.users.find_by_id(@current_user.id) %>
           <% if @users.length <= @ride.max_riders %> 
             <%= link_to 'Join Ride',{ :controller => "rides", :action => "join", :id => @ride }, :confirm => "Are you sure you want to join this ride?", :class => "button is-primary" %>
+          <% end %>
         <% else %>
           <%= link_to 'Leave Ride', { :controller => "rides", :action => "leave", :id => @ride }, :confirm => "Are you sure you want to leave this ride?", :class => "button is-danger" %>
         <% end %>
