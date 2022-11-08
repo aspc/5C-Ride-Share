@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20191109015555) do
     t.integer  "owner_id"
     t.datetime "ridetime"
     t.boolean  "is_aspc"
-    t.integer  "max_riders"
+    t.integer  "terminal"
   end
 
   create_table "rides_users", force: :cascade do |t|
