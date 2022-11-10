@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191109015555) do
+ActiveRecord::Schema.define(version: 20221110172416) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20191109015555) do
     t.integer  "owner_id"
     t.datetime "ridetime"
     t.boolean  "is_aspc"
-    t.integer  "terminal"
+    t.integer  "max_riders"
   end
 
   create_table "rides_users", force: :cascade do |t|
