@@ -5,7 +5,7 @@ gem 'rails', '4.2.8'
 
 gem 'json', '1.8.6'
 gem 'haml', '4.0.5'
-gem 'omniauth', '1.4.2'
+gem 'omniauth', '2.0.0'
 gem 'omniauth-facebook', '4.0.0'
 gem 'pg', '0.20.0', :group => :production
 gem 'rdiscount', '1.6.8'
